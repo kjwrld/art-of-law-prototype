@@ -61,7 +61,7 @@ export const FilterDropdown = ({
               >
                 <div className={`w-4 h-4 rounded-full ${
                   selectedValue === option.value 
-                    ? 'bg-[var(--aow-gold)]' 
+                    ? 'bg-aow-gold' 
                     : 'bg-white/40'
                 }`}></div>
                 <span className="text-white font-medium font-['Luxora_Grotesk:Medium',_sans-serif]">{option.label}</span>

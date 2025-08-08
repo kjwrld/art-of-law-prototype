@@ -49,13 +49,13 @@ export function MyCourses({ onNavigate }: MyCoursesProps) {
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <div className="w-16 h-16 border-4 border-[var(--aow-gold)]/20 border-t-[var(--aow-gold)] rounded-full animate-spin"></div>
+        <div className="w-16 h-16 border-4 border-aow-gold/20 border-t-aow-gold rounded-full animate-spin"></div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-[var(--aow-black)] text-white pt-20">
+    <div className="min-h-screen bg-aow-black text-white pt-20">
       {/* Page Header */}
       <div className="px-6 md:px-8 lg:px-12 xl:px-16 pt-8 pb-6">
         <h1 className="text-3xl md:text-4xl lg:text-5xl font-['Alacrity_Sans',_sans-serif] text-white mb-2">
@@ -83,7 +83,7 @@ export function MyCourses({ onNavigate }: MyCoursesProps) {
               courses={bookmarkedCourses}
             />
           ) : (
-            <div className="bg-[#1a1a1a] rounded-2xl border border-[var(--aow-gold)]/10 p-8 text-center">
+            <div className="bg-[#1a1a1a] rounded-2xl border border-aow-gold/10 p-8 text-center">
               <div className="w-16 h-16 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-4">
                 <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z" />
@@ -114,9 +114,9 @@ export function MyCourses({ onNavigate }: MyCoursesProps) {
               showProgress={true}
             />
           ) : (
-            <div className="bg-[#1a1a1a] rounded-2xl border border-[var(--aow-gold)]/10 p-8 text-center">
-              <div className="w-16 h-16 bg-[var(--aow-gold)]/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg className="w-8 h-8 text-[var(--aow-gold)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="bg-[#1a1a1a] rounded-2xl border border-aow-gold/10 p-8 text-center">
+              <div className="w-16 h-16 bg-aow-gold/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg className="w-8 h-8 text-aow-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.828 14.828a4 4 0 01-5.656 0M9 10h1m4 0h1m-6 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
               </div>
@@ -132,9 +132,9 @@ export function MyCourses({ onNavigate }: MyCoursesProps) {
 
         {/* Quick Access to Learning Tracks */}
         <section>
-          <div className="bg-gradient-to-br from-[#1a1a1a] to-[#0d0d0d] rounded-2xl border border-[var(--aow-gold)]/10 p-8 text-center">
-            <div className="w-16 h-16 bg-[var(--aow-gold)]/10 rounded-full flex items-center justify-center mx-auto mb-4">
-              <svg className="w-8 h-8 text-[var(--aow-gold)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div className="bg-gradient-to-br from-[#1a1a1a] to-[#0d0d0d] rounded-2xl border border-aow-gold/10 p-8 text-center">
+            <div className="w-16 h-16 bg-aow-gold/10 rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg className="w-8 h-8 text-aow-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
               </svg>
             </div>
@@ -146,7 +146,7 @@ export function MyCourses({ onNavigate }: MyCoursesProps) {
             </p>
             <button 
               onClick={() => onNavigate?.('learning-tracks')}
-              className="bg-[var(--aow-gold)] text-[var(--aow-black)] px-6 py-3 rounded-lg font-medium hover:bg-[var(--aow-gold)]/90 transition-colors"
+              className="bg-aow-gold text-aow-black px-6 py-3 rounded-lg font-medium hover:bg-aow-gold/90 transition-colors"
             >
               View Learning Tracks
             </button>

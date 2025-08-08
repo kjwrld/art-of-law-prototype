@@ -30,10 +30,10 @@ export const PracticeCourseCard = ({ course }: PracticeCourseCardProps) => {
           ) : (
             <div className="w-full h-full bg-white flex items-center justify-center relative overflow-hidden">
               <div className="relative z-10 text-center">
-                <div className="w-16 h-16 bg-[var(--aow-black)] rounded-full flex items-center justify-center border border-[var(--aow-gold)] mb-2">
-                  <span className="text-[var(--aow-gold)] text-xl font-bold">{instructorInitials}</span>
+                <div className="w-16 h-16 bg-aow-black rounded-full flex items-center justify-center border border-aow-gold mb-2">
+                  <span className="text-aow-gold text-xl font-bold">{instructorInitials}</span>
                 </div>
-                <div className="text-[var(--aow-black)]/60 text-xs font-medium">
+                <div className="text-aow-black/60 text-xs font-medium">
                   {course.modules} modules
                 </div>
               </div>
@@ -49,7 +49,7 @@ export const PracticeCourseCard = ({ course }: PracticeCourseCardProps) => {
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="flex items-center space-x-2">
                   {/* Coin Icon for Credits */}
-                  <Coins className="w-3.5 h-3.5 text-[var(--aow-gold)]" />
+                  <Coins className="w-3.5 h-3.5 text-aow-gold" />
                   <span className="text-white text-sm font-medium">
                     {formatCLECredits(course.credits)}
                   </span>
@@ -73,7 +73,7 @@ export const PracticeCourseCard = ({ course }: PracticeCourseCardProps) => {
 
           {/* Instructor Name */}
           <div className="flex items-center space-x-2">
-            <span className="text-[var(--aow-gold)] text-sm font-medium tracking-wide">
+            <span className="text-aow-gold text-sm font-medium tracking-wide">
               {course.instructor}
             </span>
           </div>

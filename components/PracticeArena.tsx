@@ -139,14 +139,14 @@ export function PracticeArena() {
         
         {/* Bottom fade indicator for more content - only show if courses overflow */}
         {filteredCourses.length > 8 && (
-          <div className="absolute bottom-0 left-0 right-2 h-8 bg-gradient-to-t from-[var(--aow-black)] to-transparent pointer-events-none"></div>
+          <div className="absolute bottom-0 left-0 right-2 h-8 bg-gradient-to-t from-aow-black to-transparent pointer-events-none"></div>
         )}
       </>
     );
   };
 
   return (
-    <div className="min-h-screen bg-[var(--aow-black)] text-white pt-20">
+    <div className="min-h-screen bg-aow-black text-white pt-20">
       {/* Page Header */}
       <div className="px-6 md:px-8 lg:px-12 xl:px-16 pt-8 pb-6">
         <motion.h1 
@@ -227,29 +227,29 @@ export function PracticeArena() {
                 transition={{ duration: 0.2, ease: "easeOut" }}
                 className={`px-8 py-3 rounded-2xl transition-all duration-300 font-medium text-sm relative overflow-hidden font-['Luxora_Grotesk',_sans-serif] text-center ${
                   activeTabs.includes(tab)
-                    ? 'text-[var(--aow-gold-medium)]'
+                    ? 'text-aow-gold-medium'
                     : 'text-white hover:text-[#9A7D50]'
                 }`}
               >
                 {/* Four subtly rounded corner brackets */}
                 <div className={`absolute top-1 left-1 w-3 h-3 border-l border-t rounded-tl-sm transition-all duration-300 ${
                   activeTabs.includes(tab) 
-                    ? 'border-[var(--aow-gold-medium)]/40' 
+                    ? 'border-aow-gold-medium/40' 
                     : 'border-white/20 group-hover:border-[#9A7D50]/30'
                 }`}></div>
                 <div className={`absolute top-1 right-1 w-3 h-3 border-r border-t rounded-tr-sm transition-all duration-300 ${
                   activeTabs.includes(tab) 
-                    ? 'border-[var(--aow-gold-medium)]/40' 
+                    ? 'border-aow-gold-medium/40' 
                     : 'border-white/20 group-hover:border-[#9A7D50]/30'
                 }`}></div>
                 <div className={`absolute bottom-1 left-1 w-3 h-3 border-l border-b rounded-bl-sm transition-all duration-300 ${
                   activeTabs.includes(tab) 
-                    ? 'border-[var(--aow-gold-medium)]/40' 
+                    ? 'border-aow-gold-medium/40' 
                     : 'border-white/20 group-hover:border-[#9A7D50]/30'
                 }`}></div>
                 <div className={`absolute bottom-1 right-1 w-3 h-3 border-r border-b rounded-br-sm transition-all duration-300 ${
                   activeTabs.includes(tab) 
-                    ? 'border-[var(--aow-gold-medium)]/40' 
+                    ? 'border-aow-gold-medium/40' 
                     : 'border-white/20 group-hover:border-[#9A7D50]/30'
                 }`}></div>
                 

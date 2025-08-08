@@ -67,7 +67,7 @@ export function LearningTracks() {
   };
 
   return (
-    <div className="min-h-screen bg-[var(--aow-black)] text-white pt-20">
+    <div className="min-h-screen bg-aow-black text-white pt-20">
       {/* Page Header */}
       <div className="px-6 md:px-8 lg:px-12 xl:px-16 pt-8 pb-6">
         <h1 className="text-3xl md:text-4xl lg:text-5xl font-['Alacrity_Sans',_sans-serif] text-white mb-2">
@@ -123,10 +123,10 @@ export function LearningTracks() {
                             ) : (
                               <div className="w-full h-full bg-white flex items-center justify-center relative overflow-hidden">
                                 <div className="relative z-10 text-center">
-                                  <div className="w-20 h-20 bg-[var(--aow-black)] rounded-full flex items-center justify-center border-2 border-[var(--aow-gold)] mb-3">
-                                    <span className="text-[var(--aow-gold)] text-2xl font-bold">{instructorInitials}</span>
+                                  <div className="w-20 h-20 bg-aow-black rounded-full flex items-center justify-center border-2 border-aow-gold mb-3">
+                                    <span className="text-aow-gold text-2xl font-bold">{instructorInitials}</span>
                                   </div>
-                                  <div className="text-[var(--aow-black)]/60 text-xs font-medium">
+                                  <div className="text-aow-black/60 text-xs font-medium">
                                     {course.modules} modules
                                   </div>
                                 </div>
@@ -142,7 +142,7 @@ export function LearningTracks() {
 
                       {/* Course Title */}
                       <div className="text-center">
-                        <h3 className="text-white font-semibold text-sm mb-1 leading-tight font-['Luxora_Grotesk:Medium',_sans-serif] group-hover/track-card:text-[var(--aow-gold-light)] transition-colors duration-300 max-w-[140px]">
+                        <h3 className="text-white font-semibold text-sm mb-1 leading-tight font-['Luxora_Grotesk:Medium',_sans-serif] group-hover/track-card:text-aow-gold-light transition-colors duration-300 max-w-[140px]">
                           {course.title}
                         </h3>
                         <p className="text-white/60 text-xs font-['Luxora_Grotesk:Medium',_sans-serif] max-w-[140px] text-center">
@@ -162,10 +162,10 @@ export function LearningTracks() {
                 >
                   <div className="relative mb-4">
                     <div className="relative">
-                      <div className="w-32 h-44 rounded-lg border-2 border-dashed border-white/30 flex items-center justify-center group-hover/placeholder:border-[var(--aow-gold)]/50 transition-colors duration-300">
+                      <div className="w-32 h-44 rounded-lg border-2 border-dashed border-white/30 flex items-center justify-center group-hover/placeholder:border-aow-gold/50 transition-colors duration-300">
                         <div className="text-center">
-                          <div className="w-16 h-16 bg-white/5 rounded-full flex items-center justify-center border border-white/20 mb-3 group-hover/placeholder:border-[var(--aow-gold)]/40 transition-colors duration-300">
-                            <Sprout className="w-8 h-8 text-white/40 group-hover/placeholder:text-[var(--aow-gold)]/60 transition-colors duration-300" />
+                          <div className="w-16 h-16 bg-white/5 rounded-full flex items-center justify-center border border-white/20 mb-3 group-hover/placeholder:border-aow-gold/40 transition-colors duration-300">
+                            <Sprout className="w-8 h-8 text-white/40 group-hover/placeholder:text-aow-gold/60 transition-colors duration-300" />
                           </div>
                           <div className="text-white/40 text-xs font-medium group-hover/placeholder:text-white/60 transition-colors duration-300">
                             Coming Soon
@@ -177,7 +177,7 @@ export function LearningTracks() {
 
                   {/* Placeholder Title */}
                   <div className="text-center">
-                    <h3 className="text-white/60 font-semibold text-sm mb-1 leading-tight font-['Luxora_Grotesk:Medium',_sans-serif] group-hover/placeholder:text-[var(--aow-gold-light)] transition-colors duration-300 max-w-[140px]">
+                    <h3 className="text-white/60 font-semibold text-sm mb-1 leading-tight font-['Luxora_Grotesk:Medium',_sans-serif] group-hover/placeholder:text-aow-gold-light transition-colors duration-300 max-w-[140px]">
                       More Learning Tracks
                     </h3>
                     <p className="text-white/40 text-xs font-['Luxora_Grotesk:Medium',_sans-serif] max-w-[140px] text-center">
@@ -244,12 +244,12 @@ export function LearningTracks() {
             </div>
           </div>
           
-          <div className="bg-gradient-to-br from-[#1a1a1a] to-[#0d0d0d] rounded-2xl border border-[var(--aow-gold)]/10 p-6 md:p-8">
+          <div className="bg-gradient-to-br from-[#1a1a1a] to-[#0d0d0d] rounded-2xl border border-aow-gold/10 p-6 md:p-8">
             
             {/* Recommended Track Header */}
             <div className="flex items-center gap-3 mb-6">
-              <div className="w-10 h-10 bg-[var(--aow-gold)] rounded-lg flex items-center justify-center">
-                <currentTrack.icon className="w-6 h-6 text-[var(--aow-black)]" />
+              <div className="w-10 h-10 bg-aow-gold rounded-lg flex items-center justify-center">
+                <currentTrack.icon className="w-6 h-6 text-aow-black" />
               </div>
               <h2 className="text-2xl font-['Alacrity_Sans',_sans-serif] text-white">
                 Recommended Track: {currentTrack.title}
@@ -292,7 +292,7 @@ export function LearningTracks() {
                 <span className="text-white/70 font-['Luxora_Grotesk',_sans-serif]">
                   Track Progress
                 </span>
-                <span className="text-[var(--aow-gold)] font-['Luxora_Grotesk',_sans-serif] font-medium">
+                <span className="text-aow-gold font-['Luxora_Grotesk',_sans-serif] font-medium">
                   {currentTrack.progress.completed} of {currentTrack.progress.total} completed
                 </span>
               </div>
@@ -311,7 +311,7 @@ export function LearningTracks() {
                 {/* Progress Line - Based on completion status */}
                 {activeTab === 'master' && (
                   <div 
-                    className="absolute left-8 w-0.5 bg-[var(--aow-gold)] z-0 transition-all duration-500"
+                    className="absolute left-8 w-0.5 bg-aow-gold z-0 transition-all duration-500"
                     style={{ 
                       top: '64px', // Start at bottom of first circle
                       height: '200px' // Increased height to accommodate taller course items
@@ -339,7 +339,7 @@ export function LearningTracks() {
         <section className="mt-12 px-6 md:px-8 lg:px-12 xl:px-16">
           <div className="text-center">
             <div className="w-16 h-16 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-4">
-              <Sprout className="w-8 h-8 text-[var(--aow-gold)]" />
+              <Sprout className="w-8 h-8 text-aow-gold" />
             </div>
             <h3 className="text-xl font-['Alacrity_Sans',_sans-serif] text-white mb-2">
               More Learning Tracks Coming Soon

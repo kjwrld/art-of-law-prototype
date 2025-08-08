@@ -43,10 +43,10 @@ const TopLegalOneShotCard = ({ course, index }: { course: Course; index: number 
               ) : (
                 <div className="w-full h-full bg-white flex items-center justify-center relative overflow-hidden">
                   <div className="relative z-10 text-center">
-                    <div className="w-20 h-20 bg-[var(--aow-black)] rounded-full flex items-center justify-center border-2 border-[var(--aow-gold)] mb-3">
-                      <span className="text-[var(--aow-gold)] text-2xl font-bold">{instructorInitials}</span>
+                    <div className="w-20 h-20 bg-aow-black rounded-full flex items-center justify-center border-2 border-aow-gold mb-3">
+                      <span className="text-aow-gold text-2xl font-bold">{instructorInitials}</span>
                     </div>
-                    <div className="text-[var(--aow-black)]/60 text-xs font-medium">
+                    <div className="text-aow-black/60 text-xs font-medium">
                       {course.modules} modules
                     </div>
                   </div>
@@ -63,7 +63,7 @@ const TopLegalOneShotCard = ({ course, index }: { course: Course; index: number 
 
       {/* Course Title - Now centered relative to the entire visual element */}
       <div className="text-center">
-        <h3 className="text-white font-semibold text-sm mb-1 leading-tight font-['Luxora_Grotesk:Medium',_sans-serif] group-hover/card:text-[var(--aow-gold-light)] transition-colors duration-300 max-w-[140px]">
+        <h3 className="text-white font-semibold text-sm mb-1 leading-tight font-['Luxora_Grotesk:Medium',_sans-serif] group-hover/card:text-aow-gold-light transition-colors duration-300 max-w-[140px]">
           {course.title}
         </h3>
         <p className="text-white/60 text-xs font-['Luxora_Grotesk:Medium',_sans-serif] max-w-[140px] text-center">

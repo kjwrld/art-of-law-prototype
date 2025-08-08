@@ -146,7 +146,7 @@ export function Sidebar({
     <>
       {/* Desktop Sidebar - Always visible on lg+ */}
       <motion.aside
-        className="hidden lg:flex lg:flex-col lg:fixed lg:left-0 lg:top-18 lg:bottom-0 lg:w-60 lg:bg-[var(--aow-black)]/95 lg:backdrop-blur-xl lg:border-r lg:border-[var(--aow-gold)]/10 lg:z-40"
+        className="hidden lg:flex lg:flex-col lg:fixed lg:left-0 lg:top-20 lg:bottom-0 lg:w-60 lg:bg-[#0b0b0b] lg:border-r lg:border-[var(--aow-gold)] lg:z-40"
       >
         <div className="flex flex-col h-full overflow-hidden">
           {/* Desktop Items */}
@@ -193,7 +193,7 @@ export function Sidebar({
 
       {/* Tablet Sidebar - Collapsed with hover expand */}
       <motion.aside
-        className="hidden md:flex lg:hidden md:flex-col md:fixed md:left-0 md:top-18 md:bottom-0 md:bg-[var(--aow-black)]/95 md:backdrop-blur-xl md:border-r md:border-[var(--aow-gold)]/10 md:z-40 md:transition-all md:duration-300"
+        className="hidden md:flex lg:hidden md:flex-col md:fixed md:left-0 md:top-20 md:bottom-0 md:bg-[#0b0b0b] md:border-r md:border-[var(--aow-gold)] md:z-40 md:transition-all md:duration-300"
         style={{ 
           width: isHovered ? '250px' : '68px'
         }}
@@ -262,11 +262,11 @@ export function Sidebar({
               animate={{ x: 0 }}
               exit={{ x: '-100%' }}
               transition={{ duration: 0.3, ease: "easeOut" }}
-              className="fixed left-0 top-0 bottom-0 w-80 bg-[var(--aow-black)]/98 backdrop-blur-xl border-r border-[var(--aow-gold)]/20 z-50 md:hidden"
+              className="fixed left-0 top-0 bottom-0 w-80 bg-[#0b0b0b] border-r border-aow-gold/20 z-50 md:hidden"
             >
               <div className="flex flex-col h-full">
                 {/* Mobile Header */}
-                <div className="flex items-center justify-end p-6 border-b border-[var(--aow-gold)]/20">
+                <div className="flex items-center justify-end p-6 border-b border-aow-gold/20">
                   <Button
                     variant="ghost"
                     size="sm"

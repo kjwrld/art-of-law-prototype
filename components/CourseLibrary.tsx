@@ -119,13 +119,13 @@ export function CourseLibrary() {
   if (loading) {
     return (
       <motion.div 
-        className="bg-[var(--aow-black)] min-h-screen flex items-center justify-center"
+        className="bg-aow-black min-h-screen flex items-center justify-center"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.6 }}
       >
         <div className="text-center">
-          <div className="w-16 h-16 border-4 border-[var(--aow-gold)]/20 border-t-[var(--aow-gold)] rounded-full animate-spin mx-auto mb-4"></div>
+          <div className="w-16 h-16 border-4 border-aow-gold/20 border-t-aow-gold rounded-full animate-spin mx-auto mb-4"></div>
           <p className="text-white/60 text-lg">Loading your legal education library...</p>
         </div>
       </motion.div>
@@ -135,7 +135,7 @@ export function CourseLibrary() {
   if (error) {
     return (
       <motion.div 
-        className="bg-[var(--aow-black)] min-h-screen flex items-center justify-center"
+        className="bg-aow-black min-h-screen flex items-center justify-center"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.6 }}
@@ -148,7 +148,7 @@ export function CourseLibrary() {
           <p className="text-white/60 mb-4">{error}</p>
           <button 
             onClick={() => window.location.reload()} 
-            className="px-6 py-2 bg-[var(--aow-gold)] text-[var(--aow-black)] rounded-lg hover:bg-[var(--aow-gold)]/90 transition-colors"
+            className="px-6 py-2 bg-aow-gold text-aow-black rounded-lg hover:bg-aow-gold/90 transition-colors"
           >
             Try Again
           </button>
@@ -159,7 +159,7 @@ export function CourseLibrary() {
 
   return (
     <motion.div 
-      className="bg-[var(--aow-black)] min-h-screen"
+      className="bg-aow-black min-h-screen"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.6 }}

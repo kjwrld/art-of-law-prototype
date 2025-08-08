@@ -43,10 +43,10 @@ export function CourseCard({ course, size = 'medium', showProgress = false, useW
         <div className="w-full h-full bg-white flex items-center justify-center relative overflow-hidden">
           {/* Instructor initials */}
           <div className="relative z-10 text-center">
-            <div className="w-16 h-16 bg-[var(--aow-black)] rounded-full flex items-center justify-center border border-[var(--aow-gold)] mb-2">
-              <span className="text-[var(--aow-gold)] text-xl font-bold">{instructorInitials}</span>
+            <div className="w-16 h-16 bg-aow-black rounded-full flex items-center justify-center border border-aow-gold mb-2">
+              <span className="text-aow-gold text-xl font-bold">{instructorInitials}</span>
             </div>
-            <div className="text-[var(--aow-black)]/60 text-xs font-medium">
+            <div className="text-aow-black/60 text-xs font-medium">
               {course.modules} modules
             </div>
           </div>
@@ -55,19 +55,19 @@ export function CourseCard({ course, size = 'medium', showProgress = false, useW
     }
     
     return (
-      <div className="w-full h-full bg-gradient-to-br from-[var(--aow-gold)]/20 via-[var(--aow-black)] to-[var(--aow-black)] flex items-center justify-center relative overflow-hidden">
+      <div className="w-full h-full bg-gradient-to-br from-aow-gold/20 via-aow-black to-aow-black flex items-center justify-center relative overflow-hidden">
         {/* Background pattern */}
         <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-0 right-0 w-32 h-32 bg-[var(--aow-gold)] rounded-full blur-3xl transform translate-x-16 -translate-y-16"></div>
-          <div className="absolute bottom-0 left-0 w-24 h-24 bg-[var(--aow-gold)]/50 rounded-full blur-2xl transform -translate-x-12 translate-y-12"></div>
+          <div className="absolute top-0 right-0 w-32 h-32 bg-aow-gold rounded-full blur-3xl transform translate-x-16 -translate-y-16"></div>
+          <div className="absolute bottom-0 left-0 w-24 h-24 bg-aow-gold/50 rounded-full blur-2xl transform -translate-x-12 translate-y-12"></div>
         </div>
         
         {/* Instructor initials */}
         <div className="relative z-10 text-center">
-          <div className="w-16 h-16 bg-[var(--aow-gold)]/20 rounded-full flex items-center justify-center border border-[var(--aow-gold)]/30 mb-2">
-            <span className="text-[var(--aow-gold)] text-xl font-bold">{instructorInitials}</span>
+          <div className="w-16 h-16 bg-aow-gold/20 rounded-full flex items-center justify-center border border-aow-gold/30 mb-2">
+            <span className="text-aow-gold text-xl font-bold">{instructorInitials}</span>
           </div>
-          <div className="text-[var(--aow-gold)]/60 text-xs font-medium">
+          <div className="text-aow-gold/60 text-xs font-medium">
             {course.modules} modules
           </div>
         </div>
@@ -121,7 +121,7 @@ export function CourseCard({ course, size = 'medium', showProgress = false, useW
             <Bookmark 
               className={`h-4 w-4 transition-all duration-200 ${
                 isBookmarked 
-                  ? 'text-[var(--aow-gold)] fill-[var(--aow-gold)]' 
+                  ? 'text-aow-gold fill-aow-gold' 
                   : 'text-white'
               }`} 
             />
@@ -133,7 +133,7 @@ export function CourseCard({ course, size = 'medium', showProgress = false, useW
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="flex items-center space-x-2">
                   {/* Coin Icon for Credits */}
-                  <Coins className="w-3.5 h-3.5 text-[var(--aow-gold)]" />
+                  <Coins className="w-3.5 h-3.5 text-aow-gold" />
                   <span className="text-white text-sm font-medium">
                     {formatCLECredits(course.cleCredits)}
                   </span>
@@ -146,7 +146,7 @@ export function CourseCard({ course, size = 'medium', showProgress = false, useW
           {showProgress && (
             <div className="absolute bottom-0 left-0 right-0 h-1 bg-gray-800/50">
               <motion.div 
-                className="h-full bg-[var(--aow-gold)] rounded-r-full"
+                className="h-full bg-aow-gold rounded-r-full"
                 initial={{ width: 0 }}
                 animate={{ width: `${progressValue}%` }}
                 transition={{ duration: 1.5, delay: 0.5, ease: "easeOut" }}
@@ -169,7 +169,7 @@ export function CourseCard({ course, size = 'medium', showProgress = false, useW
 
           {/* Instructor Name - No dot, no progress */}
           <div className="flex items-center space-x-2">
-            <span className="text-[var(--aow-gold)] text-sm font-medium tracking-wide">
+            <span className="text-aow-gold text-sm font-medium tracking-wide">
               {course.instructor}
             </span>
           </div>

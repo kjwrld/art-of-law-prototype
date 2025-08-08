@@ -32,7 +32,7 @@ export const AIRecommendationNotification = ({ onClose, onAccept }: AIRecommenda
             <Button 
               onClick={onAccept}
               size="sm" 
-              className="bg-[var(--aow-gold)] text-[var(--aow-black)] hover:bg-[var(--aow-gold-light)] font-semibold px-4 py-2 h-auto rounded-lg"
+              className="bg-aow-gold text-aow-black hover:bg-aow-gold-light font-semibold px-4 py-2 h-auto rounded-lg"
             >
               Add Tabs
             </Button>

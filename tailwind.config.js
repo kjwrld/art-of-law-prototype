@@ -2,10 +2,12 @@
 export default {
   darkMode: ["class"],
   content: [
-    './pages/**/*.{ts,tsx}',
+    './src/**/*.{ts,tsx}',
     './components/**/*.{ts,tsx}',
-    './app/**/*.{ts,tsx}',
-    './**/*.{ts,tsx}',
+    './data/**/*.{ts,tsx}',
+    './utils/**/*.{ts,tsx}',
+    './imports/**/*.{ts,tsx}',
+    './index.html',
   ],
   prefix: "",
   theme: {
@@ -56,6 +58,12 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        // Art of War custom colors
+        'aow-gold': 'var(--aow-gold)',
+        'aow-gold-light': 'var(--aow-gold-light)',
+        'aow-gold-medium': 'var(--aow-gold-medium)',
+        'aow-gold-dark': 'var(--aow-gold-dark)',
+        'aow-black': 'var(--aow-black)',
       },
       borderRadius: {
         lg: "var(--radius)",

@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { X } from "lucide-react";
 import svgPaths from "../imports/svg-cpvysnooko";
-import imgPicture from "../src/assets/placeholder.svg";
+import imgPicture from "/src/assets/overlay_img.png";
 import { Course } from "../data/courses";
 import { ImageWithFallback } from './figma/ImageWithFallback';
 
@@ -36,7 +36,7 @@ function PlayButton() {
           </svg>
         </div>
       </div>
-      <div className="font-['Manrope',_sans-serif] font-bold leading-[0] relative shrink-0 text-[var(--aow-black)] text-[13px] md:text-[14px] text-left text-nowrap">
+      <div className="font-['Manrope',_sans-serif] font-bold leading-[0] relative shrink-0 text-aow-black text-[13px] md:text-[14px] text-left text-nowrap">
         <p className="block leading-none whitespace-pre">Play Now</p>
       </div>
     </motion.div>

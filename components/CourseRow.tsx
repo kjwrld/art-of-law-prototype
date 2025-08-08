@@ -67,7 +67,7 @@ export function CourseRow({ title, courses, size = 'medium', showProgress = fals
           <Button
             variant="ghost"
             size="sm"
-            className={`h-8 w-8 rounded-full bg-[var(--aow-black)]/80 border border-[var(--aow-gold)]/20 hover:bg-[var(--aow-gold)]/10 transition-all duration-300 ${
+            className={`h-8 w-8 rounded-full bg-aow-black/80 border border-aow-gold/20 hover:bg-aow-gold/10 transition-all duration-300 ${
               !canScrollLeft ? 'opacity-50 cursor-not-allowed' : ''
             }`}
             onClick={() => scroll('left')}
@@ -78,7 +78,7 @@ export function CourseRow({ title, courses, size = 'medium', showProgress = fals
           <Button
             variant="ghost"
             size="sm"
-            className={`h-8 w-8 rounded-full bg-[var(--aow-black)]/80 border border-[var(--aow-gold)]/20 hover:bg-[var(--aow-gold)]/10 transition-all duration-300 ${
+            className={`h-8 w-8 rounded-full bg-aow-black/80 border border-aow-gold/20 hover:bg-aow-gold/10 transition-all duration-300 ${
               !canScrollRight ? 'opacity-50 cursor-not-allowed' : ''
             }`}
             onClick={() => scroll('right')}

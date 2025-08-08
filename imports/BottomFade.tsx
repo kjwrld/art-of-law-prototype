@@ -1,4 +1,4 @@
-import imgBottomFade from "../src/assets/placeholder.svg";
+import imgBottomFade from "/src/assets/placeholder.svg";
 
 export default function BottomFade() {
   return (

@@ -29,8 +29,8 @@ export function CoursePortrait({ title, moduleNumber, className = "" }: CoursePo
         
         {/* Module number badge */}
         {moduleNumber && (
-          <div className="absolute -top-1 -right-1 w-6 h-6 bg-[var(--aow-gold)] rounded-full flex items-center justify-center border-2 border-[#1a1a1a]">
-            <span className="text-[var(--aow-black)] font-['Luxora_Grotesk',_sans-serif] font-bold text-xs">
+          <div className="absolute -top-1 -right-1 w-6 h-6 bg-aow-gold rounded-full flex items-center justify-center border-2 border-[#1a1a1a]">
+            <span className="text-aow-black font-['Luxora_Grotesk',_sans-serif] font-bold text-xs">
               {moduleNumber}
             </span>
           </div>

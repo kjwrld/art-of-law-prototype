@@ -71,8 +71,10 @@ A modern React TypeScript application built from a Figma Make export.
 
 ## 📝 Notes
 
-- Figma assets have been replaced with placeholder images
-- Fonts may not load correctly (need to add font files)
+- **Styling Fixed**: All gold strokes, sidebar spacing, and navigation elements restored
+- **Fonts**: Alacrity Sans and Luxora Grotesk fonts configured (will fallback to web fonts)
+- **Colors**: Custom Art of War color palette properly integrated with Tailwind
+- Figma assets replaced with placeholder images
 - Supabase integration requires environment variables
 
 ## 🔧 Environment Variables

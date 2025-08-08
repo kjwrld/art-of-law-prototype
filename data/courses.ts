@@ -55,7 +55,7 @@ export const courses: Course[] = [
     creditType: 'General',
     category: 'Hero Banner',
     isFeatured: true,
-    imageUrl: '../src/assets/placeholder.svg' // This is the hero image for Ernest
+    imageUrl: '/src/assets/course_img.png' // This is the hero image for Ernest
   },
   
   // Recommended For You (4+ courses)

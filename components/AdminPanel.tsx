@@ -86,7 +86,7 @@ export function AdminPanel() {
       <div className="fixed bottom-4 right-4 z-50">
         <Button
           onClick={() => setIsOpen(true)}
-          className="bg-[var(--aow-gold)] text-[var(--aow-black)] hover:bg-[var(--aow-gold)]/90"
+          className="bg-aow-gold text-aow-black hover:bg-aow-gold/90"
         >
           + Add Course
         </Button>
@@ -99,7 +99,7 @@ export function AdminPanel() {
       <motion.div
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
-        className="bg-[var(--aow-black)] border border-[var(--aow-gold)]/20 rounded-lg p-6 max-w-2xl w-full max-h-[90vh] overflow-y-auto"
+        className="bg-aow-black border border-aow-gold/20 rounded-lg p-6 max-w-2xl w-full max-h-[90vh] overflow-y-auto"
       >
         <div className="flex items-center justify-between mb-6">
           <h2 className="text-white text-2xl font-semibold">Add New Course</h2>
@@ -301,7 +301,7 @@ export function AdminPanel() {
             <Button
               type="submit"
               disabled={loading}
-              className="bg-[var(--aow-gold)] text-[var(--aow-black)] hover:bg-[var(--aow-gold)]/90"
+              className="bg-aow-gold text-aow-black hover:bg-aow-gold/90"
             >
               {loading ? 'Adding...' : 'Add Course'}
             </Button>

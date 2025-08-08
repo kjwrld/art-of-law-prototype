@@ -53,16 +53,16 @@ export function HeroBanner({ courses }: HeroBannerProps) {
       case 'Competency':
         return 'bg-green-600/20 text-green-400 border-green-400/30';
       default:
-        return 'bg-[var(--aow-gold)]/20 text-[var(--aow-gold)] border-[var(--aow-gold)]/30';
+        return 'bg-aow-gold/20 text-aow-gold border-aow-gold/30';
     }
   };
 
   return (
-    <div className="relative h-[60vh] w-full overflow-hidden bg-[var(--aow-black)] border-b border-[var(--aow-gold)]/10">
+    <div className="relative h-[60vh] w-full overflow-hidden bg-aow-black border-b border-aow-gold/10">
       <AnimatePresence mode="wait">
         <motion.div
           key={currentIndex}
-          className="absolute inset-0 bg-gradient-to-r from-[var(--aow-gold)]/10 via-[var(--aow-black)]/90 to-[var(--aow-black)]"
+          className="absolute inset-0 bg-gradient-to-r from-aow-gold/10 via-aow-black/90 to-aow-black"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -70,8 +70,8 @@ export function HeroBanner({ courses }: HeroBannerProps) {
         >
           {/* Background Pattern */}
           <div className="absolute inset-0 opacity-5">
-            <div className="absolute inset-0 bg-gradient-to-br from-[var(--aow-gold)]/20 via-transparent to-transparent" />
-            <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-[var(--aow-gold)]/10 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-br from-aow-gold/20 via-transparent to-transparent" />
+            <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-aow-gold/10 to-transparent" />
           </div>
 
           {/* Content */}
@@ -87,7 +87,7 @@ export function HeroBanner({ courses }: HeroBannerProps) {
                 >
                   {/* Featured Badge */}
                   <div className="flex items-center space-x-2">
-                    <Badge className="bg-[var(--aow-gold)]/20 text-[var(--aow-gold)] border-[var(--aow-gold)]/30 px-3 py-1">
+                    <Badge className="bg-aow-gold/20 text-aow-gold border-aow-gold/30 px-3 py-1">
                       Featured Course
                     </Badge>
                     <Badge 
@@ -100,10 +100,10 @@ export function HeroBanner({ courses }: HeroBannerProps) {
 
                   {/* Instructor */}
                   <div className="flex items-center space-x-3">
-                    <div className="w-8 h-8 bg-[var(--aow-gold)]/20 rounded-full flex items-center justify-center">
-                      <Users className="w-4 h-4 text-[var(--aow-gold)]" />
+                    <div className="w-8 h-8 bg-aow-gold/20 rounded-full flex items-center justify-center">
+                      <Users className="w-4 h-4 text-aow-gold" />
                     </div>
-                    <span className="text-[var(--aow-gold)] text-lg font-medium">
+                    <span className="text-aow-gold text-lg font-medium">
                       {currentCourse.instructor}
                     </span>
                   </div>
@@ -134,7 +134,7 @@ export function HeroBanner({ courses }: HeroBannerProps) {
                   <div className="flex items-center space-x-4 pt-4">
                     <Button
                       size="lg"
-                      className="gradient-gold-radial text-[var(--aow-black)] hover:scale-105 transition-all duration-300 px-8 py-3 font-semibold"
+                      className="gradient-gold-radial text-aow-black hover:scale-105 transition-all duration-300 px-8 py-3 font-semibold"
                     >
                       <Play className="w-5 h-5 mr-2" fill="currentColor" />
                       Start Course
@@ -158,7 +158,7 @@ export function HeroBanner({ courses }: HeroBannerProps) {
                 >
                   <div className="relative w-full max-w-md mx-auto">
                     {/* Course "Monitor" */}
-                    <div className="bg-gradient-to-br from-[var(--aow-gold)]/20 to-[var(--aow-black)] rounded-lg p-8 border border-[var(--aow-gold)]/20 backdrop-blur-sm">
+                    <div className="bg-gradient-to-br from-aow-gold/20 to-aow-black rounded-lg p-8 border border-aow-gold/20 backdrop-blur-sm">
                       <div className="space-y-4">
                         <div className="flex items-center justify-between">
                           <div className="w-3 h-3 bg-red-400 rounded-full"></div>
@@ -166,13 +166,13 @@ export function HeroBanner({ courses }: HeroBannerProps) {
                           <div className="w-3 h-3 bg-green-400 rounded-full"></div>
                         </div>
                         <div className="space-y-3">
-                          <div className="h-2 bg-[var(--aow-gold)]/30 rounded-full w-full"></div>
-                          <div className="h-2 bg-[var(--aow-gold)]/20 rounded-full w-4/5"></div>
-                          <div className="h-2 bg-[var(--aow-gold)]/10 rounded-full w-3/5"></div>
+                          <div className="h-2 bg-aow-gold/30 rounded-full w-full"></div>
+                          <div className="h-2 bg-aow-gold/20 rounded-full w-4/5"></div>
+                          <div className="h-2 bg-aow-gold/10 rounded-full w-3/5"></div>
                         </div>
                         <div className="text-center pt-4">
-                          <div className="w-16 h-16 bg-[var(--aow-gold)]/20 rounded-full flex items-center justify-center mx-auto mb-2">
-                            <Play className="w-8 h-8 text-[var(--aow-gold)] ml-1" fill="currentColor" />
+                          <div className="w-16 h-16 bg-aow-gold/20 rounded-full flex items-center justify-center mx-auto mb-2">
+                            <Play className="w-8 h-8 text-aow-gold ml-1" fill="currentColor" />
                           </div>
                           <p className="text-white/60 text-sm">Ready to Begin</p>
                         </div>
@@ -194,7 +194,7 @@ export function HeroBanner({ courses }: HeroBannerProps) {
               key={index}
               className={`w-2 h-2 rounded-full transition-all duration-300 ${
                 index === currentIndex 
-                  ? 'bg-[var(--aow-gold)] w-8' 
+                  ? 'bg-aow-gold w-8' 
                   : 'bg-white/30 hover:bg-white/50'
               }`}
               onClick={() => goToSlide(index)}
@@ -205,14 +205,14 @@ export function HeroBanner({ courses }: HeroBannerProps) {
 
       {/* Arrow Controls */}
       <button
-        className="absolute left-4 top-1/2 transform -translate-y-1/2 z-20 w-12 h-12 bg-[var(--aow-black)]/50 border border-[var(--aow-gold)]/20 rounded-full flex items-center justify-center hover:bg-[var(--aow-black)]/70 transition-all duration-300"
+        className="absolute left-4 top-1/2 transform -translate-y-1/2 z-20 w-12 h-12 bg-aow-black/50 border border-aow-gold/20 rounded-full flex items-center justify-center hover:bg-aow-black/70 transition-all duration-300"
         onClick={prevSlide}
       >
         <ChevronLeft className="w-6 h-6 text-white" />
       </button>
       
       <button
-        className="absolute right-4 top-1/2 transform -translate-y-1/2 z-20 w-12 h-12 bg-[var(--aow-black)]/50 border border-[var(--aow-gold)]/20 rounded-full flex items-center justify-center hover:bg-[var(--aow-black)]/70 transition-all duration-300"
+        className="absolute right-4 top-1/2 transform -translate-y-1/2 z-20 w-12 h-12 bg-aow-black/50 border border-aow-gold/20 rounded-full flex items-center justify-center hover:bg-aow-black/70 transition-all duration-300"
         onClick={nextSlide}
       >
         <ChevronRight className="w-6 h-6 text-white" />

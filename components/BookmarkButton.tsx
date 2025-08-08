@@ -53,7 +53,7 @@ export function BookmarkButton({ courseId, className = "", onClick }: BookmarkBu
       <Bookmark 
         className={`h-4 w-4 transition-colors duration-200 ${
           isBookmarked 
-            ? 'text-[var(--aow-gold)] fill-[var(--aow-gold)]' 
+            ? 'text-aow-gold fill-aow-gold' 
             : 'text-white/80'
         }`}
       />
