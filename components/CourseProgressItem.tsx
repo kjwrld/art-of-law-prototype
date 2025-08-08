@@ -123,9 +123,9 @@ export const CourseProgressItem = ({
 
                                     {/* Netflix-Style Play Button Overlay */}
                                     <div className="absolute inset-0 flex items-center justify-center bg-black/0 group-hover:bg-black/20 transition-all duration-300">
-                                        <div className="w-16 h-16 md:w-20 md:h-20 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full flex items-center justify-center transition-all duration-300 group-hover:bg-white/20 group-hover:border-aow-gold/50 group-hover:scale-110">
+                                        <div className="w-12 h-12 md:w-14 md:h-14 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full flex items-center justify-center transition-all duration-300 group-hover:bg-white/20 group-hover:border-aow-gold/50 group-hover:scale-110">
                                             <Play
-                                                className="w-6 h-6 md:w-8 md:h-8 text-white/80 group-hover:text-aow-gold transition-colors duration-300 ml-1"
+                                                className="w-4 h-4 md:w-5 md:h-5 text-white/80 group-hover:text-aow-gold transition-colors duration-300 ml-1"
                                                 fill="currentColor"
                                             />
                                         </div>

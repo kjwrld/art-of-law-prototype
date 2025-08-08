@@ -20,7 +20,7 @@ import {
     Menu,
     Search,
 } from "lucide-react";
-import { motion } from "framer-motion";
+import { color, motion } from "framer-motion";
 import Logo from "../imports/MaskGroup-81-193";
 
 interface NavigationProps {
@@ -69,7 +69,12 @@ export function Navigation({
                             <div className="h-7 w-7 flex-shrink-0">
                                 <Logo />
                             </div>
-                            <h1 className="font-['Alacrity_Sans',_sans-serif] text-white text-lg font-medium tracking-wide whitespace-nowrap">
+                            <h1
+                                className="font-['Alacrity_Sans',_sans-serif] text-white text-lg font-medium tracking-wide whitespace-nowrap"
+                                style={{
+                                    marginLeft: ".6rem",
+                                }}
+                            >
                                 ART OF LAW
                             </h1>
                             {/* Gold Underline for Homepage */}
@@ -80,6 +85,9 @@ export function Navigation({
                                     width: currentPage === "home" ? "100%" : 0,
                                 }}
                                 transition={{ duration: 0.3, ease: "easeOut" }}
+                                style={{
+                                    marginLeft: "0",
+                                }}
                             />
                         </button>
 
@@ -215,11 +223,11 @@ export function Navigation({
                                 </motion.div>
                             </DropdownMenuTrigger>
                             <DropdownMenuContent
-                                className="w-64 bg-aow-black/95 backdrop-blur-xl border border-aow-gold/20 shadow-2xl"
+                                className="w-64 bg-aow-black/95 backdrop-blur-xl border border-aow-gold shadow-2xl"
                                 align="end"
                                 sideOffset={8}
                             >
-                                <div className="px-3 py-3 border-b border-aow-gold/20">
+                                <div className="px-3 py-3 border-b border-aow-gold">
                                     <div className="flex items-center space-x-3">
                                         <div className="h-10 w-10 rounded-full bg-white/10 flex items-center justify-center border border-white/20">
                                             <User className="h-5 w-5 text-white" />
@@ -236,7 +244,7 @@ export function Navigation({
                                 </div>
 
                                 {/* Mobile Navigation Menu Items */}
-                                <div className="md:hidden py-2 border-b border-aow-gold/20">
+                                <div className="md:hidden py-2 border-b border-aow-gold">
                                     {navigationItems.map((item) => (
                                         <DropdownMenuItem
                                             key={item.name}
@@ -256,7 +264,7 @@ export function Navigation({
                                 </div>
 
                                 {/* Notifications Section */}
-                                <div className="py-2 border-b border-aow-gold/20">
+                                <div className="py-2 border-b border-aow-gold">
                                     <DropdownMenuItem className="text-white hover:bg-white/10 hover:text-white transition-colors duration-200">
                                         <div className="flex items-center justify-between w-full">
                                             <div className="flex items-center">
@@ -288,7 +296,7 @@ export function Navigation({
                                     </DropdownMenuItem>
                                 </div>
 
-                                <DropdownMenuSeparator className="bg-aow-gold/20" />
+                                <DropdownMenuSeparator className="bg-aow-gold" />
 
                                 <div className="py-2">
                                     <DropdownMenuItem className="text-white hover:bg-red-500/10 hover:text-red-400 transition-colors duration-200">
@@ -308,7 +316,7 @@ export function Navigation({
                         <Input
                             type="text"
                             placeholder="Search classes, topics..."
-                            className="w-full pl-12 pr-4 py-3 bg-white/10 border border-white/20 rounded-full text-white placeholder:text-white/50 focus:bg-white/15 focus:border-aow-gold/50 transition-all duration-200 text-sm"
+                            className="w-full pl-12 pr-4 py-3 bg-white/10 border border-white/20 rounded-full text-white placeholder:text-white/50 hover:bg-white/15 focus:bg-white/15 focus:border-[var(--aow-gold)]/50 transition-all duration-200 text-sm"
                         />
                     </div>
                 </div>

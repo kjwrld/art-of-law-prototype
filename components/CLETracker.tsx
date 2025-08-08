@@ -19,8 +19,10 @@ import { CoursePortrait } from "./CoursePortrait";
 import { Course } from "../data/courses";
 import { CourseOverlay } from "./CourseOverlay";
 import { formatCredits } from "../utils/formatCredits";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import React from "react";
 import { formatCLECredits } from "../utils/creditFormatter";
+import { useEthicalAttorneyCourses } from "../src/hooks/useCourses";
 
 interface CLECredit {
     category: string;
@@ -35,6 +37,9 @@ interface MiniCourseCardProps {
 
 export function CLETracker() {
     const [overlayOpen, setOverlayOpen] = useState(false);
+    
+    // Use cached ethical attorney courses (already loaded from homepage)
+    const { data: ethicalCourses, isLoading } = useEthicalAttorneyCourses();
     const cleData: CLECredit[] = [
         {
             category: "Legal Ethics",
@@ -68,45 +73,27 @@ export function CLETracker() {
         (totalCompleted / totalRequired) * 100
     );
 
-    // IP-focused recommended courses for Eric Jarrett - using consistent white fallback
-    const recommendedCourses: Course[] = [
-        {
-            id: "williams-ip",
-            instructor: "Sarah Williams",
-            title: "Intellectual Property Essentials",
-            description:
-                "Protect and monetize creative assets in the digital age.",
-            modules: 6,
-            cleCredits: 1.5,
-            creditType: "Technology",
-            category: "Recommended For You",
-            // imageUrl will fallback to white image
-        },
-        {
-            id: "jarrett-courtroom-theater",
-            instructor: "Ernest Jarrett",
-            title: "The Theater of the Courtroom",
-            description: "Command the courtroom like a stage.",
-            modules: 6,
-            cleCredits: 0.5,
-            creditType: "General",
-            category: "Recommended For You",
+    // Combine theater course with cached ethical attorney courses
+    const recommendedCourses = React.useMemo(() => {
+        const theaterCourse = {
+            id: 'jarrett-theater',
+            instructor: 'Ernest Jarrett',
+            title: 'The Theater of the Courtroom',
+            description: 'Master storytelling, voice, movement, and presence to command the courtroom like a stage.',
+            modules: 7,
+            cleCredits: 2.0,
+            creditType: 'General',
+            category: 'Hero Banner',
             isFeatured: true,
-            // imageUrl will fallback to white image
-        },
-        {
-            id: "monroe-evidence",
-            instructor: "Zachary Monroe",
-            title: "Evidentiary Pitfalls and Power Moves",
-            description:
-                "Strengthen your courtroom toolbox with evidence tactics.",
-            modules: 5,
-            cleCredits: 1.0,
-            creditType: "General",
-            category: "Recommended For You",
-            // imageUrl will fallback to white image
-        },
-    ];
+            imageUrl: '/src/assets/course_img.png'
+        };
+        
+        if (ethicalCourses && ethicalCourses.length > 0) {
+            return [theaterCourse, ...ethicalCourses.slice(0, 2)];
+        }
+        
+        return [theaterCourse];
+    }, [ethicalCourses]);
 
     // Calculate days until deadline (March 31, 2026 for California)
     const deadline = new Date("2026-03-31");
@@ -247,7 +234,7 @@ export function CLETracker() {
                             initial={{ scale: 0 }}
                             animate={{ scale: 1 }}
                             transition={{ duration: 0.5, delay: 0.8 }}
-                            className="text-4xl font-bold text-white font-luxora"
+                            className="text-4xl font-bold text-white font-manrope"
                         >
                             {percentage}%
                         </motion.div>
@@ -317,7 +304,7 @@ export function CLETracker() {
                                         </h2>
                                         <div className="grid grid-cols-2 gap-4 mb-6">
                                             <div>
-                                                <div className="text-3xl font-bold text-aow-gold font-luxora">
+                                                <div className="text-3xl font-bold text-aow-gold font-manrope">
                                                     {totalCompleted}
                                                 </div>
                                                 <div className="text-sm text-white/70 font-['Luxora_Grotesk:Book',_sans-serif]">
@@ -325,7 +312,7 @@ export function CLETracker() {
                                                 </div>
                                             </div>
                                             <div>
-                                                <div className="text-3xl font-bold text-white font-luxora">
+                                                <div className="text-3xl font-bold text-white font-manrope">
                                                     {totalRequired}
                                                 </div>
                                                 <div className="text-sm text-white/70 font-['Luxora_Grotesk:Book',_sans-serif]">
@@ -426,28 +413,41 @@ export function CLETracker() {
                                         General Legal Education
                                     </h4>
                                     <div className="grid grid-cols-3 gap-4">
-                                        {recommendedCourses.map(
-                                            (course, index) => (
-                                                <motion.div
-                                                    key={course.id}
-                                                    initial={{
-                                                        opacity: 0,
-                                                        y: 10,
-                                                    }}
-                                                    animate={{
-                                                        opacity: 1,
-                                                        y: 0,
-                                                    }}
-                                                    transition={{
-                                                        duration: 0.4,
-                                                        delay:
-                                                            0.8 + index * 0.1,
-                                                    }}
-                                                >
-                                                    <MiniCourseCard
-                                                        course={course}
-                                                    />
-                                                </motion.div>
+                                        {isLoading ? (
+                                            // Loading skeleton
+                                            Array.from({ length: 3 }).map((_, index) => (
+                                                <div key={index} className="space-y-3">
+                                                    <div className="w-full h-32 bg-white/10 animate-pulse rounded-lg"></div>
+                                                    <div className="space-y-1">
+                                                        <div className="h-4 bg-white/10 animate-pulse rounded w-3/4"></div>
+                                                        <div className="h-3 bg-white/10 animate-pulse rounded w-1/2"></div>
+                                                    </div>
+                                                </div>
+                                            ))
+                                        ) : (
+                                            recommendedCourses.map(
+                                                (course, index) => (
+                                                    <motion.div
+                                                        key={course.id}
+                                                        initial={{
+                                                            opacity: 0,
+                                                            y: 10,
+                                                        }}
+                                                        animate={{
+                                                            opacity: 1,
+                                                            y: 0,
+                                                        }}
+                                                        transition={{
+                                                            duration: 0.4,
+                                                            delay:
+                                                                0.8 + index * 0.1,
+                                                        }}
+                                                    >
+                                                        <MiniCourseCard
+                                                            course={course}
+                                                        />
+                                                    </motion.div>
+                                                )
                                             )
                                         )}
                                     </div>
@@ -471,7 +471,7 @@ export function CLETracker() {
                                     </h3>
                                 </div>
                                 <div className="text-center">
-                                    <div className="text-3xl font-bold text-white mb-2">
+                                    <div className="text-3xl font-bold text-white mb-2 font-manrope">
                                         {daysUntilDeadline}
                                     </div>
                                     <div className="text-sm text-white/70 mb-2 font-['Luxora_Grotesk:Book',_sans-serif]">
@@ -533,7 +533,7 @@ export function CLETracker() {
                                         <span className="text-white/70">
                                             Total Credits:
                                         </span>
-                                        <span className="font-medium">
+                                        <span className="font-medium font-manrope">
                                             25 every 3 years
                                         </span>
                                     </div>
@@ -541,7 +541,7 @@ export function CLETracker() {
                                         <span className="text-white/70">
                                             Legal Ethics:
                                         </span>
-                                        <span className="font-medium">
+                                        <span className="font-medium font-manrope">
                                             4 credits minimum
                                         </span>
                                     </div>
@@ -549,7 +549,7 @@ export function CLETracker() {
                                         <span className="text-white/70">
                                             Bias Elimination:
                                         </span>
-                                        <span className="font-medium">
+                                        <span className="font-medium font-manrope">
                                             1 credit minimum
                                         </span>
                                     </div>

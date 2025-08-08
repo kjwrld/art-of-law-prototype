@@ -240,7 +240,7 @@
     cursor: pointer;
     padding: 0 20px;
     line-height: 40px;
-    border: 1px solid rgba(215, 185, 140, 0.1);
+    border: 1px solid var(--aow-gold);
     border-bottom: none;
     border-radius: 8px 8px 0 0;
     transition: all 0.3s ease;
@@ -259,7 +259,7 @@
 
   .folder-tab.active {
     background: #141414;
-    border-color: rgba(215, 185, 140, 0.2);
+    border-color: var(--aow-gold);
     z-index: 4;
   }
 
@@ -282,7 +282,7 @@
 
   .folder-tab:hover:not(.inactive) {
     z-index: 4;
-    border-color: rgba(215, 185, 140, 0.3);
+    border-color: var(--aow-gold);
   }
 
   .folder-tab:before {
@@ -296,7 +296,7 @@
     top: -1px;
     transform: skewX(-20deg);
     z-index: -1;
-    border: 1px solid rgba(215, 185, 140, 0.1);
+    border: 1px solid var(--aow-gold);
     border-bottom: none;
     border-right: none;
   }
@@ -312,7 +312,7 @@
     top: -1px;
     transform: skewX(20deg);
     z-index: -1;
-    border: 1px solid rgba(215, 185, 140, 0.1);
+    border: 1px solid var(--aow-gold);
     border-bottom: none;
     border-left: none;
   }
@@ -334,7 +334,7 @@
 
   .folder-tab.active:before,
   .folder-tab.active:after {
-    border-color: rgba(215, 185, 140, 0.2);
+    border-color: var(--aow-gold);
   }
 
   /* Tab Text with Navigation Styling */

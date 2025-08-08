@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { AnimatePresence } from "framer-motion";
 import { Navigation } from "../components/Navigation";
 import { Sidebar } from "../components/Sidebar";
 import { HeroSection } from "../components/HeroSection";
@@ -8,48 +9,43 @@ import { PracticeArena } from "../components/PracticeArena";
 import { MyCourses } from "../components/MyCourses";
 import { LearningTracks } from "../components/LearningTracks";
 import { CourseOverlay } from "../components/CourseOverlay";
+import { LoadingScreen } from "../components/LoadingScreen";
 import { Course } from "../data/courses";
-import { projectId, publicAnonKey } from "../utils/supabase/info";
+import { useAllCourses } from "./hooks/useCourses";
+import { useAppLoading } from "./hooks/useAppLoading";
 
 export default function App() {
     const [currentPage, setCurrentPage] = useState("home");
     const [currentCategory, setCurrentCategory] = useState("new-for-you");
     const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
+    const [hasShownInitialLoading, setHasShownInitialLoading] = useState(false);
 
     // Global Course Overlay State
     const [showCourseOverlay, setShowCourseOverlay] = useState(false);
     const [selectedCourse, setSelectedCourse] = useState<Course | null>(null);
-    const [allCourses, setAllCourses] = useState<Course[]>([]);
-
-    // Fetch all courses for overlay functionality
+    
+    // Use cached all courses for overlay functionality
+    const { data: allCourses } = useAllCourses();
+    
+    // Track overall app loading state
+    const { isLoading, isReady, progress } = useAppLoading();
+    
+    // Show loading screen only on first app load
+    const showLoadingScreen = !hasShownInitialLoading && (isLoading || !isReady);
+    
+    // Mark initial loading as complete when ready
     useEffect(() => {
-        const fetchAllCourses = async () => {
-            try {
-                const response = await fetch(
-                    `https://${projectId}.supabase.co/functions/v1/make-server-9180a2e7/courses/all`,
-                    {
-                        headers: {
-                            Authorization: `Bearer ${publicAnonKey}`,
-                            "Content-Type": "application/json",
-                        },
-                    }
-                );
-                const data = await response.json();
-
-                if (data.success && data.courses) {
-                    setAllCourses(data.courses);
-                }
-            } catch (error) {
-                console.error("Error fetching all courses:", error);
-            }
-        };
-
-        fetchAllCourses();
-    }, []);
+        if (isReady && !hasShownInitialLoading) {
+            const timer = setTimeout(() => {
+                setHasShownInitialLoading(true);
+            }, 1000); // Small delay to show 100% completion
+            return () => clearTimeout(timer);
+        }
+    }, [isReady, hasShownInitialLoading]);
 
     // Course overlay handler - Only for HeroSection slideshow
     const handleCourseClick = (courseId: string) => {
-        const course = allCourses.find((c) => c.id === courseId);
+        const course = allCourses?.find((c) => c.id === courseId);
         if (course) {
             setSelectedCourse(course);
             setShowCourseOverlay(true);
@@ -102,6 +98,13 @@ export default function App() {
 
     return (
         <div className="min-h-screen bg-aow-black text-white">
+            {/* Show loading screen on first visit */}
+            <AnimatePresence>
+                {showLoadingScreen && (
+                    <LoadingScreen progress={progress} />
+                )}
+            </AnimatePresence>
+
             <Navigation
                 currentPage={currentPage}
                 onPageChange={setCurrentPage}

@@ -12,7 +12,7 @@ import FarRightFade from "../imports/FarRightFade";
 import GoldenWreath from "../imports/GoldenWreath-81-486";
 import svgPaths from "../imports/svg-cpvysnooko";
 import { Course } from "../data/courses";
-import { projectId, publicAnonKey } from "../utils/supabase/info";
+import { useHeroCourses } from "../src/hooks/useCourses";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import { CourseOverlay } from "./CourseOverlay";
 
@@ -31,12 +31,13 @@ interface HeroSectionProps {
 
 export function HeroSection({ onCourseClick }: HeroSectionProps) {
     const heroRef = useRef<HTMLElement>(null);
-    const [celebrityCourses, setCelebrityCourses] = useState<Course[]>([]);
     const [currentSlide, setCurrentSlide] = useState(0);
     const [slides, setSlides] = useState<HeroSlide[]>([]);
-    const [loading, setLoading] = useState(true);
     const [slideProgress, setSlideProgress] = useState(0);
     const [isPaused, setIsPaused] = useState(false);
+    
+    // Use cached celebrity courses
+    const { data: celebrityCourses, isLoading } = useHeroCourses();
 
     const { scrollYProgress } = useScroll({
         target: heroRef,
@@ -47,86 +48,47 @@ export function HeroSection({ onCourseClick }: HeroSectionProps) {
     const y = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
     const scale = useTransform(scrollYProgress, [0, 1], [1, 1.1]);
 
-    // Fetch celebrity courses for slideshow
+    // Create slides when celebrity courses data is available
     useEffect(() => {
-        const fetchCelebrityCourses = async () => {
-            try {
-                console.log(
-                    "🌟 Fetching Celebrity courses for hero slideshow..."
-                );
-                const response = await fetch(
-                    `https://${projectId}.supabase.co/functions/v1/make-server-9180a2e7/courses/selection/Celebrity`,
-                    {
-                        headers: {
-                            Authorization: `Bearer ${publicAnonKey}`,
-                            "Content-Type": "application/json",
-                        },
-                    }
-                );
-                const data = await response.json();
+        if (celebrityCourses && celebrityCourses.length > 0) {
+            console.log(
+                `✅ Loaded ${celebrityCourses.length} celebrity courses for hero slideshow (from cache)`
+            );
 
-                if (data.success && data.courses) {
-                    setCelebrityCourses(data.courses);
-                    console.log(
-                        `✅ Loaded ${data.courses.length} celebrity courses for hero slideshow`
-                    );
+            // Create slides array with default slide first, then celebrity courses
+            const defaultSlide: HeroSlide = {
+                id: "default",
+                title: "WELCOME TO\nTHE ART OF LAW",
+                subtitle: "Prepare to step into the arena",
+                image: heroImage,
+                showBadge: true,
+            };
 
-                    // Create slides array with default slide first, then celebrity courses
-                    const defaultSlide: HeroSlide = {
-                        id: "default",
-                        title: "WELCOME TO\nTHE ART OF LAW",
-                        subtitle: "Prepare to step into the arena",
-                        image: heroImage,
-                        showBadge: true,
-                    };
+            const celebritySlides: HeroSlide[] = celebrityCourses.map(
+                (course: Course) => ({
+                    id: course.id,
+                    title: course.title,
+                    subtitle: course.instructor,
+                    image: course.image_link || heroImage, // Fallback to default hero image
+                    showBadge: false,
+                    course: course, // Store full course data
+                })
+            );
 
-                    const celebritySlides: HeroSlide[] = data.courses.map(
-                        (course: Course) => ({
-                            id: course.id,
-                            title: course.title,
-                            subtitle: course.instructor,
-                            image: course.image_link || heroImage, // Fallback to default hero image
-                            showBadge: false,
-                            course: course, // Store full course data
-                        })
-                    );
-
-                    setSlides([defaultSlide, ...celebritySlides]);
-                } else {
-                    console.error(
-                        "Failed to fetch celebrity courses:",
-                        data.error
-                    );
-                    // Set default slide only
-                    setSlides([
-                        {
-                            id: "default",
-                            title: "WELCOME TO\nTHE ART OF LAW",
-                            subtitle: "Prepare to step into the arena",
-                            image: heroImage,
-                            showBadge: true,
-                        },
-                    ]);
-                }
-            } catch (error) {
-                console.error("Error fetching celebrity courses:", error);
-                // Set default slide only
-                setSlides([
-                    {
-                        id: "default",
-                        title: "WELCOME TO\nTHE ART OF LAW",
-                        subtitle: "Prepare to step into the arena",
-                        image: heroImage,
-                        showBadge: true,
-                    },
-                ]);
-            } finally {
-                setLoading(false);
-            }
-        };
-
-        fetchCelebrityCourses();
-    }, []);
+            setSlides([defaultSlide, ...celebritySlides]);
+        } else if (!isLoading) {
+            // Set default slide only if no courses and not loading
+            setSlides([
+                {
+                    id: "default",
+                    title: "WELCOME TO\nTHE ART OF LAW",
+                    subtitle: "Prepare to step into the arena",
+                    image: heroImage,
+                    showBadge: true,
+                },
+            ]);
+        }
+    }, [celebrityCourses, isLoading]);
 
     // Auto-advance slideshow with variable timing and progress indicator
     useEffect(() => {
@@ -172,7 +134,7 @@ export function HeroSection({ onCourseClick }: HeroSectionProps) {
         }
     };
 
-    if (loading || slides.length === 0) {
+    if (isLoading || slides.length === 0) {
         return (
             <section className="relative h-[67vh] md:h-[67vh] w-full overflow-hidden">
                 <div className="absolute inset-0 z-0">
@@ -330,7 +292,7 @@ export function HeroSection({ onCourseClick }: HeroSectionProps) {
                                         className="text-white mb-4 font-['Alacrity_Sans_Regular',_sans-serif] leading-[122.8%]"
                                         style={{
                                             textShadow:
-                                                "0 1px 3px rgba(0, 0, 0, 0.6)",
+                                                "0 2px 8px rgba(0, 0, 0, 0.8), 0 4px 16px rgba(0, 0, 0, 0.4)",
                                         }}
                                     >
                                         {currentSlideData.title

@@ -20,6 +20,10 @@
   .font-luxora {
     font-family: 'Luxora Grotesk', 'Manrope', 'sans-serif';
   }
+  
+  .font-manrope {
+    font-family: 'Manrope', 'Inter', 'sans-serif';
+  }
 
   /* Scrollbar styling */
   .scrollbar-hide {

@@ -3,120 +3,87 @@ import { Course } from "../data/courses";
 import { motion } from "framer-motion";
 import { TopLearningTracks } from "./TopLearningTracks";
 import { TopLegalOneShots } from "./TopLegalOneShots";
-import { useState, useEffect } from "react";
 import React from "react";
-import { projectId, publicAnonKey } from '../utils/supabase/info';
+import {
+  useRecommendedCourses,
+  useContinueWatchingCourses,
+  useMyListCourses,
+  useLearningTracksCourses,
+  useAIWeb3Courses,
+  useBeABossCourses,
+  useTrueCrimeCourses,
+  useEthicalAttorneyCourses,
+  useWellnessCourses,
+} from "../src/hooks/useCourses";
 
 export function CourseLibrary() {
-  const [courses, setCourses] = useState<{ [key: string]: Course[] }>({});
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  // Use cached queries for all course categories
+  const { data: recommendedCourses, isLoading: isLoadingRecommended } = useRecommendedCourses();
+  const { data: continueWatchingCourses, isLoading: isLoadingContinue } = useContinueWatchingCourses();
+  const { data: myListCourses, isLoading: isLoadingMyList } = useMyListCourses();
+  const { data: learningTracksCourses, isLoading: isLoadingLearningTracks } = useLearningTracksCourses();
+  const { data: aiWeb3Courses, isLoading: isLoadingAIWeb3 } = useAIWeb3Courses();
+  const { data: beABossCourses, isLoading: isLoadingBeABoss } = useBeABossCourses();
+  const { data: trueCrimeCourses, isLoading: isLoadingTrueCrime } = useTrueCrimeCourses();
+  const { data: ethicalAttorneyCourses, isLoading: isLoadingEthical } = useEthicalAttorneyCourses();
+  const { data: wellnessCourses, isLoading: isLoadingWellness } = useWellnessCourses();
 
-  // Fetch courses from Supabase
-  useEffect(() => {
-    const fetchCourses = async () => {
-      try {
-        setLoading(true);
-        setError(null);
-        
-        // Fetch courses using direct selection-based system with all categories in specified order
-        const selections = [
-          { title: 'Recommended For You', selection: 'Recommended' },
-          { title: 'Continue Watching', selection: 'Continue' },
-          { title: 'My List', selection: 'my_list' },
-          { title: 'Learning Tracks', selection: 'learning_tracks' },
-          { title: 'The Next Frontier: AI & Web3', selection: 'ai_web3' },
-          { title: 'Be A Boss (Professional Development & Leadership)', selection: 'be_a_boss' },
-          { title: 'True Crime: Criminal Law Docuseries', selection: 'true_crime' },
-          { title: 'The Ethical Attorney', selection: 'ethical_attorney' },
-          { title: 'Prioritize Your Wellness (CLE-compliant wellness entertainment)', selection: 'wellness' }
-        ];
-        const courseData: { [key: string]: Course[] } = {};
+  // Check if any queries are still loading
+  const isLoading = isLoadingRecommended || isLoadingContinue || isLoadingMyList || 
+                   isLoadingLearningTracks || isLoadingAIWeb3 || isLoadingBeABoss || 
+                   isLoadingTrueCrime || isLoadingEthical || isLoadingWellness;
 
-        await Promise.all(
-          selections.map(async (section) => {
-            try {
-              const response = await fetch(`https://${projectId}.supabase.co/functions/v1/make-server-9180a2e7/courses/selection/${section.selection}`, {
-                headers: {
-                  'Authorization': `Bearer ${publicAnonKey}`,
-                  'Content-Type': 'application/json',
-                }
-              });
-              const data = await response.json();
-              
-              if (data.success && data.courses) {
-                courseData[section.title] = data.courses;
-              } else {
-                courseData[section.title] = [];
-              }
-            } catch (error) {
-              courseData[section.title] = [];
-            }
-          })
-        );
-
-        setCourses(courseData);
-      } catch (error) {
-        setError('Failed to load courses. Please try again.');
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchCourses();
-  }, []);
-
-  // Course sections with dynamic data - all sections from database in specified order
+  // Course sections with cached data - all sections from database in specified order
   const courseSections = [
     {
       title: "Recommended For You",
-      courses: courses["Recommended For You"] || [],
+      courses: recommendedCourses || [],
       size: 'medium' as const
     },
     {
       title: "Continue Watching",
-      courses: courses["Continue Watching"] || [],
+      courses: continueWatchingCourses || [],
       size: 'medium' as const,
       showProgress: true
     },
     {
       title: "My List",
-      courses: courses["My List"] || [],
+      courses: myListCourses || [],
       size: 'medium' as const
     },
     {
       title: "Learning Tracks",
-      courses: courses["Learning Tracks"] || [],
+      courses: learningTracksCourses || [],
       size: 'medium' as const
     },
     {
       title: "The Next Frontier: AI & Web3",
-      courses: courses["The Next Frontier: AI & Web3"] || [],
+      courses: aiWeb3Courses || [],
       size: 'medium' as const
     },
     {
       title: "Be A Boss (Professional Development & Leadership)",
-      courses: courses["Be A Boss (Professional Development & Leadership)"] || [],
+      courses: beABossCourses || [],
       size: 'medium' as const
     },
     {
       title: "True Crime: Criminal Law Docuseries",
-      courses: courses["True Crime: Criminal Law Docuseries"] || [],
+      courses: trueCrimeCourses || [],
       size: 'medium' as const
     },
     {
       title: "The Ethical Attorney",
-      courses: courses["The Ethical Attorney"] || [],
+      courses: ethicalAttorneyCourses || [],
       size: 'medium' as const
     },
     {
       title: "Prioritize Your Wellness (CLE-compliant wellness entertainment)",
-      courses: courses["Prioritize Your Wellness (CLE-compliant wellness entertainment)"] || [],
+      courses: wellnessCourses || [],
       size: 'medium' as const
     }
   ];
 
-  if (loading) {
+  if (isLoading) {
     return (
       <motion.div 
         className="bg-aow-black min-h-screen flex items-center justify-center"
@@ -132,30 +99,6 @@ export function CourseLibrary() {
     );
   }
 
-  if (error) {
-    return (
-      <motion.div 
-        className="bg-aow-black min-h-screen flex items-center justify-center"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.6 }}
-      >
-        <div className="text-center max-w-md">
-          <div className="w-16 h-16 bg-red-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
-            <span className="text-red-400 text-2xl">⚠️</span>
-          </div>
-          <h3 className="text-white text-xl mb-2">Unable to Load Courses</h3>
-          <p className="text-white/60 mb-4">{error}</p>
-          <button 
-            onClick={() => window.location.reload()} 
-            className="px-6 py-2 bg-aow-gold text-aow-black rounded-lg hover:bg-aow-gold/90 transition-colors"
-          >
-            Try Again
-          </button>
-        </div>
-      </motion.div>
-    );
-  }
 
   return (
     <motion.div 
