@@ -10,6 +10,7 @@ import { MyCourses } from "../components/MyCourses";
 import { LearningTracks } from "../components/LearningTracks";
 import { CourseOverlay } from "../components/CourseOverlay";
 import { LoadingScreen } from "../components/LoadingScreen";
+import { NotFoundPage } from "../components/NotFoundPage";
 import { Course } from "../data/courses";
 import { useAllCourses } from "./hooks/useCourses";
 import { useAppLoading } from "./hooks/useAppLoading";
@@ -65,6 +66,8 @@ export default function App() {
     };
 
     const renderPage = () => {
+        const validPages = ["home", "my-courses", "learning-tracks", "cle-tracker", "practice-area"];
+        
         switch (currentPage) {
             case "home":
                 return (
@@ -82,12 +85,8 @@ export default function App() {
             case "practice-area":
                 return <PracticeArea />;
             default:
-                return (
-                    <>
-                        <HeroSection onCourseClick={handleCourseClick} />
-                        <CourseLibrary />
-                    </>
-                );
+                // Show 404 for any invalid routes
+                return <NotFoundPage onNavigateHome={() => setCurrentPage("home")} />;
         }
     };
 

@@ -81,6 +81,15 @@ export function CourseCard({ course, size = 'medium', showProgress = false, useW
       whileTap={{ scale: 0.98 }}
       transition={{ duration: 0.2, ease: "easeOut" }}
       onClick={onClick}
+      role="button"
+      tabIndex={0}
+      aria-label={`Course: ${course.title} by ${course.instructor}`}
+      onKeyDown={(e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          onClick?.();
+        }
+      }}
     >
       <div className="space-y-3">
         {/* Course Image Card */}
@@ -89,7 +98,7 @@ export function CourseCard({ course, size = 'medium', showProgress = false, useW
           {course.image_link || course.imageUrl ? (
             <ImageWithFallback
               src={course.image_link || course.imageUrl}
-              alt={course.title}
+              alt={`${course.instructor || course.subtitle || 'Instructor'} - ${course.title}`}
               className="w-full h-full object-cover"
             />
           ) : (

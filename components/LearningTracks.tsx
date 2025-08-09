@@ -139,9 +139,7 @@ export function LearningTracks() {
                                                                     course.image_link ||
                                                                     course.thumbnail
                                                                 }
-                                                                alt={
-                                                                    course.title
-                                                                }
+                                                                alt={`${course.instructor || 'Instructor'} - ${course.title}`}
                                                                 className="w-full h-full object-cover"
                                                             />
                                                         ) : (
@@ -310,7 +308,7 @@ export function LearningTracks() {
                             <div className="w-10 h-10 bg-aow-gold rounded-lg flex items-center justify-center">
                                 <currentTrack.icon className="w-6 h-6 text-aow-black" />
                             </div>
-                            <h2 className="text-2xl font-['ewLuxora_Grotesk',_sans-serif] text-white">
+                            <h2 className="text-2xl font-['Luxora_Grotesk',_sans-serif] text-white">
                                 Recommended: <br />
                                 {currentTrack.title}
                             </h2>

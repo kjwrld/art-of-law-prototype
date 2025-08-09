@@ -117,7 +117,7 @@ export const CourseProgressItem = ({
                                             course.image ||
                                             courseImage
                                         }
-                                        alt={course.name}
+                                        alt={`${course.instructor || 'Course Instructor'} - ${course.name}`}
                                         className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                                     />
 

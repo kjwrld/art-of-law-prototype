@@ -46,6 +46,8 @@ export function Navigation({
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
             className="fixed top-0 left-0 right-0 z-50 bg-[var(--aow-black)]/95 backdrop-blur-xl border-b border-[var(--aow-gold)]"
+            role="navigation"
+            aria-label="Main navigation"
         >
             {/* Centered container with constrained width */}
             <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -57,6 +59,8 @@ export function Navigation({
                             size="sm"
                             onClick={onMenuToggle}
                             className="h-10 w-10 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/10 md:hidden mr-4"
+                            aria-label="Open navigation menu"
+                            aria-expanded="false"
                         >
                             <Menu className="h-5 w-5 text-white" />
                         </Button>
@@ -66,6 +70,7 @@ export function Navigation({
                             onClick={() => onPageChange("home")}
                             className="relative flex items-center space-x-1.5 cursor-pointer group min-w-fit pb-2"
                             style={{ marginLeft: "0" }}
+                            aria-label="Go to homepage - Art of Law"
                         >
                             <div
                                 className="h-7 w-7 flex-shrink-0"
@@ -109,6 +114,8 @@ export function Navigation({
                                     type="text"
                                     placeholder="Search instructors, classes, and more"
                                     className="w-full pl-12 pr-4 py-3 bg-white/10 border border-white/20 rounded-full text-white placeholder:text-white/50 focus:bg-white/15 focus:border-[var(--aow-gold)]/50 transition-all duration-200 text-sm"
+                                    aria-label="Search for instructors, courses, and legal content"
+                                    role="searchbox"
                                 />
                             </div>
                         </div>
@@ -127,6 +134,8 @@ export function Navigation({
                                             ? "text-white"
                                             : "text-white/70 hover:text-white"
                                     }`}
+                                    aria-label={`Navigate to ${item.name}`}
+                                    aria-current={currentPage === item.page ? "page" : undefined}
                                     whileHover={{ scale: 1.05 }}
                                     whileTap={{ scale: 0.98 }}
                                 >

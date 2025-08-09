@@ -131,7 +131,7 @@ export function CLETracker() {
                             <div className="bg-white rounded-lg overflow-hidden h-full">
                                 <ImageWithFallback
                                     src={course.imageUrl}
-                                    alt={course.title}
+                                    alt={`${course.instructor || course.subtitle || 'Instructor'} - ${course.title}`}
                                     className="w-full h-full object-cover"
                                 />
                             </div>

@@ -46,7 +46,7 @@ const TopLegalOneShotCard = ({
                             {course.image_link ? (
                                 <ImageWithFallback
                                     src={course.image_link}
-                                    alt={course.title}
+                                    alt={`${course.instructor || course.subtitle || 'Instructor'} - ${course.title}`}
                                     className="w-full h-full object-cover"
                                 />
                             ) : (
