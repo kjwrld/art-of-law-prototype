@@ -30,9 +30,9 @@ export const trackData: Record<string, Track> = {
         title: "Master the Courtroom",
         icon: Sprout,
         personalization:
-            "Personalized for a lawyer studying Intellectual Property & Business",
+            "Personalized for a lawyer seeking to take their command of the courtroom to the next level. ",
         description:
-            "Build commanding courtroom skills while mastering Intellectual Property and business law. Designed for lawyers aiming to excel in high-stakes trials, negotiations, and complex patent litigation.",
+            "From depositions to trials, learn the art of litigation and courtroom advocacy.",
         progress: { completed: 1, total: 7 },
         courses: [
             {

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Sparkles, Plus } from "lucide-react";
+import { Sparkles, Plus, Send, Wand2 } from "lucide-react";
 import { Course } from "../data/courses";
 import {
     PERSONALIZED_TABS,
@@ -22,6 +22,7 @@ export function PracticeArea() {
     const [openFilter, setOpenFilter] = useState<string | null>(null);
     const [dbCourses, setDbCourses] = useState<Course[]>([]);
     const [loading, setLoading] = useState(true);
+    const [personalizationPrompt, setPersonalizationPrompt] = useState("");
 
     const [filters, setFilters] = useState({
         state: "ca",
@@ -86,6 +87,25 @@ export function PracticeArea() {
 
     const handleAddAITabs = () => {
         setShowAINotification(false);
+    };
+
+    const handlePersonalizationSubmit = () => {
+        if (!personalizationPrompt.trim()) return;
+        
+        // Here you would typically send the prompt to an AI service
+        // For now, we'll just log it and clear the input
+        console.log("Personalization request:", personalizationPrompt);
+        setPersonalizationPrompt("");
+        
+        // You could show a toast notification here
+        // or update the UI to show that personalization is being processed
+    };
+
+    const handleKeyPress = (e: React.KeyboardEvent) => {
+        if (e.key === "Enter" && !e.shiftKey) {
+            e.preventDefault();
+            handlePersonalizationSubmit();
+        }
     };
 
     const renderContent = () => {
@@ -169,7 +189,7 @@ export function PracticeArea() {
                     transition={{ duration: 0.5, ease: "easeOut" }}
                     className="font-industrial-gothic title-page text-white mb-2"
                 >
-                    practice area
+                    practice areas
                 </motion.h1>
                 <motion.p
                     initial={{ opacity: 0, y: -10 }}
@@ -212,7 +232,7 @@ export function PracticeArea() {
                                 color: "transparent",
                             }}
                         >
-                            Personalized for Eric Jarrett
+                            Use AI to customize exercises for you
                         </motion.span>
                     </div>
                     <motion.p
@@ -221,17 +241,61 @@ export function PracticeArea() {
                         transition={{ duration: 0.5, delay: 0.4 }}
                         className="text-white/60 text-sm ml-7 font-['Luxora_Grotesk',_sans-serif] leading-relaxed max-w-md"
                     >
-                        AI-curated exercises tailored to your practice area and
-                        career stage, designed to sharpen skills for real-world
-                        challenges ahead.
+                        {/* Use AI to customize exercises for you */}
                     </motion.p>
+                </motion.div>
+
+                {/* Personalization Prompt Bar */}
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.3, ease: "easeOut" }}
+                    className="relative"
+                >
+                    <div className="bg-gradient-to-r from-aow-gold/10 to-aow-gold/5 rounded-2xl p-6 border border-aow-gold/20 backdrop-blur-sm max-w-[985px]">
+                        <div className="flex items-center gap-3 mb-4">
+                            <div className="w-8 h-8 bg-aow-gold/20 rounded-lg flex items-center justify-center">
+                                <Wand2 className="w-4 h-4 text-aow-gold" />
+                            </div>
+                            <h3 className="text-lg font-medium text-white font-['Luxora_Grotesk',_sans-serif]">
+                                Personalize Your Practice
+                            </h3>
+                        </div>
+                        
+                        <div className="flex gap-3">
+                            <div className="flex-1 relative">
+                                <input
+                                    type="text"
+                                    value={personalizationPrompt}
+                                    onChange={(e) => setPersonalizationPrompt(e.target.value)}
+                                    onKeyPress={handleKeyPress}
+                                    placeholder="Tell us about your practice focus, experience level, or specific legal areas you want to improve..."
+                                    className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-xl text-white placeholder:text-white/40 focus:border-aow-gold/50 focus:ring-1 focus:ring-aow-gold/50 transition-all duration-200 font-['Luxora_Grotesk',_sans-serif] text-sm"
+                                />
+                            </div>
+                            <motion.button
+                                onClick={handlePersonalizationSubmit}
+                                disabled={!personalizationPrompt.trim()}
+                                className="px-6 py-3 bg-aow-gold rounded-xl font-medium text-aow-black transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed hover:bg-aow-gold/90 flex items-center gap-2 font-['Luxora_Grotesk',_sans-serif] text-sm"
+                                whileHover={{ scale: personalizationPrompt.trim() ? 1.02 : 1 }}
+                                whileTap={{ scale: personalizationPrompt.trim() ? 0.98 : 1 }}
+                            >
+                                <Send className="w-4 h-4" />
+                                <span className="hidden sm:inline">Personalize</span>
+                            </motion.button>
+                        </div>
+                        
+                        <p className="text-xs text-white/50 mt-3 font-['Luxora_Grotesk',_sans-serif]">
+                            Our AI will customize practice exercises and recommendations based on your input.
+                        </p>
+                    </div>
                 </motion.div>
 
                 {/* Focus Section */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 0.4, ease: "easeOut" }}
+                    transition={{ duration: 0.5, delay: 0.5, ease: "easeOut" }}
                 >
                     <h2 className="text-xl font-medium text-white mb-4 font-['Luxora_Grotesk',_sans-serif]">
                         Focus
@@ -293,7 +357,7 @@ export function PracticeArea() {
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 0.5, ease: "easeOut" }}
+                    transition={{ duration: 0.5, delay: 0.6, ease: "easeOut" }}
                 >
                     <h2 className="text-xl font-medium text-white mb-4 font-['Luxora_Grotesk',_sans-serif]">
                         Filters
@@ -350,7 +414,7 @@ export function PracticeArea() {
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 0.6, ease: "easeOut" }}
+                    transition={{ duration: 0.5, delay: 0.7, ease: "easeOut" }}
                 >
                     <h2 className="text-xl font-medium text-white mb-6 font-['Luxora_Grotesk',_sans-serif]">
                         Practice
@@ -361,7 +425,7 @@ export function PracticeArea() {
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: 0.7, ease: "easeOut" }}
+                    transition={{ duration: 0.6, delay: 0.8, ease: "easeOut" }}
                     className="relative"
                 >
                     {renderContent()}

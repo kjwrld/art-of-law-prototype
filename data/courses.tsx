@@ -4,6 +4,7 @@ export interface Course {
   title: string
   instructor: string
   description: string
+  subheading?: string // Short description/tagline for hero display
   credits: number // Decimal credits (e.g. 1.5)
   credit_type: string // e.g. "General"
   modules: number

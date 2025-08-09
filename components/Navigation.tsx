@@ -36,7 +36,7 @@ export function Navigation({
 }: NavigationProps) {
     const navigationItems = [
         { name: "My Courses", icon: BookOpen, page: "my-courses" },
-        { name: "Practice Area", icon: Sword, page: "practice-area" },
+        { name: "Practice Areas", icon: Sword, page: "practice-area" },
         { name: "CLE Tracker", icon: Trophy, page: "cle-tracker" },
     ];
 
@@ -135,7 +135,11 @@ export function Navigation({
                                             : "text-white/70 hover:text-white"
                                     }`}
                                     aria-label={`Navigate to ${item.name}`}
-                                    aria-current={currentPage === item.page ? "page" : undefined}
+                                    aria-current={
+                                        currentPage === item.page
+                                            ? "page"
+                                            : undefined
+                                    }
                                     whileHover={{ scale: 1.05 }}
                                     whileTap={{ scale: 0.98 }}
                                 >

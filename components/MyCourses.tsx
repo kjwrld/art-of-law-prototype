@@ -12,16 +12,17 @@ interface MyCoursesProps {
 export function MyCourses({ onNavigate }: MyCoursesProps) {
     // Use bookmarks hook to get saved courses
     const { bookmarkedCourses } = useBookmarks();
-    
+
     // Use cached continue watching courses - instant loading!
-    const { data: continueWatchingCourses, isLoading } = useContinueWatchingCourses();
+    const { data: continueWatchingCourses, isLoading } =
+        useContinueWatchingCourses();
 
     // Debug logging for My Courses
-    console.log('📚 My Courses debug:', {
-        bookmarkedCoursesLength: bookmarkedCourses?.length,
-        bookmarkedCourses: bookmarkedCourses,
-        hasBookmarkedCourses: bookmarkedCourses && bookmarkedCourses.length > 0
-    });
+    // console.log('📚 My Courses debug:', {
+    //     bookmarkedCoursesLength: bookmarkedCourses?.length,
+    //     bookmarkedCourses: bookmarkedCourses,
+    //     hasBookmarkedCourses: bookmarkedCourses && bookmarkedCourses.length > 0
+    // });
 
     if (isLoading) {
         return (
@@ -64,7 +65,11 @@ export function MyCourses({ onNavigate }: MyCoursesProps) {
                     </div>
 
                     {bookmarkedCourses && bookmarkedCourses.length > 0 ? (
-                        <CourseRow title="" courses={bookmarkedCourses} size="medium" />
+                        <CourseRow
+                            title=""
+                            courses={bookmarkedCourses}
+                            size="medium"
+                        />
                     ) : (
                         <div className="bg-[#1a1a1a] rounded-2xl border border-aow-gold p-8 text-center">
                             <div className="w-16 h-16 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -102,7 +107,8 @@ export function MyCourses({ onNavigate }: MyCoursesProps) {
                         </h2>
                     </div>
 
-                    {continueWatchingCourses && continueWatchingCourses.length > 0 ? (
+                    {continueWatchingCourses &&
+                    continueWatchingCourses.length > 0 ? (
                         <CourseRow
                             title=""
                             courses={continueWatchingCourses || []}

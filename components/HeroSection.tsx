@@ -70,11 +70,37 @@ export function HeroSection({
                 showBadge: true,
             };
 
-            const celebritySlides: HeroSlide[] = celebrityCourses.map(
+            // Define the desired instructor order
+            const instructorOrder = [
+                "Stephen Breyer",
+                "Amal Clooney",
+                "Michelle Obama",
+                "Neal Katyal",
+                "Bryan Stevenson",
+                "Preet Bhara",
+                "Ernest Jarrett",
+            ];
+
+            // Sort celebrity courses by instructor order
+            const sortedCelebrityCourses = [...celebrityCourses].sort(
+                (a, b) => {
+                    const indexA = instructorOrder.indexOf(a.instructor);
+                    const indexB = instructorOrder.indexOf(b.instructor);
+
+                    // If instructor not in order list, put at end
+                    if (indexA === -1 && indexB === -1) return 0;
+                    if (indexA === -1) return 1;
+                    if (indexB === -1) return -1;
+
+                    return indexA - indexB;
+                }
+            );
+
+            const celebritySlides: HeroSlide[] = sortedCelebrityCourses.map(
                 (course: Course) => ({
                     id: course.id || "",
-                    title: course.title.toLowerCase(),
-                    subtitle: course.instructor,
+                    title: course.title.toLowerCase(), // Show title as main title (lowercase)
+                    subtitle: course.instructor, // Show instructor as subtitle
                     image: course.image_link || metaImage, // Fallback to default hero image
                     showBadge: false,
                     course: course, // Store full course data
@@ -396,7 +422,7 @@ export function HeroSection({
 
                             {/* Instructor Name & Subheading */}
                             {currentSlide === 0 ? (
-                                <p className="text-white/75 text-lg md:text-xl lg:text-2xl text-shadow max-w-md mx-auto md:mx-0">
+                                <p className="text-white/75 text-lg md:text-xl lg:text-3xl text-shadow max-w-md mx-auto md:mx-0">
                                     {currentSlideData.subtitle}
                                 </p>
                             ) : (
@@ -412,9 +438,16 @@ export function HeroSection({
                                         }}
                                         className="max-w-md mx-auto md:mx-0"
                                     >
-                                        {/* Instructor Name */}
-                                        <p className="text-white/75 text-lg md:text-xl lg:text-2xl text-shadow mb-2">
+                                        {/* Instructor */}
+                                        <p className="text-white/95 text-lg md:text-2xl lg:text-2xl text-shadow leading-relaxed">
                                             {currentSlideData.subtitle}
+                                        </p>
+                                        {/* Instructor */}
+                                        <p className="text-white/75 text-lg md:text-lg lg:text-2xl text-shadow leading-relaxed mt-2">
+                                            {
+                                                currentSlideData.course
+                                                    ?.subheading
+                                            }
                                         </p>
                                     </motion.div>
                                 </AnimatePresence>

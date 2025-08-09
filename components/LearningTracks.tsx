@@ -132,7 +132,9 @@ export function LearningTracks() {
                                             }}
                                             className="flex-shrink-0 cursor-pointer flex flex-col items-center group/track-card"
                                             onClick={() =>
-                                                handleCourseClick(course.id || '')
+                                                handleCourseClick(
+                                                    course.id || ""
+                                                )
                                             }
                                         >
                                             <div className="relative mb-4">
@@ -244,7 +246,7 @@ export function LearningTracks() {
                 <section className="px-6 md:px-8 lg:px-12 xl:px-16">
                     {/* My Learning Tracks Title */}
                     <h2 className="text-3xl font-['Luxora_Grotesk',_sans-serif] font-medium text-white mb-12">
-                        My Learning Tracks
+                        Recommended Learning Tracks
                     </h2>
 
                     {/* File Folder Tabs - Positioned above container */}
@@ -318,7 +320,6 @@ export function LearningTracks() {
                                 <currentTrack.icon className="w-6 h-6 text-aow-black" />
                             </div>
                             <h2 className="text-2xl font-['Luxora_Grotesk',_sans-serif] text-white">
-                                Recommended: <br />
                                 {currentTrack.title}
                             </h2>
                         </div>
