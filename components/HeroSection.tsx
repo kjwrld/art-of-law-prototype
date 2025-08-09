@@ -32,7 +32,10 @@ interface HeroSectionProps {
     isAppLoading?: boolean;
 }
 
-export function HeroSection({ onCourseClick, isAppLoading = false }: HeroSectionProps) {
+export function HeroSection({
+    onCourseClick,
+    isAppLoading = false,
+}: HeroSectionProps) {
     const heroRef = useRef<HTMLElement>(null);
     const [currentSlide, setCurrentSlide] = useState(0);
     const [slides, setSlides] = useState<HeroSlide[]>([]);
@@ -69,7 +72,7 @@ export function HeroSection({ onCourseClick, isAppLoading = false }: HeroSection
 
             const celebritySlides: HeroSlide[] = celebrityCourses.map(
                 (course: Course) => ({
-                    id: course.id || '',
+                    id: course.id || "",
                     title: course.title.toLowerCase(),
                     subtitle: course.instructor,
                     image: course.image_link || metaImage, // Fallback to default hero image
@@ -129,7 +132,7 @@ export function HeroSection({ onCourseClick, isAppLoading = false }: HeroSection
         const currentSlideData = slides[currentSlide];
         if (currentSlideData.course) {
             // If it's a celebrity course slide, open the course overlay
-            onCourseClick(currentSlideData.course.id || '');
+            onCourseClick(currentSlideData.course.id || "");
         } else {
             // If it's the default slide, open with default content (could be a special course or default behavior)
             // For now, we'll use a default course ID or handle the default case
@@ -349,7 +352,6 @@ export function HeroSection({ onCourseClick, isAppLoading = false }: HeroSection
                                             .map((line, index) => (
                                                 <span
                                                     key={index}
-                                                    // className="block font-industrial-gothic title-hero font-normal lg:whitespace-nowrap"
                                                     className="block font-industrial-gothic title-hero font-normal lg:whitespace-nowrap"
                                                 >
                                                     {line}
@@ -414,16 +416,6 @@ export function HeroSection({ onCourseClick, isAppLoading = false }: HeroSection
                                         <p className="text-white/75 text-lg md:text-xl lg:text-2xl text-shadow mb-2">
                                             {currentSlideData.subtitle}
                                         </p>
-                                        {/* Subheading (if available) */}
-                                        {currentSlideData.course
-                                            ?.description && (
-                                            <p className="text-white/60 text-sm md:text-base lg:text-lg text-shadow leading-relaxed">
-                                                {
-                                                    currentSlideData.course
-                                                        .description
-                                                }
-                                            </p>
-                                        )}
                                     </motion.div>
                                 </AnimatePresence>
                             )}
