@@ -284,7 +284,7 @@ export function HeroSection({ onCourseClick }: HeroSectionProps) {
             {/* Content - z-10 */}
             <div className="relative z-10 h-full flex flex-col">
                 {/* Title and Subtitle Content */}
-                <div className="flex-1 flex items-end pb-20 md:pb-16">
+                <div className="flex-1 flex items-end pb-4 md:pb-16">
                     <div className="w-full">
                         <div className="max-w-5xl mx-auto md:mx-0 md:max-w-4xl text-center md:text-left md:pl-8 lg:pl-12 xl:pl-16">
                             {/* Golden Wreath Rating Badge - Only show on default slide WITHOUT animation for first slide */}

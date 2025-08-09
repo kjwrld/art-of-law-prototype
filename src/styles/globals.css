@@ -70,7 +70,7 @@
     --font-weight-normal: 400;
     --title-letter-spacing: 0.01em;
     --mobile-title-size: 6rem;
-    --mobile-hero-title-size: 5rem;
+    --mobile-hero-title-size: 3.25rem;
     --ring: var(--aow-gold);
     --radius: 0.625rem;
 }
