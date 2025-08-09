@@ -7,6 +7,7 @@ import {
 import { useRef, useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import heroImage from "/src/assets/hero_img.png";
+import metaImage from "/src/assets/meta.png";
 import FarLeftFadeBottom from "../imports/FarLeftFadeBottom";
 import BottomFade from "../imports/BottomFade";
 import FarRightFade from "../imports/FarRightFade";
@@ -70,7 +71,7 @@ export function HeroSection({ onCourseClick }: HeroSectionProps) {
                     id: course.id,
                     title: course.title.toLowerCase(),
                     subtitle: course.instructor,
-                    image: course.image_link || heroImage, // Fallback to default hero image
+                    image: course.image_link || metaImage, // Fallback to default hero image
                     showBadge: false,
                     course: course, // Store full course data
                 })
@@ -158,7 +159,7 @@ export function HeroSection({ onCourseClick }: HeroSectionProps) {
                 <div className="absolute inset-0 z-0">
                     <img
                         src={heroImage}
-                        alt="Distinguished lawyer in library"
+                        alt="Ernest Jarrett - Civil Rights Lawyer"
                         className="w-full h-full object-cover object-center"
                     />
                 </div>
@@ -190,7 +191,7 @@ export function HeroSection({ onCourseClick }: HeroSectionProps) {
                 >
                     <ImageWithFallback
                         src={currentSlideData.image}
-                        alt={currentSlideData.title}
+                        alt={currentSlideData.subtitle}
                         className="w-full h-full object-cover object-center"
                     />
                 </motion.div>
@@ -339,7 +340,7 @@ export function HeroSection({ onCourseClick }: HeroSectionProps) {
                                         className="text-white mb-4 font-industrial-gothic leading-[122.8%]"
                                         style={{
                                             textShadow:
-                                                "0 2px 8px rgba(0, 0, 0, 0.8), 0 8px 16px rgba(0, 0, 0, 0.4)",
+                                                "0 2px 8px rgba(0, 0, 0, 1), 0 8px 8px rgba(0, 0, 0, 0.4)",
                                         }}
                                     >
                                         {currentSlideData.title
@@ -348,7 +349,7 @@ export function HeroSection({ onCourseClick }: HeroSectionProps) {
                                                 <span
                                                     key={index}
                                                     // className="block font-industrial-gothic title-hero font-normal lg:whitespace-nowrap"
-                                                    className="block font-industrial-gothic title-hero font-normal"
+                                                    className="block font-industrial-gothic title-hero font-normal lg:whitespace-nowrap"
                                                 >
                                                     {line}
                                                 </span>

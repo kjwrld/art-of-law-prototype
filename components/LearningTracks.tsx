@@ -75,7 +75,7 @@ export function LearningTracks() {
         <div className="min-h-screen bg-aow-black text-white pt-20">
             {/* Page Header */}
             <div className="px-6 md:px-8 lg:px-12 xl:px-16 pt-8 pb-6">
-                <h1 className="font-industrial-gothic title-page text-white mb-2">
+                <h1 className="font-industrial-gothic title-page mobile-title text-white mb-2">
                     learning tracks
                 </h1>
                 <p className="text-white/70 text-lg font-['Luxora_Grotesk',_sans-serif]">
@@ -310,8 +310,9 @@ export function LearningTracks() {
                             <div className="w-10 h-10 bg-aow-gold rounded-lg flex items-center justify-center">
                                 <currentTrack.icon className="w-6 h-6 text-aow-black" />
                             </div>
-                            <h2 className="text-2xl font-['Luxora_Grotesk',_sans-serif] text-white">
-                                Recommended: {currentTrack.title}
+                            <h2 className="text-2xl font-['ewLuxora_Grotesk',_sans-serif] text-white">
+                                Recommended: <br />
+                                {currentTrack.title}
                             </h2>
                         </div>
 
