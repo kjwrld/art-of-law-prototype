@@ -21,7 +21,7 @@ import {
     Search,
 } from "lucide-react";
 import { color, motion } from "framer-motion";
-import Logo from "../imports/MaskGroup-81-193";
+import logoImage from "../src/assets/logo.png";
 
 interface NavigationProps {
     currentPage: string;
@@ -36,7 +36,7 @@ export function Navigation({
 }: NavigationProps) {
     const navigationItems = [
         { name: "My Courses", icon: BookOpen, page: "my-courses" },
-        { name: "Practice Arena", icon: Sword, page: "practice-arena" },
+        { name: "Practice Area", icon: Sword, page: "practice-area" },
         { name: "CLE Tracker", icon: Trophy, page: "cle-tracker" },
     ];
 
@@ -48,7 +48,7 @@ export function Navigation({
             className="fixed top-0 left-0 right-0 z-50 bg-[var(--aow-black)]/95 backdrop-blur-xl border-b border-[var(--aow-gold)]"
         >
             {/* Centered container with constrained width */}
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex items-center justify-between h-20 py-4">
                     <div className="flex items-center space-x-8">
                         {/* Mobile Menu Button */}
@@ -66,11 +66,20 @@ export function Navigation({
                             onClick={() => onPageChange("home")}
                             className="relative flex items-center space-x-1.5 cursor-pointer group min-w-fit pb-2"
                         >
-                            <div className="h-7 w-7 flex-shrink-0">
-                                <Logo />
+                            <div
+                                className="h-7 w-7 flex-shrink-0"
+                                style={{
+                                    overflow: "visible",
+                                }}
+                            >
+                                <img 
+                                    src={logoImage} 
+                                    alt="Art of Law Logo" 
+                                    className="w-full h-full object-contain"
+                                />
                             </div>
                             <h1
-                                className="font-['Alacrity_Sans',_sans-serif] text-white text-lg font-medium tracking-wide whitespace-nowrap"
+                                className="font-['Luxora_Grotesk',_sans-serif] text-white text-lg font-medium tracking-wide whitespace-nowrap"
                                 style={{
                                     marginLeft: ".6rem",
                                 }}
@@ -93,7 +102,7 @@ export function Navigation({
 
                         {/* Search Bar - Desktop */}
                         <div className="hidden md:flex items-center ml-8">
-                            <div className="relative w-96">
+                            <div className="relative w-96 lg:w-[500px] xl:w-[600px]">
                                 <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 h-4 w-4 text-white/50" />
                                 <Input
                                     type="text"

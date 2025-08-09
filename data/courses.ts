@@ -17,6 +17,7 @@ export interface Course {
   credits?: number; // Legacy property for compatibility  
   credit_type?: string; // Legacy property for compatibility
   module_number?: number; // Legacy property for compatibility
+  subheading?: string; // Instructor subtitle (for celebrity courses)
 }
 
 export const courses: Course[] = [

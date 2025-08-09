@@ -10,7 +10,7 @@ export default defineConfig({
       "@": path.resolve(__dirname, "."),
     },
   },
-  base: process.env.NODE_ENV === 'production' ? '/art-of-war-prototype/' : '/',
+  base: '/art-of-law-prototype/',
   build: {
     outDir: 'dist',
     sourcemap: true,

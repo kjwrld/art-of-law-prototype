@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import { projectId, publicAnonKey } from '../../utils/supabase/info';
-import { Course } from '../data/courses';
+import { Course } from '../../data/courses';
 
 // Base fetch function for courses
 const fetchCourses = async (selection: string): Promise<Course[]> => {

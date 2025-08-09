@@ -74,7 +74,7 @@ const TopCourseCard = ({
 
             {/* Course Title - Now centered relative to the entire visual element */}
             <div className="text-center">
-                <h3 className="text-white font-semibold text-sm mb-1 leading-tight font-['Luxora_Grotesk:Medium',_sans-serif] group-hover/card:text-aow-gold-light transition-colors duration-300 max-w-[140px]">
+                <h3 className="text-white font-medium text-sm mb-1 leading-tight font-['Luxora_Grotesk:Medium',_sans-serif] group-hover/card:text-aow-gold-light transition-colors duration-300 max-w-[140px]">
                     {course.title}
                 </h3>
                 <p className="text-white/60 text-xs font-['Luxora_Grotesk:Medium',_sans-serif] max-w-[140px] text-center">
@@ -114,11 +114,11 @@ export const TopLearningTracks = () => {
                     setTopCourses(top10);
                     // console.log(`✅ Successfully loaded ${top10.length} top courses`);
                 } else {
-                    console.error("Failed to fetch top courses:", data.error);
+                    // console.error("Failed to fetch top courses:", data.error);
                     setError("Failed to load top courses");
                 }
             } catch (error) {
-                console.error("Error fetching top courses:", error);
+                // console.error("Error fetching top courses:", error);
                 setError("Failed to load top courses");
             } finally {
                 setLoading(false);

@@ -5,7 +5,7 @@ import { Sidebar } from "../components/Sidebar";
 import { HeroSection } from "../components/HeroSection";
 import { CourseLibrary } from "../components/CourseLibrary";
 import { CLETracker } from "../components/CLETracker";
-import { PracticeArena } from "../components/PracticeArena";
+import { PracticeArea } from "../components/PracticeArea";
 import { MyCourses } from "../components/MyCourses";
 import { LearningTracks } from "../components/LearningTracks";
 import { CourseOverlay } from "../components/CourseOverlay";
@@ -79,8 +79,8 @@ export default function App() {
                 return <LearningTracks />;
             case "cle-tracker":
                 return <CLETracker />;
-            case "practice-arena":
-                return <PracticeArena />;
+            case "practice-area":
+                return <PracticeArea />;
             default:
                 return (
                     <>

@@ -23,7 +23,7 @@ export function CoursePortrait({ title, moduleNumber, className = "" }: CoursePo
       <div className="w-20 h-20 md:w-24 md:h-24 lg:w-28 lg:h-28 bg-[#2a2a2a] rounded-full border-2 border-white/10 flex items-center justify-center relative">
         
         {/* Initials */}
-        <span className="text-white/80 font-['Alacrity_Sans',_sans-serif] font-semibold text-lg md:text-xl lg:text-2xl">
+        <span className="text-white/80 font-['Luxora_Grotesk',_sans-serif] font-medium text-lg md:text-xl lg:text-2xl">
           {initials}
         </span>
         

@@ -102,7 +102,7 @@ export function AdminPanel() {
         className="bg-aow-black border border-aow-gold/20 rounded-lg p-6 max-w-2xl w-full max-h-[90vh] overflow-y-auto"
       >
         <div className="flex items-center justify-between mb-6">
-          <h2 className="text-white text-2xl font-semibold">Add New Course</h2>
+          <h2 className="text-white text-2xl font-medium">Add New Course</h2>
           <Button
             variant="ghost"
             onClick={() => setIsOpen(false)}

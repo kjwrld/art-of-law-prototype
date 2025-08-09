@@ -5,6 +5,7 @@ import {
     AnimatePresence,
 } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import heroImage from "/src/assets/hero_img.png";
 import FarLeftFadeBottom from "../imports/FarLeftFadeBottom";
 import BottomFade from "../imports/BottomFade";
@@ -35,7 +36,7 @@ export function HeroSection({ onCourseClick }: HeroSectionProps) {
     const [slides, setSlides] = useState<HeroSlide[]>([]);
     const [slideProgress, setSlideProgress] = useState(0);
     const [isPaused, setIsPaused] = useState(false);
-    
+
     // Use cached celebrity courses
     const { data: celebrityCourses, isLoading } = useHeroCourses();
 
@@ -51,14 +52,14 @@ export function HeroSection({ onCourseClick }: HeroSectionProps) {
     // Create slides when celebrity courses data is available
     useEffect(() => {
         if (celebrityCourses && celebrityCourses.length > 0) {
-            console.log(
-                `✅ Loaded ${celebrityCourses.length} celebrity courses for hero slideshow (from cache)`
-            );
+            // console.log(
+            //     `✅ Loaded ${celebrityCourses.length} celebrity courses for hero slideshow (from cache)`
+            // );
 
             // Create slides array with default slide first, then celebrity courses
             const defaultSlide: HeroSlide = {
                 id: "default",
-                title: "WELCOME TO\nTHE ART OF LAW",
+                title: "welcome to\nthe art of law",
                 subtitle: "Prepare to step into the arena",
                 image: heroImage,
                 showBadge: true,
@@ -67,7 +68,7 @@ export function HeroSection({ onCourseClick }: HeroSectionProps) {
             const celebritySlides: HeroSlide[] = celebrityCourses.map(
                 (course: Course) => ({
                     id: course.id,
-                    title: course.title,
+                    title: course.title.toLowerCase(),
                     subtitle: course.instructor,
                     image: course.image_link || heroImage, // Fallback to default hero image
                     showBadge: false,
@@ -81,7 +82,7 @@ export function HeroSection({ onCourseClick }: HeroSectionProps) {
             setSlides([
                 {
                     id: "default",
-                    title: "WELCOME TO\nTHE ART OF LAW",
+                    title: "welcome to\nthe art of law",
                     subtitle: "Prepare to step into the arena",
                     image: heroImage,
                     showBadge: true,
@@ -130,7 +131,24 @@ export function HeroSection({ onCourseClick }: HeroSectionProps) {
         } else {
             // If it's the default slide, open with default content (could be a special course or default behavior)
             // For now, we'll use a default course ID or handle the default case
-            console.log("Opening default hero course overlay");
+            // console.log("Opening default hero course overlay");
+        }
+    };
+
+    // Navigation functions
+    const goToNextSlide = () => {
+        if (slides.length > 1) {
+            setCurrentSlide((prev) => (prev + 1) % slides.length);
+            setSlideProgress(0);
+        }
+    };
+
+    const goToPrevSlide = () => {
+        if (slides.length > 1) {
+            setCurrentSlide(
+                (prev) => (prev - 1 + slides.length) % slides.length
+            );
+            setSlideProgress(0);
         }
     };
 
@@ -218,7 +236,36 @@ export function HeroSection({ onCourseClick }: HeroSectionProps) {
                 />
             </div>
 
-            {/* Navigation Arrows - Hidden as requested */}
+            {/* Navigation Arrows - Positioned outside text area */}
+            {slides.length > 1 && (
+                <>
+                    {/* Left Arrow */}
+                    <motion.button
+                        onClick={goToPrevSlide}
+                        className="absolute left-4 top-1/2 -translate-y-1/2 z-20 w-12 h-12 bg-black/20 hover:bg-black/40 rounded-full flex items-center justify-center backdrop-blur-sm border border-white/10 hover:border-white/20 transition-all duration-300"
+                        whileHover={{ scale: 1.1 }}
+                        whileTap={{ scale: 0.9 }}
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.5, delay: 1 }}
+                    >
+                        <ChevronLeft className="w-6 h-6 text-white/70" />
+                    </motion.button>
+
+                    {/* Right Arrow */}
+                    <motion.button
+                        onClick={goToNextSlide}
+                        className="absolute right-4 top-1/2 -translate-y-1/2 z-20 w-12 h-12 bg-black/20 hover:bg-black/40 rounded-full flex items-center justify-center backdrop-blur-sm border border-white/10 hover:border-white/20 transition-all duration-300"
+                        whileHover={{ scale: 1.1 }}
+                        whileTap={{ scale: 0.9 }}
+                        initial={{ opacity: 0, x: 20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.5, delay: 1 }}
+                    >
+                        <ChevronRight className="w-6 h-6 text-white/70" />
+                    </motion.button>
+                </>
+            )}
 
             {/* Progress Bar Only - z-15 */}
             {slides.length > 1 && (
@@ -289,10 +336,10 @@ export function HeroSection({ onCourseClick }: HeroSectionProps) {
                             {currentSlide === 0 ? (
                                 <div className="mb-4 md:mb-6">
                                     <h1
-                                        className="text-white mb-4 font-['Alacrity_Sans_Regular',_sans-serif] leading-[122.8%]"
+                                        className="text-white mb-4 font-industrial-gothic leading-[122.8%]"
                                         style={{
                                             textShadow:
-                                                "0 2px 8px rgba(0, 0, 0, 0.8), 0 4px 16px rgba(0, 0, 0, 0.4)",
+                                                "0 2px 8px rgba(0, 0, 0, 0.8), 0 8px 16px rgba(0, 0, 0, 0.4)",
                                         }}
                                     >
                                         {currentSlideData.title
@@ -300,7 +347,8 @@ export function HeroSection({ onCourseClick }: HeroSectionProps) {
                                             .map((line, index) => (
                                                 <span
                                                     key={index}
-                                                    className="block text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-normal tracking-tight lg:whitespace-nowrap"
+                                                    // className="block font-industrial-gothic title-hero font-normal lg:whitespace-nowrap"
+                                                    className="block font-industrial-gothic title-hero font-normal"
                                                 >
                                                     {line}
                                                 </span>
@@ -321,7 +369,7 @@ export function HeroSection({ onCourseClick }: HeroSectionProps) {
                                         className="mb-4 md:mb-6"
                                     >
                                         <h1
-                                            className="text-white mb-4 font-['Alacrity_Sans',_sans-serif] leading-[122.8%]"
+                                            className="text-white mb-4 font-industrial-gothic leading-[122.8%]"
                                             style={{
                                                 textShadow:
                                                     "0 1px 3px rgba(0, 0, 0, 0.6)",
@@ -332,7 +380,7 @@ export function HeroSection({ onCourseClick }: HeroSectionProps) {
                                                 .map((line, index) => (
                                                     <span
                                                         key={index}
-                                                        className="block text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-normal tracking-tight"
+                                                        className="block font-industrial-gothic title-hero font-normal"
                                                     >
                                                         {line}
                                                     </span>
@@ -342,14 +390,14 @@ export function HeroSection({ onCourseClick }: HeroSectionProps) {
                                 </AnimatePresence>
                             )}
 
-                            {/* Subtitle */}
+                            {/* Instructor Name & Subheading */}
                             {currentSlide === 0 ? (
                                 <p className="text-white/75 text-lg md:text-xl lg:text-2xl text-shadow max-w-md mx-auto md:mx-0">
                                     {currentSlideData.subtitle}
                                 </p>
                             ) : (
                                 <AnimatePresence mode="wait">
-                                    <motion.p
+                                    <motion.div
                                         key={`${currentSlide}-subtitle`}
                                         initial={{ opacity: 0, y: 20 }}
                                         animate={{ opacity: 1, y: 0 }}
@@ -358,10 +406,23 @@ export function HeroSection({ onCourseClick }: HeroSectionProps) {
                                             duration: 0.8,
                                             delay: 0.6,
                                         }}
-                                        className="text-white/75 text-lg md:text-xl lg:text-2xl text-shadow max-w-md mx-auto md:mx-0"
+                                        className="max-w-md mx-auto md:mx-0"
                                     >
-                                        {currentSlideData.subtitle}
-                                    </motion.p>
+                                        {/* Instructor Name */}
+                                        <p className="text-white/75 text-lg md:text-xl lg:text-2xl text-shadow mb-2">
+                                            {currentSlideData.subtitle}
+                                        </p>
+                                        {/* Subheading (if available) */}
+                                        {currentSlideData.course
+                                            ?.subheading && (
+                                            <p className="text-white/60 text-sm md:text-base lg:text-lg text-shadow leading-relaxed">
+                                                {
+                                                    currentSlideData.course
+                                                        .subheading
+                                                }
+                                            </p>
+                                        )}
+                                    </motion.div>
                                 </AnimatePresence>
                             )}
                         </div>

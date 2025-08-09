@@ -74,7 +74,7 @@ const TopLegalOneShotCard = ({
 
             {/* Course Title - Now centered relative to the entire visual element */}
             <div className="text-center">
-                <h3 className="text-white font-semibold text-sm mb-1 leading-tight font-['Luxora_Grotesk:Medium',_sans-serif] group-hover/card:text-aow-gold-light transition-colors duration-300 max-w-[140px]">
+                <h3 className="text-white font-medium text-sm mb-1 leading-tight font-['Luxora_Grotesk:Medium',_sans-serif] group-hover/card:text-aow-gold-light transition-colors duration-300 max-w-[140px]">
                     {course.title}
                 </h3>
                 <p className="text-white/60 text-xs font-['Luxora_Grotesk:Medium',_sans-serif] max-w-[140px] text-center">
@@ -113,14 +113,14 @@ export const TopLegalOneShots = () => {
                     setTopLegalOneShots(top10);
                     // console.log(`✅ Successfully loaded ${top10.length} top legal one-shots`);
                 } else {
-                    console.error(
-                        "Failed to fetch top legal one-shots:",
-                        data.error
-                    );
+                    // console.error(
+                    //     "Failed to fetch top legal one-shots:",
+                    //     data.error
+                    // );
                     setError("Failed to load top legal one-shots");
                 }
             } catch (error) {
-                console.error("Error fetching top legal one-shots:", error);
+                // console.error("Error fetching top legal one-shots:", error);
                 setError("Failed to load top legal one-shots");
             } finally {
                 setLoading(false);

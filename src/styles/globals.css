@@ -1,443 +1,493 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap");
 
-/* Alacrity Sans - Primary Font */
+/* Industrial Gothic Banner W04 Rg - Primary Title Font */
 @font-face {
-  font-family: 'Alacrity Sans';
-  src: url('../fonts/AlacritySans-Regular.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Alacrity Sans';
-  src: url('../fonts/AlacritySans-Medium.woff2') format('woff2');
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Alacrity Sans';
-  src: url('../fonts/AlacritySans-SemiBold.woff2') format('woff2');
-  font-weight: 600;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Alacrity Sans';
-  src: url('../fonts/AlacritySans-Bold.woff2') format('woff2');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
+    font-family: "Industrial Gothic Banner W04 Rg";
+    src: url("../fonts/Industrial Gothic Banner W04 Rg.woff2") format("woff2");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
 }
 
 /* Luxora Grotesk - Secondary Font */
 @font-face {
-  font-family: 'Luxora Grotesk';
-  src: url('../fonts/LuxoraGrotesk-Regular.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
+    font-family: "Luxora Grotesk";
+    src: url("../fonts/LuxoraGrotesk-Regular.woff2") format("woff2");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
 }
 
 @font-face {
-  font-family: 'Luxora Grotesk';
-  src: url('../fonts/LuxoraGrotesk-Medium.woff2') format('woff2');
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
+    font-family: "Luxora Grotesk";
+    src: url("../fonts/LuxoraGrotesk-Medium.woff2") format("woff2");
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
 }
 
 @font-face {
-  font-family: 'Luxora Grotesk';
-  src: url('../fonts/LuxoraGrotesk-SemiBold.woff2') format('woff2');
-  font-weight: 600;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Luxora Grotesk';
-  src: url('../fonts/LuxoraGrotesk-Bold.woff2') format('woff2');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
+    font-family: "Luxora Grotesk";
+    src: url("../fonts/LuxoraGrotesk-Bold.woff2") format("woff2");
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
 }
 
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --font-size: 14px;
-  
-  /* Art of War Custom Colors */
-  --aow-gold: #D7B98C;
-  --aow-gold-light: #E2DED8;
-  --aow-gold-medium: #B59B72;
-  --aow-gold-dark: #9A7D50;
-  --aow-black: #0b0b0b;
-  
-  --background: var(--aow-black);
-  --foreground: #ffffff;
-  --card: var(--aow-black);
-  --card-foreground: #ffffff;
-  --popover: var(--aow-black);
-  --popover-foreground: #ffffff;
-  --primary: var(--aow-gold);
-  --primary-foreground: var(--aow-black);
-  --secondary: var(--aow-gold-light);
-  --secondary-foreground: var(--aow-black);
-  --muted: #2a2a2a;
-  --muted-foreground: #888888;
-  --accent: var(--aow-gold);
-  --accent-foreground: var(--aow-black);
-  --destructive: #d4183d;
-  --destructive-foreground: #ffffff;
-  --border: rgba(215, 185, 140, 0.2);
-  --input: transparent;
-  --input-background: #1a1a1a;
-  --switch-background: #333333;
-  --font-weight-medium: 500;
-  --font-weight-normal: 400;
-  --ring: var(--aow-gold);
-  --radius: 0.625rem;
+    --font-size: 14px;
+
+    /* Art of War Custom Colors */
+    --aow-gold: #d7b98c;
+    --aow-gold-light: #e2ded8;
+    --aow-gold-medium: #b59b72;
+    --aow-gold-dark: #9a7d50;
+    --aow-black: #0b0b0b;
+
+    --background: var(--aow-black);
+    --foreground: #ffffff;
+    --card: var(--aow-black);
+    --card-foreground: #ffffff;
+    --popover: var(--aow-black);
+    --popover-foreground: #ffffff;
+    --primary: var(--aow-gold);
+    --primary-foreground: var(--aow-black);
+    --secondary: var(--aow-gold-light);
+    --secondary-foreground: var(--aow-black);
+    --muted: #2a2a2a;
+    --muted-foreground: #888888;
+    --accent: var(--aow-gold);
+    --accent-foreground: var(--aow-black);
+    --destructive: #d4183d;
+    --destructive-foreground: #ffffff;
+    --border: rgba(215, 185, 140, 0.2);
+    --input: transparent;
+    --input-background: #1a1a1a;
+    --switch-background: #333333;
+    --font-weight-medium: 500;
+    --font-weight-normal: 400;
+    --title-letter-spacing: 0.01em;
+    --mobile-title-size: 6rem;
+    --mobile-hero-title-size: 5rem;
+    --ring: var(--aow-gold);
+    --radius: 0.625rem;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-card: var(--card);
-  --color-card-foreground: var(--card-foreground);
-  --color-popover: var(--popover);
-  --color-popover-foreground: var(--popover-foreground);
-  --color-primary: var(--primary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-secondary: var(--secondary);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-muted: var(--muted);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-accent: var(--accent);
-  --color-accent-foreground: var(--accent-accent-foreground);
-  --color-destructive: var(--destructive);
-  --color-destructive-foreground: var(--destructive-foreground);
-  --color-border: var(--border);
-  --color-input: var(--input);
-  --color-input-background: var(--input-background);
-  --color-switch-background: var(--switch-background);
-  --color-ring: var(--ring);
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
-  
-  /* Art of War Custom Colors */
-  --color-aow-gold: var(--aow-gold);
-  --color-aow-gold-light: var(--aow-gold-light);
-  --color-aow-gold-medium: var(--aow-gold-medium);
-  --color-aow-gold-dark: var(--aow-gold-dark);
-  --color-aow-black: var(--aow-black);
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+    --color-card: var(--card);
+    --color-card-foreground: var(--card-foreground);
+    --color-popover: var(--popover);
+    --color-popover-foreground: var(--popover-foreground);
+    --color-primary: var(--primary);
+    --color-primary-foreground: var(--primary-foreground);
+    --color-secondary: var(--secondary);
+    --color-secondary-foreground: var(--secondary-foreground);
+    --color-muted: var(--muted);
+    --color-muted-foreground: var(--muted-foreground);
+    --color-accent: var(--accent);
+    --color-accent-foreground: var(--accent-accent-foreground);
+    --color-destructive: var(--destructive);
+    --color-destructive-foreground: var(--destructive-foreground);
+    --color-border: var(--border);
+    --color-input: var(--input);
+    --color-input-background: var(--input-background);
+    --color-switch-background: var(--switch-background);
+    --color-ring: var(--ring);
+    --radius-sm: calc(var(--radius) - 4px);
+    --radius-md: calc(var(--radius) - 2px);
+    --radius-lg: var(--radius);
+    --radius-xl: calc(var(--radius) + 4px);
+
+    /* Art of War Custom Colors */
+    --color-aow-gold: var(--aow-gold);
+    --color-aow-gold-light: var(--aow-gold-light);
+    --color-aow-gold-medium: var(--aow-gold-medium);
+    --color-aow-gold-dark: var(--aow-gold-dark);
+    --color-aow-black: var(--aow-black);
+
+    /* Typography */
+    --title-letter-spacing: var(--title-letter-spacing);
+    --mobile-title-size: var(--mobile-title-size);
 }
 
 @layer base {
-  * {
-    @apply border-border outline-ring/50;
-  }
+    * {
+        @apply border-border outline-ring/50;
+    }
 
-  body {
-    @apply bg-[var(--aow-black)] text-white;
-    font-family: 'Luxora Grotesk', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  }
-  
-  html {
-    font-size: var(--font-size);
-    scroll-behavior: smooth;
-  }
+    body {
+        @apply bg-[var(--aow-black)] text-white;
+        font-family: "Luxora Grotesk", "Inter", -apple-system,
+            BlinkMacSystemFont, sans-serif;
+    }
+
+    html {
+        font-size: var(--font-size);
+        scroll-behavior: smooth;
+    }
 }
 
 /**
  * Base typography with Art of War styling
  */
 @layer base {
-  :where(:not(:has([class*=" text-"]), :not(:has([class^="text-"])))) {
-    h1 {
-      font-family: 'Alacrity Sans', 'Inter', sans-serif;
-      font-size: 3.5rem;
-      font-weight: 700;
-      line-height: 1.1;
-      letter-spacing: -0.02em;
-    }
+    :where(:not(:has([class*=" text-"]), :not(:has([class^="text-"])))) {
+        h1 {
+            font-family: "Industrial Gothic Banner W04 Rg", "Inter", sans-serif;
+            font-size: 3.5rem;
+            font-weight: 400;
+            line-height: 1.1;
+            letter-spacing: var(--title-letter-spacing);
+        }
 
-    h2 {
-      font-family: 'Alacrity Sans', 'Inter', sans-serif;
-      font-size: 2.5rem;
-      font-weight: 600;
-      line-height: 1.2;
-      letter-spacing: -0.01em;
-    }
+        h2 {
+            font-family: "Industrial Gothic Banner W04 Rg", "Inter", sans-serif;
+            font-size: 2.5rem;
+            font-weight: 400;
+            line-height: 1.2;
+            letter-spacing: var(--title-letter-spacing);
+        }
 
-    h3 {
-      font-family: 'Alacrity Sans', 'Inter', sans-serif;
-      font-size: 1.875rem;
-      font-weight: 600;
-      line-height: 1.3;
-    }
+        h3 {
+            font-family: "Industrial Gothic Banner W04 Rg", "Inter", sans-serif;
+            font-size: 1.875rem;
+            font-weight: 400;
+            line-height: 1.3;
+            letter-spacing: var(--title-letter-spacing);
+        }
 
-    h4 {
-      font-family: 'Luxora Grotesk', 'Inter', sans-serif;
-      font-size: 1.25rem;
-      font-weight: 500;
-      line-height: 1.4;
-    }
+        h4 {
+            font-family: "Luxora Grotesk", "Inter", sans-serif;
+            font-size: 1.25rem;
+            font-weight: 500;
+            line-height: 1.4;
+        }
 
-    p {
-      font-family: 'Luxora Grotesk', 'Inter', sans-serif;
-      font-size: 1rem;
-      font-weight: 400;
-      line-height: 1.6;
-    }
+        p {
+            font-family: "Luxora Grotesk", "Inter", sans-serif;
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.6;
+        }
 
-    label {
-      font-family: 'Luxora Grotesk', 'Inter', sans-serif;
-      font-size: 0.875rem;
-      font-weight: 500;
-      line-height: 1.5;
-    }
+        label {
+            font-family: "Luxora Grotesk", "Inter", sans-serif;
+            font-size: 0.875rem;
+            font-weight: 500;
+            line-height: 1.5;
+        }
 
-    button {
-      font-family: 'Luxora Grotesk', 'Inter', sans-serif;
-      font-size: 1rem;
-      font-weight: 600;
-      line-height: 1.5;
-      letter-spacing: 0.025em;
-    }
+        button {
+            font-family: "Luxora Grotesk", "Inter", sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            line-height: 1.5;
+            letter-spacing: 0.025em;
+        }
 
-    input {
-      font-family: 'Luxora Grotesk', 'Inter', sans-serif;
-      font-size: 1rem;
-      font-weight: 400;
-      line-height: 1.5;
+        input {
+            font-family: "Luxora Grotesk", "Inter", sans-serif;
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.5;
+        }
     }
-  }
 }
 
 /* Custom Art of War utilities */
 @layer utilities {
-  .gradient-gold-radial {
-    background: radial-gradient(circle, var(--aow-gold) 0%, var(--aow-gold-medium) 25%, var(--aow-gold-dark) 75%);
-  }
+    /* Industrial Gothic Banner with proper letter spacing */
+    .font-industrial-gothic {
+        font-family: "Industrial Gothic Banner W04 Rg", "Inter", sans-serif;
+        letter-spacing: var(--title-letter-spacing);
+    }
 
-  /* File Folder Tab */
-  .folder-tab {
-    height: 40px;
-    position: relative;
-    top: 0;
-    background: #141414;
-    display: inline-block;
-    z-index: 2;
-    margin-left: 8px;
-    color: white;
-    cursor: pointer;
-    padding: 0 20px;
-    line-height: 40px;
-    border: 1px solid var(--aow-gold);
-    border-bottom: none;
-    border-radius: 8px 8px 0 0;
-    transition: all 0.3s ease;
-  }
+    /* Responsive title sizing utilities */
+    .title-hero {
+        font-size: var(
+            --mobile-hero-title-size
+        ); /* Controlled by CSS variable */
+        line-height: 1.1;
+    }
 
-  /* Mobile responsiveness - Earlier breakpoint */
-  @media (max-width: 1024px) {
+    @media (min-width: 640px) {
+        .title-hero {
+            font-size: 3.5rem;
+        } /* 56px sm */
+    }
+
+    @media (min-width: 768px) {
+        .title-hero {
+            font-size: 4.5rem;
+        } /* 72px md */
+    }
+
+    @media (min-width: 1024px) {
+        .title-hero {
+            font-size: 5.5rem;
+        } /* 88px lg */
+    }
+
+    @media (min-width: 1280px) {
+        .title-hero {
+            font-size: 6.5rem;
+        } /* 104px xl */
+    }
+
+    .title-page {
+        font-size: var(--mobile-title-size); /* Controlled by CSS variable */
+        line-height: 1.1;
+    }
+
+    @media (min-width: 640px) {
+        .title-page {
+            font-size: 2.5rem;
+        } /* 40px sm */
+    }
+
+    @media (min-width: 768px) {
+        .title-page {
+            font-size: 3.25rem;
+        } /* 52px md */
+    }
+
+    @media (min-width: 1024px) {
+        .title-page {
+            font-size: 4rem;
+        } /* 64px lg */
+    }
+
+    @media (min-width: 1280px) {
+        .title-page {
+            font-size: 4.5rem;
+        } /* 72px xl */
+    }
+    .gradient-gold-radial {
+        background: radial-gradient(
+            circle,
+            var(--aow-gold) 0%,
+            var(--aow-gold-medium) 25%,
+            var(--aow-gold-dark) 75%
+        );
+    }
+
+    /* File Folder Tab */
     .folder-tab {
-      padding: 0 18px;
-      height: 36px;
-      line-height: 36px;
-      margin-left: 8px;
-      margin-right: 6px;
+        height: 40px;
+        position: relative;
+        top: 0;
+        background: #141414;
+        display: inline-block;
+        z-index: 2;
+        margin-left: 8px;
+        color: white;
+        cursor: pointer;
+        padding: 0 20px;
+        line-height: 40px;
+        border: 1px solid var(--aow-gold);
+        border-bottom: none;
+        border-radius: 8px 8px 0 0;
+        transition: all 0.3s ease;
     }
-  }
 
-  .folder-tab.active {
-    background: #141414;
-    border-color: var(--aow-gold);
-    z-index: 4;
-  }
+    /* Mobile responsiveness - Earlier breakpoint */
+    @media (max-width: 1024px) {
+        .folder-tab {
+            padding: 0 18px;
+            height: 36px;
+            line-height: 36px;
+            margin-left: 8px;
+            margin-right: 6px;
+        }
+    }
 
-  .folder-tab.inactive {
-    background: #0e0e0e;
-    color: rgba(255, 255, 255, 0.6);
-    cursor: pointer;
-    z-index: 1;
-  }
+    .folder-tab.active {
+        background: #141414;
+        border-color: var(--aow-gold);
+        z-index: 4;
+    }
 
-  /* Default z-index for inactive tabs */
-  .folder-tab.inactive {
-    z-index: 1;
-  }
+    .folder-tab.inactive {
+        background: #0e0e0e;
+        color: rgba(255, 255, 255, 0.6);
+        cursor: pointer;
+        z-index: 1;
+    }
 
-  /* Active tab always on top */
-  .folder-tab.active {
-    z-index: 4;
-  }
+    /* Default z-index for inactive tabs */
+    .folder-tab.inactive {
+        z-index: 1;
+    }
 
-  .folder-tab:hover:not(.inactive) {
-    z-index: 4;
-    border-color: var(--aow-gold);
-  }
+    /* Active tab always on top */
+    .folder-tab.active {
+        z-index: 4;
+    }
 
-  .folder-tab:before {
-    height: 40px;
-    width: 30px;
-    border-radius: 8px 8px 0px 0px;
-    background: inherit;
-    content: "";
-    position: absolute;
-    left: -20px;
-    top: -1px;
-    transform: skewX(-20deg);
-    z-index: -1;
-    border: 1px solid var(--aow-gold);
-    border-bottom: none;
-    border-right: none;
-  }
+    .folder-tab:hover:not(.inactive) {
+        z-index: 4;
+        border-color: var(--aow-gold);
+    }
 
-  .folder-tab:after {
-    height: 40px;
-    width: 30px;
-    border-radius: 8px 8px 0px 0px;
-    background: inherit;
-    content: "";
-    position: absolute;
-    right: -20px;
-    top: -1px;
-    transform: skewX(20deg);
-    z-index: -1;
-    border: 1px solid var(--aow-gold);
-    border-bottom: none;
-    border-left: none;
-  }
+    .folder-tab:before {
+        height: 40px;
+        width: 30px;
+        border-radius: 8px 8px 0px 0px;
+        background: inherit;
+        content: "";
+        position: absolute;
+        left: -20px;
+        top: -1px;
+        transform: skewX(-20deg);
+        z-index: -1;
+        border: 1px solid var(--aow-gold);
+        border-bottom: none;
+        border-right: none;
+    }
 
-  /* Mobile pseudo-elements - Earlier breakpoint */
-  @media (max-width: 1024px) {
-    .folder-tab:before,
     .folder-tab:after {
-      height: 36px;
-      width: 22px;
-      left: -15px;
+        height: 40px;
+        width: 30px;
+        border-radius: 8px 8px 0px 0px;
+        background: inherit;
+        content: "";
+        position: absolute;
+        right: -20px;
+        top: -1px;
+        transform: skewX(20deg);
+        z-index: -1;
+        border: 1px solid var(--aow-gold);
+        border-bottom: none;
+        border-left: none;
     }
-    
-    .folder-tab:after {
-      right: -15px;
-      left: auto;
+
+    /* Mobile pseudo-elements - Earlier breakpoint */
+    @media (max-width: 1024px) {
+        .folder-tab:before,
+        .folder-tab:after {
+            height: 36px;
+            width: 22px;
+            left: -15px;
+        }
+
+        .folder-tab:after {
+            right: -15px;
+            left: auto;
+        }
     }
-  }
 
-  .folder-tab.active:before,
-  .folder-tab.active:after {
-    border-color: var(--aow-gold);
-  }
+    .folder-tab.active:before,
+    .folder-tab.active:after {
+        border-color: var(--aow-gold);
+    }
 
-  /* Tab Text with Navigation Styling */
-  .folder-tab-text {
-    font-family: 'Luxora Grotesk', sans-serif;
-    font-size: 0.875rem;
-    font-weight: 500;
-    position: relative;
-    display: inline-block;
-    transition: all 0.3s ease;
-  }
+    /* Tab Text with Navigation Styling */
+    .folder-tab-text {
+        font-family: "Luxora Grotesk", sans-serif;
+        font-size: 0.875rem;
+        font-weight: 500;
+        position: relative;
+        display: inline-block;
+        transition: all 0.3s ease;
+    }
 
-  /* Underline effect like navigation */
-  .folder-tab-text::after {
-    content: '';
-    position: absolute;
-    bottom: -4px;
-    left: 50%;
-    width: 0;
-    height: 2px;
-    background: var(--aow-gold);
-    border-radius: 1px;
-    transition: all 0.3s ease;
-    transform: translateX(-50%);
-  }
+    /* Underline effect like navigation */
+    .folder-tab-text::after {
+        content: "";
+        position: absolute;
+        bottom: -4px;
+        left: 50%;
+        width: 0;
+        height: 2px;
+        background: var(--aow-gold);
+        border-radius: 1px;
+        transition: all 0.3s ease;
+        transform: translateX(-50%);
+    }
 
-  .folder-tab.active .folder-tab-text::after {
-    width: 100%;
-  }
+    .folder-tab.active .folder-tab-text::after {
+        width: 100%;
+    }
 
-  .folder-tab:hover .folder-tab-text::after {
-    width: 80%;
-  }
-  
-  .text-shadow {
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
-  }
+    .folder-tab:hover .folder-tab-text::after {
+        width: 80%;
+    }
 
-  /* Hide scrollbars but allow scrolling */
-  .scrollbar-hide {
-    -ms-overflow-style: none; /* IE and Edge */
-    scrollbar-width: none; /* Firefox */
-  }
-  
-  .scrollbar-hide::-webkit-scrollbar {
-    display: none; /* Chrome, Safari, Opera */
-  }
+    .text-shadow {
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+    }
 
-  /* Line clamp utilities */
-  .line-clamp-2 {
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
+    /* Hide scrollbars but allow scrolling */
+    .scrollbar-hide {
+        -ms-overflow-style: none; /* IE and Edge */
+        scrollbar-width: none; /* Firefox */
+    }
 
-  /* Animated Border Effects */
-  .border-animate-pulse {
-    animation: border-pulse 2s ease-in-out infinite;
-  }
+    .scrollbar-hide::-webkit-scrollbar {
+        display: none; /* Chrome, Safari, Opera */
+    }
 
-  .border-animate-glow {
-    animation: border-glow 2s ease-in-out infinite;
-  }
+    /* Line clamp utilities */
+    .line-clamp-2 {
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
 
-  .gradient-border-rotate {
-    background: conic-gradient(
-      from 0deg,
-      var(--aow-gold),
-      var(--aow-gold-light),
-      var(--aow-gold),
-      var(--aow-gold-dark),
-      var(--aow-gold)
-    );
-    animation: rotate-gradient 3s linear infinite;
-  }
+    /* Animated Border Effects */
+    .border-animate-pulse {
+        animation: border-pulse 2s ease-in-out infinite;
+    }
+
+    .border-animate-glow {
+        animation: border-glow 2s ease-in-out infinite;
+    }
+
+    .gradient-border-rotate {
+        background: conic-gradient(
+            from 0deg,
+            var(--aow-gold),
+            var(--aow-gold-light),
+            var(--aow-gold),
+            var(--aow-gold-dark),
+            var(--aow-gold)
+        );
+        animation: rotate-gradient 3s linear infinite;
+    }
 }
 
 @keyframes border-pulse {
-  0%, 100% {
-    border-color: rgba(215, 185, 140, 0.4);
-    transform: scale(1);
-  }
-  50% {
-    border-color: rgba(215, 185, 140, 0.8);
-    transform: scale(1.02);
-  }
+    0%,
+    100% {
+        border-color: rgba(215, 185, 140, 0.4);
+        transform: scale(1);
+    }
+    50% {
+        border-color: rgba(215, 185, 140, 0.8);
+        transform: scale(1.02);
+    }
 }
 
 @keyframes border-glow {
-  0%, 100% {
-    box-shadow: 0 0 20px rgba(215, 185, 140, 0.3);
-  }
-  50% {
-    box-shadow: 0 0 40px rgba(215, 185, 140, 0.5);
-  }
+    0%,
+    100% {
+        box-shadow: 0 0 20px rgba(215, 185, 140, 0.3);
+    }
+    50% {
+        box-shadow: 0 0 40px rgba(215, 185, 140, 0.5);
+    }
 }
 
 @keyframes rotate-gradient {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
 }

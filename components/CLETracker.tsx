@@ -23,6 +23,7 @@ import { useState, useEffect } from "react";
 import React from "react";
 import { formatCLECredits } from "../utils/creditFormatter";
 import { useEthicalAttorneyCourses } from "../src/hooks/useCourses";
+import courseImage from "../src/assets/course_img.png";
 
 interface CLECredit {
     category: string;
@@ -75,17 +76,17 @@ export function CLETracker() {
 
     // Combine theater course with cached ethical attorney courses
     const recommendedCourses = React.useMemo(() => {
-        const theaterCourse = {
+        const theaterCourse: Course = {
             id: 'jarrett-theater',
             instructor: 'Ernest Jarrett',
             title: 'The Theater of the Courtroom',
             description: 'Master storytelling, voice, movement, and presence to command the courtroom like a stage.',
             modules: 7,
             cleCredits: 2.0,
-            creditType: 'General',
+            creditType: 'General' as const,
             category: 'Hero Banner',
             isFeatured: true,
-            imageUrl: '/src/assets/course_img.png'
+            imageUrl: courseImage
         };
         
         if (ethicalCourses && ethicalCourses.length > 0) {
@@ -258,8 +259,8 @@ export function CLETracker() {
                 >
                     <div className="flex items-center justify-between mb-4">
                         <div>
-                            <h1 className="text-3xl md:text-4xl lg:text-5xl font-['Alacrity_Sans',_sans-serif] text-white mb-2">
-                                CLE Tracker
+                            <h1 className="font-industrial-gothic title-page text-white mb-2">
+                                cle tracker
                             </h1>
                             <p className="text-white/70 text-lg font-['Luxora_Grotesk',_sans-serif]">
                                 Eric Jarrett • California • Intellectual
@@ -299,7 +300,7 @@ export function CLETracker() {
                                         />
                                     </div>
                                     <div className="flex-grow text-center md:text-left">
-                                        <h2 className="text-2xl font-semibold mb-4 font-['Alacrity_Sans:Regular',_sans-serif]">
+                                        <h2 className="text-2xl font-medium mb-4 font-['Luxora_Grotesk',_sans-serif]">
                                             Current Period Progress
                                         </h2>
                                         <div className="grid grid-cols-2 gap-4 mb-6">
@@ -338,7 +339,7 @@ export function CLETracker() {
                             transition={{ duration: 0.6, delay: 0.4 }}
                         >
                             <Card className="bg-white/5 border-white/10 p-6">
-                                <h3 className="text-xl font-semibold mb-6 font-['Alacrity_Sans:Regular',_sans-serif]">
+                                <h3 className="text-xl font-medium mb-6 font-['Luxora_Grotesk',_sans-serif]">
                                     Credit Breakdown
                                 </h3>
                                 <div className="space-y-4">
@@ -403,7 +404,7 @@ export function CLETracker() {
                             transition={{ duration: 0.6, delay: 0.6 }}
                         >
                             <Card className="bg-white/5 border-white/10 p-6">
-                                <h3 className="text-xl font-semibold mb-6 font-['Alacrity_Sans:Regular',_sans-serif]">
+                                <h3 className="text-xl font-medium mb-6 font-['Luxora_Grotesk',_sans-serif]">
                                     Recommended to Complete Goals
                                 </h3>
 
@@ -466,7 +467,7 @@ export function CLETracker() {
                         >
                             <Card className="bg-white/5 border-white/10 p-6">
                                 <div className="flex items-center space-x-3 mb-4">
-                                    <h3 className="text-lg font-semibold text-white font-['Alacrity_Sans:Regular',_sans-serif]">
+                                    <h3 className="text-lg font-medium text-white font-['Luxora_Grotesk',_sans-serif]">
                                         Upcoming Deadline
                                     </h3>
                                 </div>
@@ -493,7 +494,7 @@ export function CLETracker() {
                             <Card className="bg-green-500/10 border-green-500/30 p-6">
                                 <div className="flex items-center space-x-3 mb-3">
                                     <CheckCircleIcon className="w-6 h-6 text-green-400" />
-                                    <h3 className="text-lg font-semibold text-green-400 font-['Alacrity_Sans:Regular',_sans-serif]">
+                                    <h3 className="text-lg font-medium text-green-400 font-['Luxora_Grotesk',_sans-serif]">
                                         Compliance Status
                                     </h3>
                                 </div>
@@ -525,7 +526,7 @@ export function CLETracker() {
                             transition={{ duration: 0.6, delay: 0.7 }}
                         >
                             <Card className="bg-white/5 border-white/10 p-6">
-                                <h3 className="text-lg font-semibold mb-4 font-['Alacrity_Sans:Regular',_sans-serif]">
+                                <h3 className="text-lg font-medium mb-4 font-['Luxora_Grotesk',_sans-serif]">
                                     California Requirements
                                 </h3>
                                 <div className="space-y-3 text-sm font-['Luxora_Grotesk:Book',_sans-serif]">
@@ -572,11 +573,11 @@ export function CLETracker() {
                             transition={{ duration: 0.6, delay: 0.9 }}
                         >
                             <Card className="bg-white/5 border-white/10 p-6">
-                                <h3 className="text-lg font-semibold mb-4 font-['Alacrity_Sans:Regular',_sans-serif]">
+                                <h3 className="text-lg font-medium mb-4 font-['Luxora_Grotesk',_sans-serif]">
                                     Quick Actions
                                 </h3>
                                 <div className="space-y-3">
-                                    <Button className="w-full bg-white text-aow-black hover:bg-white/90 font-semibold">
+                                    <Button className="w-full bg-white text-aow-black hover:bg-white/90 font-medium">
                                         <CalendarIcon className="w-4 h-4 mr-2" />
                                         View CLE Calendar
                                     </Button>

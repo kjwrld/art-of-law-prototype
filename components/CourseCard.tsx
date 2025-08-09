@@ -163,7 +163,7 @@ export function CourseCard({ course, size = 'medium', showProgress = false, useW
           transition={{ delay: 0.1 }}
         >
           {/* Course Title */}
-          <h3 className="text-white font-semibold text-lg leading-tight tracking-tight">
+          <h3 className="text-white font-medium text-lg leading-tight tracking-tight">
             {course.title}
           </h3>
 

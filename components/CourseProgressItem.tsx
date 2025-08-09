@@ -73,7 +73,7 @@ export const CourseProgressItem = ({
                     <div className="flex-1">
                         <div className="flex items-center gap-3 mb-3">
                             <h4
-                                className={`font-['Alacrity_Sans',_sans-serif] font-semibold text-xl transition-colors ${
+                                className={`font-['Luxora_Grotesk',_sans-serif] font-medium text-xl transition-colors ${
                                     course.completed
                                         ? "text-white"
                                         : course.current

@@ -9,7 +9,7 @@ function EarlyAccessBadge() {
                         filter: "drop-shadow(0 2px 8px rgba(215, 185, 140, 0.4))",
                     }}
                 >
-                    <div className="font-['Alacrity_Sans_Regular',_sans-serif] font-normal text-aow-black text-base tracking-[0.025em] uppercase">
+                    <div className="font-['Luxora_Grotesk',_sans-serif] font-normal text-aow-black text-base tracking-[0.025em] uppercase">
                         Early Access
                     </div>
                 </div>

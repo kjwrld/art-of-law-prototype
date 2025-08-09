@@ -9,12 +9,12 @@
   }
   body {
     @apply bg-aow-black text-white;
-    font-family: 'Alacrity Sans', 'Inter', 'sans-serif';
+    font-family: 'Luxora Grotesk', 'Inter', 'sans-serif';
   }
   
   /* Ensure proper font fallbacks */
-  .font-alacrity {
-    font-family: 'Alacrity Sans', 'Inter', 'sans-serif';
+  .font-industrial {
+    font-family: 'Industrial Gothic Banner W04 Rg', 'Inter', 'sans-serif';
   }
   
   .font-luxora {

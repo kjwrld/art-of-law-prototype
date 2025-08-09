@@ -48,7 +48,7 @@ const sidebarItems = [
     id: 'practice-areas', 
     name: 'Practice Areas', 
     icon: Sword,
-    navigateTo: 'practice-arena',
+    navigateTo: 'practice-area',
     available: true
   },
   { 

@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import Logo from "../imports/MaskGroup-81-193";
+import logoImage from "../src/assets/logo.png";
 
 interface LoadingScreenProps {
     progress?: number;
@@ -33,12 +33,16 @@ export function LoadingScreen({ progress = 0 }: LoadingScreenProps) {
                         ease: "easeInOut",
                     }}
                 >
-                    <Logo />
+                    <img
+                        src={logoImage}
+                        alt="Art of Law Logo"
+                        className="w-full h-full object-contain"
+                    />
                 </motion.div>
 
                 {/* Art of Law text */}
                 <motion.h1
-                    className="text-2xl md:text-3xl font-['Alacrity_Sans',_sans-serif] text-white mb-2 tracking-wide"
+                    className="text-2xl md:text-3xl font-['Luxora_Grotesk',_sans-serif] text-white font-medium mb-2 tracking-wide"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.3 }}
@@ -52,7 +56,7 @@ export function LoadingScreen({ progress = 0 }: LoadingScreenProps) {
                     animate={{ opacity: 1 }}
                     transition={{ duration: 0.8, delay: 0.6 }}
                 >
-                    Preparing your legal education library...
+                    Your Gateway to Legal Mastery
                 </motion.p>
 
                 {/* Progress bar */}

@@ -25,8 +25,8 @@ export function MyCourses({ onNavigate }: MyCoursesProps) {
         <div className="min-h-screen bg-aow-black text-white pt-20">
             {/* Page Header */}
             <div className="px-6 md:px-8 lg:px-12 xl:px-16 pt-8 pb-6">
-                <h1 className="text-3xl md:text-4xl lg:text-5xl font-['Alacrity_Sans',_sans-serif] text-white mb-2">
-                    My Courses
+                <h1 className="font-industrial-gothic title-page text-white mb-2">
+                    my courses
                 </h1>
                 <p className="text-white/70 text-lg font-['Luxora_Grotesk',_sans-serif]">
                     Your personalized learning dashboard
@@ -38,7 +38,7 @@ export function MyCourses({ onNavigate }: MyCoursesProps) {
                 {/* Bookmarked Section */}
                 <section>
                     <div className="flex items-center justify-between mb-6">
-                        <h2 className="text-2xl md:text-3xl font-['Alacrity_Sans',_sans-serif] text-white">
+                        <h2 className="text-2xl md:text-3xl font-['Luxora_Grotesk',_sans-serif] text-white">
                             Bookmarked
                         </h2>
                     </div>
@@ -62,7 +62,7 @@ export function MyCourses({ onNavigate }: MyCoursesProps) {
                                     />
                                 </svg>
                             </div>
-                            <h3 className="text-xl font-['Alacrity_Sans',_sans-serif] text-white mb-2">
+                            <h3 className="text-xl font-['Luxora_Grotesk',_sans-serif] text-white mb-2">
                                 No Bookmarked Courses Yet
                             </h3>
                             <p className="text-white/60 font-['Luxora_Grotesk',_sans-serif] max-w-md mx-auto">
@@ -77,7 +77,7 @@ export function MyCourses({ onNavigate }: MyCoursesProps) {
                 {/* Continue Watching Section */}
                 <section>
                     <div className="flex items-center justify-between mb-6">
-                        <h2 className="text-2xl md:text-3xl font-['Alacrity_Sans',_sans-serif] text-white">
+                        <h2 className="text-2xl md:text-3xl font-['Luxora_Grotesk',_sans-serif] text-white">
                             Continue Watching
                         </h2>
                     </div>
@@ -105,7 +105,7 @@ export function MyCourses({ onNavigate }: MyCoursesProps) {
                                     />
                                 </svg>
                             </div>
-                            <h3 className="text-xl font-['Alacrity_Sans',_sans-serif] text-white mb-2">
+                            <h3 className="text-xl font-['Luxora_Grotesk',_sans-serif] text-white mb-2">
                                 No Courses in Progress
                             </h3>
                             <p className="text-white/60 font-['Luxora_Grotesk',_sans-serif] max-w-md mx-auto">
@@ -134,7 +134,7 @@ export function MyCourses({ onNavigate }: MyCoursesProps) {
                                 />
                             </svg>
                         </div>
-                        <h3 className="text-xl font-['Alacrity_Sans',_sans-serif] text-white mb-2">
+                        <h3 className="text-xl font-['Luxora_Grotesk',_sans-serif] text-white mb-2">
                             Explore Learning Tracks
                         </h3>
                         <p className="text-white/60 font-['Luxora_Grotesk',_sans-serif] mb-4 max-w-md mx-auto">
