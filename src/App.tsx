@@ -6,6 +6,7 @@ import { HeroSection } from "../components/HeroSection";
 import { CourseLibrary } from "../components/CourseLibrary";
 import { CourseOverlay } from "../components/CourseOverlay";
 import { LoadingScreen } from "../components/LoadingScreen";
+import { HelpButton } from "../components/HelpButton";
 
 // Lazy load heavy components
 const CLETracker = lazy(() => import("../components/CLETracker").then(module => ({ default: module.CLETracker })));
@@ -160,6 +161,9 @@ export default function App() {
                 isDefault={false}
                 formatCredits={formatCredits}
             />
+
+            {/* Floating Help Button - Available on all pages */}
+            <HelpButton />
         </div>
     );
 }
