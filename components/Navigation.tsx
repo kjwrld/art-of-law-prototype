@@ -65,6 +65,7 @@ export function Navigation({
                         <button
                             onClick={() => onPageChange("home")}
                             className="relative flex items-center space-x-1.5 cursor-pointer group min-w-fit pb-2"
+                            style={{ marginLeft: "0" }}
                         >
                             <div
                                 className="h-7 w-7 flex-shrink-0"
@@ -72,9 +73,9 @@ export function Navigation({
                                     overflow: "visible",
                                 }}
                             >
-                                <img 
-                                    src={logoImage} 
-                                    alt="Art of Law Logo" 
+                                <img
+                                    src={logoImage}
+                                    alt="Art of Law Logo"
                                     className="w-full h-full object-contain"
                                 />
                             </div>
@@ -102,7 +103,7 @@ export function Navigation({
 
                         {/* Search Bar - Desktop */}
                         <div className="hidden md:flex items-center ml-8">
-                            <div className="relative w-96 lg:w-[500px] xl:w-[600px]">
+                            <div className="relative w-96 lg:w-[400px] xl:w-[540px]">
                                 <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 h-4 w-4 text-white/50" />
                                 <Input
                                     type="text"
@@ -114,9 +115,9 @@ export function Navigation({
                     </div>
 
                     {/* RIGHT SIDE - All the way to the right */}
-                    <div className="flex items-center space-x-8 ml-12">
+                    <div className="flex items-center space-x-4 ml-8">
                         {/* Desktop Navigation Items */}
-                        <div className="hidden lg:flex items-center space-x-8">
+                        <div className="hidden lg:flex items-center space-x-4">
                             {navigationItems.map((item) => (
                                 <motion.button
                                     key={item.name}
@@ -158,7 +159,7 @@ export function Navigation({
                         </div>
 
                         {/* Tablet Navigation - Icon Only */}
-                        <div className="hidden md:flex lg:hidden items-center space-x-6">
+                        <div className="hidden md:flex lg:hidden items-center space-x-4">
                             {navigationItems.map((item) => (
                                 <motion.button
                                     key={item.name}
