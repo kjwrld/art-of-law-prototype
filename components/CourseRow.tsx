@@ -20,6 +20,7 @@ export function CourseRow({ title, courses, size = 'medium', showProgress = fals
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
 
+
   const scroll = (direction: 'left' | 'right') => {
     if (!scrollRef.current) return;
 
@@ -51,43 +52,75 @@ export function CourseRow({ title, courses, size = 'medium', showProgress = fals
       viewport={!loadImmediately ? { once: true, margin: "-100px" } : undefined}
       transition={{ duration: 0.6, ease: "easeOut" }}
     >
-      {/* Row Title */}
-      <div className="flex items-center justify-between mb-4 px-4 md:px-8 lg:px-12 xl:px-16">
-        <motion.h2 
-          className="text-white/90 text-lg md:text-xl lg:text-2xl text-shadow tracking-tight"
-          initial={{ opacity: 0, x: -20 }}
-          animate={loadImmediately ? { opacity: 1, x: 0 } : undefined}
-          whileInView={!loadImmediately ? { opacity: 1, x: 0 } : undefined}
-          viewport={!loadImmediately ? { once: true } : undefined}
-          transition={{ duration: 0.6, delay: loadImmediately ? 0 : 0.1 }}
-        >
-          {title}
-        </motion.h2>
-        <div className="flex items-center space-x-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-          <Button
-            variant="ghost"
-            size="sm"
-            className={`h-8 w-8 rounded-full bg-aow-black/80 border border-aow-gold/20 hover:bg-aow-gold/10 transition-all duration-300 ${
-              !canScrollLeft ? 'opacity-50 cursor-not-allowed' : ''
-            }`}
-            onClick={() => scroll('left')}
-            disabled={!canScrollLeft}
+      {/* Row Title - Only show if title exists */}
+      {title && (
+        <div className="flex items-center justify-between mb-4 px-4 md:px-8 lg:px-12 xl:px-16">
+          <motion.h2 
+            className="text-white/90 text-lg md:text-xl lg:text-2xl text-shadow tracking-tight"
+            initial={{ opacity: 0, x: -20 }}
+            animate={loadImmediately ? { opacity: 1, x: 0 } : undefined}
+            whileInView={!loadImmediately ? { opacity: 1, x: 0 } : undefined}
+            viewport={!loadImmediately ? { once: true } : undefined}
+            transition={{ duration: 0.6, delay: loadImmediately ? 0 : 0.1 }}
           >
-            <ChevronLeft className="h-4 w-4 text-white" />
-          </Button>
-          <Button
-            variant="ghost"
-            size="sm"
-            className={`h-8 w-8 rounded-full bg-aow-black/80 border border-aow-gold/20 hover:bg-aow-gold/10 transition-all duration-300 ${
-              !canScrollRight ? 'opacity-50 cursor-not-allowed' : ''
-            }`}
-            onClick={() => scroll('right')}
-            disabled={!canScrollRight}
-          >
-            <ChevronRight className="h-4 w-4 text-white" />
-          </Button>
+            {title}
+          </motion.h2>
+          <div className="flex items-center space-x-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <Button
+              variant="ghost"
+              size="sm"
+              className={`h-8 w-8 rounded-full bg-aow-black/80 border border-aow-gold/20 hover:bg-aow-gold/10 transition-all duration-300 ${
+                !canScrollLeft ? 'opacity-50 cursor-not-allowed' : ''
+              }`}
+              onClick={() => scroll('left')}
+              disabled={!canScrollLeft}
+            >
+              <ChevronLeft className="h-4 w-4 text-white" />
+            </Button>
+            <Button
+              variant="ghost"
+              size="sm"
+              className={`h-8 w-8 rounded-full bg-aow-black/80 border border-aow-gold/20 hover:bg-aow-gold/10 transition-all duration-300 ${
+                !canScrollRight ? 'opacity-50 cursor-not-allowed' : ''
+              }`}
+              onClick={() => scroll('right')}
+              disabled={!canScrollRight}
+            >
+              <ChevronRight className="h-4 w-4 text-white" />
+            </Button>
+          </div>
         </div>
-      </div>
+      )}
+
+      {/* Navigation buttons when no title - positioned on the right like homepage */}
+      {!title && (
+        <div className="absolute top-1/2 -translate-y-1/2 right-4 md:right-8 lg:right-12 xl:right-16 z-20 pointer-events-none">
+          <div className="flex items-center space-x-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <Button
+              variant="ghost"
+              size="sm"
+              className={`h-8 w-8 rounded-full bg-aow-black/80 border border-aow-gold/20 hover:bg-aow-gold/10 transition-all duration-300 pointer-events-auto ${
+                !canScrollLeft ? 'opacity-50 cursor-not-allowed' : ''
+              }`}
+              onClick={() => scroll('left')}
+              disabled={!canScrollLeft}
+            >
+              <ChevronLeft className="h-4 w-4 text-white" />
+            </Button>
+            <Button
+              variant="ghost"
+              size="sm"
+              className={`h-8 w-8 rounded-full bg-aow-black/80 border border-aow-gold/20 hover:bg-aow-gold/10 transition-all duration-300 pointer-events-auto ${
+                !canScrollRight ? 'opacity-50 cursor-not-allowed' : ''
+              }`}
+              onClick={() => scroll('right')}
+              disabled={!canScrollRight}
+            >
+              <ChevronRight className="h-4 w-4 text-white" />
+            </Button>
+          </div>
+        </div>
+      )}
 
       {/* Scrollable Course Cards with Enhanced Drag */}
       <div className="relative">

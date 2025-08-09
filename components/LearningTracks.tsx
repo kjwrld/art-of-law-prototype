@@ -6,7 +6,6 @@ import { CourseProgressItem } from "./CourseProgressItem";
 import { Course } from "../data/courses";
 import { projectId, publicAnonKey } from "../utils/supabase/info";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
-import { BookmarkButton } from "./BookmarkButton";
 
 export function LearningTracks() {
     const [activeTab, setActiveTab] = useState("master");
@@ -37,7 +36,7 @@ export function LearningTracks() {
                     setLearningTracksCourses(data.courses);
                 }
             } catch (error) {
-                console.error("Failed to fetch learning tracks:", error);
+                // Handle error silently or with user notification
             } finally {
                 setLoading(false);
             }
@@ -62,12 +61,10 @@ export function LearningTracks() {
 
     // Handler for learning track course clicks
     const handleTrackCourseClick = (courseName: string) => {
-        // console.log("Learning track course clicked:", courseName);
         // Course clicks no longer open overlay - just for interaction logging
     };
 
     const handleCourseClick = (courseId: string) => {
-        // console.log("Learning tracks course clicked:", courseId);
         // Course clicks no longer open overlay - just for interaction logging
     };
 
@@ -149,7 +146,12 @@ export function LearningTracks() {
                                                                     course.image_link ||
                                                                     course.thumbnail
                                                                 }
-                                                                alt={`${course.instructor || 'Instructor'} - ${course.title}`}
+                                                                alt={`${
+                                                                    course.instructor ||
+                                                                    "Instructor"
+                                                                } - ${
+                                                                    course.title
+                                                                }`}
                                                                 className="w-full h-full object-cover"
                                                             />
                                                         ) : (
@@ -174,10 +176,7 @@ export function LearningTracks() {
                                                     </div>
                                                     <div className="absolute inset-0 rounded-lg bg-gradient-to-t from-white/10 via-white/5 to-transparent opacity-0 group-hover/track-card:opacity-100 transition-opacity duration-300"></div>
 
-                                                    {/* Bookmark Button */}
-                                                    <BookmarkButton
-                                                        courseId={course.id}
-                                                    />
+                                                    {/* Bookmark Button - Not shown for learning tracks */}
                                                 </div>
                                             </div>
 
@@ -249,7 +248,7 @@ export function LearningTracks() {
                     </h2>
 
                     {/* File Folder Tabs - Positioned above container */}
-                    <div className="relative h-10 mb-0 lg:h-10">
+                    <div className="relative h-10 mb-0 lg:h-10 mx-auto">
                         <div className="absolute right-8 bottom-0 z-20 flex px-6 lg:px-0">
                             {/* Master the Courtroom - Tab */}
                             <div

@@ -11,10 +11,26 @@ interface BookmarkButtonProps {
 export function BookmarkButton({ courseId, className = "", onClick }: BookmarkButtonProps) {
   const [isBookmarked, setIsBookmarked] = useState(false);
 
-  // Load bookmark state from localStorage on mount
+  // Load bookmark state from localStorage and listen for changes
   useEffect(() => {
-    const bookmarks = JSON.parse(localStorage.getItem('aow-bookmarks') || '[]');
-    setIsBookmarked(bookmarks.includes(courseId));
+    const updateBookmarkState = () => {
+      const bookmarks = JSON.parse(localStorage.getItem('aow-bookmarks') || '[]');
+      setIsBookmarked(bookmarks.includes(courseId));
+    };
+
+    // Load initial state
+    updateBookmarkState();
+
+    // Listen for changes from other BookmarkButton instances
+    const handleBookmarkChange = () => {
+      updateBookmarkState();
+    };
+
+    window.addEventListener('aow-bookmark-changed', handleBookmarkChange);
+
+    return () => {
+      window.removeEventListener('aow-bookmark-changed', handleBookmarkChange);
+    };
   }, [courseId]);
 
   const handleBookmarkClick = (e: React.MouseEvent) => {
@@ -35,6 +51,9 @@ export function BookmarkButton({ courseId, className = "", onClick }: BookmarkBu
     
     localStorage.setItem('aow-bookmarks', JSON.stringify(updatedBookmarks));
     
+    // Notify other components about bookmark changes
+    window.dispatchEvent(new CustomEvent('aow-bookmark-changed'));
+    
     // Call optional onClick handler
     if (onClick) {
       onClick(e);
@@ -43,7 +62,7 @@ export function BookmarkButton({ courseId, className = "", onClick }: BookmarkBu
 
   return (
     <motion.button
-      className={`absolute top-2 right-2 z-20 p-1.5 rounded-full bg-black/60 backdrop-blur-sm border border-white/10 opacity-0 group-hover:opacity-100 transition-all duration-300 ${className}`}
+      className={`absolute top-2 right-2 z-20 p-1.5 rounded-full bg-black/60 backdrop-blur-sm border border-white/10 opacity-0 group-hover/course:opacity-100 transition-all duration-300 ${className}`}
       onClick={handleBookmarkClick}
       initial={{ scale: 0.8 }}
       whileTap={{ scale: 0.9 }}

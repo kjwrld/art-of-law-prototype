@@ -165,7 +165,13 @@ export function Sidebar({
                                 whileTap={item.available ? { scale: 0.98 } : {}}
                             >
                                 <item.icon
-                                    className="h-5 w-5 flex-shrink-0"
+                                    className={`h-5 w-5 flex-shrink-0 ${
+                                        isItemActive(item)
+                                            ? "text-aow-gold"
+                                            : item.available
+                                            ? "text-white/80 hover:text-white hover:bg-[#242424]"
+                                            : "text-white/40 cursor-not-allowed"
+                                    }`}
                                     style={{ minWidth: "20px" }}
                                 />
                                 <div className="ml-4 flex-1 text-left">
@@ -220,7 +226,13 @@ export function Sidebar({
                                 whileTap={item.available ? { scale: 0.98 } : {}}
                             >
                                 <item.icon
-                                    className="h-5 w-5 flex-shrink-0"
+                                    className={`h-5 w-5 flex-shrink-0 ${
+                                        isItemActive(item)
+                                            ? "text-aow-gold"
+                                            : item.available
+                                            ? "text-white/80 hover:text-white hover:bg-[#242424]"
+                                            : "text-white/40 cursor-not-allowed"
+                                    }`}
                                     style={{ minWidth: "20px" }}
                                 />
                                 <AnimatePresence>
@@ -241,7 +253,8 @@ export function Sidebar({
                                             {/* Lock icon for unavailable items */}
                                             {!item.available &&
                                                 hoveredItem === item.id && (
-                                                    <Lock className="h-4 w-4 text-white/60 ml-2" />
+                                                    <Lock className="h-4 w-4 text-white/60 ml-2 absolute right-6" />
+                                                    // <Lock className="h-4 w-4 text-white/60 ml-2" />
                                                 )}
                                         </motion.div>
                                     )}
@@ -318,7 +331,13 @@ export function Sidebar({
                                             }
                                         >
                                             <item.icon
-                                                className="h-6 w-6 flex-shrink-0"
+                                                className={`h-6 w-6 flex-shrink-0 ${
+                                                    isItemActive(item)
+                                                        ? "text-aow-gold"
+                                                        : item.available
+                                                        ? "text-white/80 hover:text-white hover:bg-[#242424]"
+                                                        : "text-white/40 cursor-not-allowed"
+                                                }`}
                                                 style={{ minWidth: "24px" }}
                                             />
                                             <div className="ml-4 flex-1 text-left">

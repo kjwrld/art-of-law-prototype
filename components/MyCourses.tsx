@@ -3,16 +3,25 @@ import { motion } from "framer-motion";
 import { CourseRow } from "./CourseRow";
 import { Course } from "../data/courses";
 import { useContinueWatchingCourses } from "../src/hooks/useCourses";
+import { useBookmarks } from "../src/hooks/useBookmarks";
 
 interface MyCoursesProps {
     onNavigate?: (page: string) => void;
 }
 
 export function MyCourses({ onNavigate }: MyCoursesProps) {
-    const [bookmarkedCourses] = useState<Course[]>([]);
+    // Use bookmarks hook to get saved courses
+    const { bookmarkedCourses } = useBookmarks();
     
     // Use cached continue watching courses - instant loading!
     const { data: continueWatchingCourses, isLoading } = useContinueWatchingCourses();
+
+    // Debug logging for My Courses
+    console.log('📚 My Courses debug:', {
+        bookmarkedCoursesLength: bookmarkedCourses?.length,
+        bookmarkedCourses: bookmarkedCourses,
+        hasBookmarkedCourses: bookmarkedCourses && bookmarkedCourses.length > 0
+    });
 
     if (isLoading) {
         return (
@@ -50,12 +59,12 @@ export function MyCourses({ onNavigate }: MyCoursesProps) {
                 <section>
                     <div className="flex items-center justify-between mb-6">
                         <h2 className="text-2xl md:text-3xl font-['Luxora_Grotesk',_sans-serif] text-white">
-                            Bookmarked
+                            Saved Courses
                         </h2>
                     </div>
 
-                    {bookmarkedCourses.length > 0 ? (
-                        <CourseRow title="" courses={bookmarkedCourses} />
+                    {bookmarkedCourses && bookmarkedCourses.length > 0 ? (
+                        <CourseRow title="" courses={bookmarkedCourses} size="medium" />
                     ) : (
                         <div className="bg-[#1a1a1a] rounded-2xl border border-aow-gold p-8 text-center">
                             <div className="w-16 h-16 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-4">

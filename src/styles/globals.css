@@ -70,7 +70,7 @@
     --font-weight-normal: 400;
     --title-letter-spacing: 0.01em;
     --mobile-title-size: 6rem;
-    --mobile-hero-title-size: 3.25rem;
+    --mobile-hero-title-size: 3.5rem;
     --ring: var(--aow-gold);
     --radius: 0.625rem;
 }
@@ -212,29 +212,34 @@
             --mobile-hero-title-size
         ); /* Controlled by CSS variable */
         line-height: 1.1;
+        text-shadow: 0 4px 2px rgb(11, 11, 11, 0.8);
     }
 
     @media (min-width: 640px) {
         .title-hero {
-            font-size: 3.5rem;
+            font-size: 4.5rem;
+            text-shadow: 0 4px 4px rgb(11, 11, 11, 0.8);
         } /* 56px sm */
     }
 
     @media (min-width: 768px) {
         .title-hero {
-            font-size: 4.5rem;
+            font-size: 6rem;
+            text-shadow: 0 4px 4px rgb(11, 11, 11, 0.8);
         } /* 72px md */
     }
 
     @media (min-width: 1024px) {
         .title-hero {
-            font-size: 5.5rem;
+            font-size: 7rem;
+            text-shadow: 0 4px 8px rgb(11, 11, 11, 0.8);
         } /* 88px lg */
     }
 
     @media (min-width: 1280px) {
         .title-hero {
-            font-size: 6.5rem;
+            font-size: 8rem;
+            text-shadow: 0 4px 16px rgb(11, 11, 11, 0.8);
         } /* 104px xl */
     }
 
@@ -245,25 +250,25 @@
 
     @media (min-width: 640px) {
         .title-page {
-            font-size: 2.5rem;
+            font-size: 4.5rem;
         } /* 40px sm */
     }
 
     @media (min-width: 768px) {
         .title-page {
-            font-size: 3.25rem;
+            font-size: 8rem;
         } /* 52px md */
     }
 
     @media (min-width: 1024px) {
         .title-page {
-            font-size: 4rem;
+            font-size: 8rem;
         } /* 64px lg */
     }
 
     @media (min-width: 1280px) {
         .title-page {
-            font-size: 4.5rem;
+            font-size: 10rem;
         } /* 72px xl */
     }
     .gradient-gold-radial {
@@ -295,7 +300,7 @@
     }
 
     /* Mobile responsiveness - Earlier breakpoint */
-    @media (max-width: 1024px) {
+    @media (max-width: 1072px) {
         .folder-tab {
             padding: 0 18px;
             height: 36px;

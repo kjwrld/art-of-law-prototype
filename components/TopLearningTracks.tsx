@@ -66,8 +66,10 @@ const TopCourseCard = ({
                         </div>
                         <div className="absolute inset-0 rounded-lg bg-gradient-to-t from-white/10 via-white/5 to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity duration-300"></div>
 
-                        {/* Bookmark Button */}
-                        <BookmarkButton courseId={course.id} />
+                        {/* Bookmark Button - Only show for non-learning_tracks courses */}
+                        {course.selection !== 'learning_tracks' && (
+                            <BookmarkButton courseId={course.id} />
+                        )}
                     </div>
                 </div>
             </div>

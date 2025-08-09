@@ -40,8 +40,10 @@ export const PracticeCourseCard = ({ course }: PracticeCourseCardProps) => {
             </div>
           )}
 
-          {/* Modern Bookmark Button */}
-          <BookmarkButton courseId={course.id.toString()} />
+          {/* Modern Bookmark Button - Only show for non-learning_tracks courses */}
+          {course.selection !== 'learning_tracks' && (
+            <BookmarkButton courseId={course.id.toString()} />
+          )}
           
           {/* CLE Credits Badge - Bottom Right with Modern Styling */}
           <div className="absolute bottom-3 right-3 w-16 h-7">

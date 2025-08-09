@@ -1,36 +1,34 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { Bookmark, Coins } from "lucide-react";
+import { Coins } from "lucide-react";
 import { Course } from "../data/courses";
 import { ImageWithFallback } from './figma/ImageWithFallback';
 import { CoursePortrait } from './CoursePortrait';
 import { NewTag } from './NewTag';
 import { FeaturedTag } from './FeaturedTag';
+import { BookmarkButton } from './BookmarkButton';
 import { formatCLECredits } from '../utils/creditFormatter';
 
 interface CourseCardProps {
   course: Course;
-  size?: 'small' | 'medium' | 'large';
+  size?: 'small' | 'medium' | 'large' | 'mini';
   showProgress?: boolean;
   useWhiteBackground?: boolean;
   onClick?: () => void;
 }
 
 export function CourseCard({ course, size = 'medium', showProgress = false, useWhiteBackground = false, onClick }: CourseCardProps) {
-  const [isBookmarked, setIsBookmarked] = useState(false);
+  // Check if course can be bookmarked (exclude learning_tracks)
+  const canBookmark = course.selection !== 'learning_tracks';
   
   // Generate random progress for demo (30-85%)
   const progressValue = showProgress ? Math.floor(Math.random() * 55) + 30 : 0;
   
   const sizeClasses = {
+    mini: 'w-full', // For CLE tracker 3-column grid
     small: 'w-60',
     medium: 'w-80',
     large: 'w-96'
-  };
-
-  const handleBookmarkClick = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    setIsBookmarked(!isBookmarked);
   };
 
   // Generate placeholder image with course-specific styling
@@ -77,7 +75,7 @@ export function CourseCard({ course, size = 'medium', showProgress = false, useW
 
   return (
     <motion.div
-      className={`${sizeClasses[size]} group cursor-pointer select-none`}
+      className={`${sizeClasses[size]} group/course cursor-pointer select-none`}
       whileTap={{ scale: 0.98 }}
       transition={{ duration: 0.2, ease: "easeOut" }}
       onClick={onClick}
@@ -93,7 +91,7 @@ export function CourseCard({ course, size = 'medium', showProgress = false, useW
     >
       <div className="space-y-3">
         {/* Course Image Card */}
-        <div className="relative bg-white rounded-xl overflow-hidden h-52 shadow-lg">
+        <div className={`relative bg-white rounded-xl overflow-hidden shadow-lg ${size === 'mini' ? 'h-32' : 'h-52'}`}>
           {/* Use provided image or fallback to placeholder */}
           {course.image_link || course.imageUrl ? (
             <ImageWithFallback
@@ -120,21 +118,10 @@ export function CourseCard({ course, size = 'medium', showProgress = false, useW
             </div>
           ) : null}
 
-          {/* Bookmark - Top Right */}
-          <motion.button
-            onClick={handleBookmarkClick}
-            className="absolute top-3 right-3 w-8 h-8 rounded-full bg-black/50 backdrop-blur-sm flex items-center justify-center hover:bg-black/70 transition-all duration-200 group z-10"
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <Bookmark 
-              className={`h-4 w-4 transition-all duration-200 ${
-                isBookmarked 
-                  ? 'text-aow-gold fill-aow-gold' 
-                  : 'text-white'
-              }`} 
-            />
-          </motion.button>
+          {/* Bookmark - Top Right - Only show for non-learning_tracks courses */}
+          {canBookmark && (
+            <BookmarkButton courseId={course.id || ''} />
+          )}
           
           {/* CLE Credits Badge - Bottom Right with Prestigious Burgundy */}
           <div className="absolute bottom-3 right-3 w-16 h-7">

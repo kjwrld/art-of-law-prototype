@@ -11,7 +11,6 @@ import {
     BookOpenIcon,
     CheckCircleIcon,
     AlertCircleIcon,
-    Bookmark,
     Coins,
 } from "lucide-react";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
@@ -23,6 +22,8 @@ import { useState, useEffect } from "react";
 import React from "react";
 import { formatCLECredits } from "../utils/creditFormatter";
 import { useEthicalAttorneyCourses } from "../src/hooks/useCourses";
+import { CourseCard } from "./CourseCard";
+import { useBookmarks } from "../src/hooks/useBookmarks";
 import courseImage from "../src/assets/course_img.png";
 
 interface CLECredit {
@@ -32,15 +33,16 @@ interface CLECredit {
     color: string;
 }
 
-interface MiniCourseCardProps {
-    course: Course;
-}
 
 export function CLETracker() {
     const [overlayOpen, setOverlayOpen] = useState(false);
+    const [selectedCourse, setSelectedCourse] = useState<Course | null>(null);
     
     // Use cached ethical attorney courses (already loaded from homepage)
     const { data: ethicalCourses, isLoading } = useEthicalAttorneyCourses();
+    
+    // Use bookmarks hook for consistent bookmark management
+    const { toggleBookmark } = useBookmarks();
     const cleData: CLECredit[] = [
         {
             category: "Legal Ethics",
@@ -82,11 +84,12 @@ export function CLETracker() {
             title: 'The Theater of the Courtroom',
             description: 'Master storytelling, voice, movement, and presence to command the courtroom like a stage.',
             modules: 7,
-            cleCredits: 2.0,
-            creditType: 'General' as const,
-            category: 'Hero Banner',
-            isFeatured: true,
-            imageUrl: courseImage
+            credits: 2.0,
+            credit_type: 'General',
+            selection: 'Recommended', // This makes it bookmarkable
+            featured: true,
+            new_tag: false,
+            image_link: courseImage
         };
         
         if (ethicalCourses && ethicalCourses.length > 0) {
@@ -103,91 +106,6 @@ export function CLETracker() {
         (deadline.getTime() - today.getTime()) / (1000 * 3600 * 24)
     );
 
-    const MiniCourseCard = ({ course }: MiniCourseCardProps) => {
-        const [isBookmarked, setIsBookmarked] = useState(false);
-
-        const handleClick = () => {
-            if (course.title === "The Theater of the Courtroom") {
-                setOverlayOpen(true);
-            }
-        };
-
-        const handleBookmarkClick = (e: React.MouseEvent) => {
-            e.stopPropagation();
-            setIsBookmarked(!isBookmarked);
-        };
-        return (
-            <motion.div
-                className="group cursor-pointer"
-                whileTap={{ scale: 0.98 }}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3 }}
-                onClick={handleClick}
-            >
-                <div className="space-y-3">
-                    <div className="relative overflow-hidden rounded-lg h-32 shadow-lg">
-                        {course.imageUrl ? (
-                            <div className="bg-white rounded-lg overflow-hidden h-full">
-                                <ImageWithFallback
-                                    src={course.imageUrl}
-                                    alt={`${course.instructor || course.subheading || 'Instructor'} - ${course.title}`}
-                                    className="w-full h-full object-cover"
-                                />
-                            </div>
-                        ) : (
-                            <CoursePortrait
-                                title={course.title}
-                                moduleNumber={course.modules}
-                                className="rounded-lg"
-                            />
-                        )}
-
-                        {/* Bookmark - Top Right */}
-                        <motion.button
-                            onClick={handleBookmarkClick}
-                            className="absolute top-2 right-2 w-6 h-6 rounded-full bg-black/50 backdrop-blur-sm flex items-center justify-center hover:bg-black/70 transition-all duration-200 group z-10"
-                            whileHover={{ scale: 1.1 }}
-                            whileTap={{ scale: 0.95 }}
-                        >
-                            <Bookmark
-                                className={`h-3 w-3 transition-all duration-200 ${
-                                    isBookmarked
-                                        ? "text-aow-gold fill-aow-gold"
-                                        : "text-white"
-                                }`}
-                            />
-                        </motion.button>
-
-                        {/* CLE Credits Badge - smaller version */}
-                        <div className="absolute bottom-1.5 right-1.5 w-12 h-5">
-                            <div className="relative w-full h-full bg-gradient-to-r from-[#722F37] via-[#8B0000] to-[#722F37] rounded-full shadow-lg">
-                                <div className="absolute inset-0 flex items-center justify-center">
-                                    <div className="flex items-center space-x-1">
-                                        <Coins className="w-2.5 h-2.5 text-aow-gold" />
-                                        <span className="text-white text-xs font-medium font-luxora">
-                                            {formatCLECredits(
-                                                course.cleCredits
-                                            )}
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="space-y-1">
-                        <h4 className="text-white font-medium text-sm leading-tight line-clamp-2 font-['Luxora_Grotesk:Book',_sans-serif]">
-                            {course.title}
-                        </h4>
-                        <p className="text-aow-gold text-xs font-medium font-['Luxora_Grotesk:Book',_sans-serif]">
-                            {course.instructor}
-                        </p>
-                    </div>
-                </div>
-            </motion.div>
-        );
-    };
 
     const CircularProgress = ({ percentage }: { percentage: number }) => {
         const circumference = 2 * Math.PI * 90; // radius of 90
@@ -453,9 +371,18 @@ export function CLETracker() {
                                                             delay:
                                                                 0.8 + index * 0.1,
                                                         }}
+                                                        className="w-full"
                                                     >
-                                                        <MiniCourseCard
+                                                        <CourseCard
                                                             course={course}
+                                                            size="mini"
+                                                            useWhiteBackground={false}
+                                                            onClick={() => {
+                                                                if (course.title === "The Theater of the Courtroom") {
+                                                                    setSelectedCourse(course);
+                                                                    setOverlayOpen(true);
+                                                                }
+                                                            }}
                                                         />
                                                     </motion.div>
                                                 )
@@ -609,6 +536,8 @@ export function CLETracker() {
             <CourseOverlay
                 isOpen={overlayOpen}
                 onClose={() => setOverlayOpen(false)}
+                course={selectedCourse || undefined}
+                isDefault={false}
                 formatCredits={formatCredits}
             />
         </div>

@@ -20,6 +20,7 @@ const fetchCourses = async (selection: string): Promise<Course[]> => {
     throw new Error(data.error || 'Failed to fetch courses');
   }
   
+  
   return data.courses || [];
 };
 
