@@ -96,23 +96,23 @@ export function CourseCard({ course, size = 'medium', showProgress = false, useW
           {course.image_link || course.imageUrl ? (
             <ImageWithFallback
               src={course.image_link || course.imageUrl}
-              alt={`${course.instructor || course.subheading || 'Instructor'} - ${course.title}`}
+              alt={`${course.instructor || 'Instructor'} - ${course.title}`}
               className="w-full h-full object-cover"
             />
           ) : (
             <CoursePortrait 
               title={course.title}
-              moduleNumber={course.module_number}
+              moduleNumber={course.modules}
               className="rounded-lg"
             />
           )}
 
           {/* Tag Logic: Featured takes precedence over New */}
-          {course.isFeatured ? (
+          {course.featured ? (
             <div className="absolute top-3 left-3 w-6 h-6">
               <FeaturedTag />
             </div>
-          ) : course.isNew ? (
+          ) : course.new_tag ? (
             <div className="absolute top-3 left-3 w-14 h-6">
               <NewTag />
             </div>
@@ -131,7 +131,7 @@ export function CourseCard({ course, size = 'medium', showProgress = false, useW
                   {/* Coin Icon for Credits */}
                   <Coins className="w-3.5 h-3.5 text-aow-gold" />
                   <span className="text-white text-sm font-medium">
-                    {formatCLECredits(course.cleCredits)}
+                    {formatCLECredits(course.credits)}
                   </span>
                 </div>
               </div>

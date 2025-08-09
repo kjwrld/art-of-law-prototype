@@ -62,7 +62,7 @@ export const formatCourseForUI = (course: Course) => ({
     modules: course.modules?.toString() || "6",
     skillLevel: "Intermediate", // Default skill level
     image_link: course.image_link,
-    thumbnail: course.thumbnail,
+    thumbnail: course.imageUrl,
 });
 
 export const filterCoursesByFocus = (courses: any[], activeTabs: string[]) => {

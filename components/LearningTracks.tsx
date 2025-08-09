@@ -132,7 +132,7 @@ export function LearningTracks() {
                                             }}
                                             className="flex-shrink-0 cursor-pointer flex flex-col items-center group/track-card"
                                             onClick={() =>
-                                                handleCourseClick(course.id)
+                                                handleCourseClick(course.id || '')
                                             }
                                         >
                                             <div className="relative mb-4">
@@ -140,11 +140,11 @@ export function LearningTracks() {
                                                 <div className="relative">
                                                     <div className="w-32 h-44 rounded-lg overflow-hidden shadow-2xl border border-white/10">
                                                         {course.image_link ||
-                                                        course.thumbnail ? (
+                                                        course.imageUrl ? (
                                                             <ImageWithFallback
                                                                 src={
                                                                     course.image_link ||
-                                                                    course.thumbnail
+                                                                    course.imageUrl
                                                                 }
                                                                 alt={`${
                                                                     course.instructor ||

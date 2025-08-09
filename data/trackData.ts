@@ -121,9 +121,11 @@ export const trackData: Record<string, Track> = {
                     description:
                         "Compare structures, tax implications, and liability concerns.",
                     modules: 4,
-                    cleCredits: 1.0,
-                    creditType: "General",
-                    category: "Continue Watching",
+                    credits: 1.0,
+                    credit_type: "General",
+                    selection: "Continue",
+                    featured: false,
+                    new_tag: false,
                     imageUrl:
                         "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=400&h=300&fit=crop&crop=center",
                 } as DatabaseCourse,
@@ -197,10 +199,11 @@ export const trackData: Record<string, Track> = {
                     description:
                         "Build inclusive teams, lead with empathy, and create lasting impact in your practice and community.",
                     modules: 6,
-                    cleCredits: 1.5,
-                    creditType: "General",
-                    category: "Hero Banner",
-                    isFeatured: true,
+                    credits: 1.5,
+                    credit_type: "General",
+                    selection: "Celebrity",
+                    featured: true,
+                    new_tag: false,
                     imageUrl:
                         "https://fortune.com/img-assets/wp-content/uploads/2023/05/GettyImages-1245641002-e1683154229762.jpg?w=1440&q=75",
                 } as DatabaseCourse,

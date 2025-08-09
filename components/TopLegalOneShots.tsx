@@ -46,7 +46,7 @@ const TopLegalOneShotCard = ({
                             {course.image_link ? (
                                 <ImageWithFallback
                                     src={course.image_link}
-                                    alt={`${course.instructor || course.subheading || 'Instructor'} - ${course.title}`}
+                                    alt={`${course.instructor || 'Instructor'} - ${course.title}`}
                                     className="w-full h-full object-cover"
                                 />
                             ) : (
@@ -67,7 +67,7 @@ const TopLegalOneShotCard = ({
                         <div className="absolute inset-0 rounded-lg bg-gradient-to-t from-white/10 via-white/5 to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity duration-300"></div>
 
                         {/* Bookmark Button */}
-                        <BookmarkButton courseId={course.id} />
+                        <BookmarkButton courseId={course.id || ''} />
                     </div>
                 </div>
             </div>

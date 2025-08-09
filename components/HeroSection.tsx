@@ -69,7 +69,7 @@ export function HeroSection({ onCourseClick, isAppLoading = false }: HeroSection
 
             const celebritySlides: HeroSlide[] = celebrityCourses.map(
                 (course: Course) => ({
-                    id: course.id,
+                    id: course.id || '',
                     title: course.title.toLowerCase(),
                     subtitle: course.instructor,
                     image: course.image_link || metaImage, // Fallback to default hero image
@@ -129,7 +129,7 @@ export function HeroSection({ onCourseClick, isAppLoading = false }: HeroSection
         const currentSlideData = slides[currentSlide];
         if (currentSlideData.course) {
             // If it's a celebrity course slide, open the course overlay
-            onCourseClick(currentSlideData.course.id);
+            onCourseClick(currentSlideData.course.id || '');
         } else {
             // If it's the default slide, open with default content (could be a special course or default behavior)
             // For now, we'll use a default course ID or handle the default case
@@ -416,11 +416,11 @@ export function HeroSection({ onCourseClick, isAppLoading = false }: HeroSection
                                         </p>
                                         {/* Subheading (if available) */}
                                         {currentSlideData.course
-                                            ?.subheading && (
+                                            ?.description && (
                                             <p className="text-white/60 text-sm md:text-base lg:text-lg text-shadow leading-relaxed">
                                                 {
                                                     currentSlideData.course
-                                                        .subheading
+                                                        .description
                                                 }
                                             </p>
                                         )}

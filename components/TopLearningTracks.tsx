@@ -46,7 +46,7 @@ const TopCourseCard = ({
                             {course.image_link ? (
                                 <ImageWithFallback
                                     src={course.image_link}
-                                    alt={`${course.instructor || course.subheading || 'Instructor'} - ${course.title}`}
+                                    alt={`${course.instructor || 'Instructor'} - ${course.title}`}
                                     className="w-full h-full object-cover"
                                 />
                             ) : (
@@ -68,7 +68,7 @@ const TopCourseCard = ({
 
                         {/* Bookmark Button - Only show for non-learning_tracks courses */}
                         {course.selection !== 'learning_tracks' && (
-                            <BookmarkButton courseId={course.id} />
+                            <BookmarkButton courseId={course.id || ''} />
                         )}
                     </div>
                 </div>
