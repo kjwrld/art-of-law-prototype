@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { motion } from "framer-motion";
 import { CourseRow } from "./CourseRow";
 import { Course } from "../data/courses";
 import { useContinueWatchingCourses } from "../src/hooks/useCourses";
@@ -25,12 +26,22 @@ export function MyCourses({ onNavigate }: MyCoursesProps) {
         <div className="min-h-screen bg-aow-black text-white pt-20">
             {/* Page Header */}
             <div className="px-6 md:px-8 lg:px-12 xl:px-16 pt-8 pb-6">
-                <h1 className="font-industrial-gothic title-page text-white mb-2">
+                <motion.h1
+                    initial={{ opacity: 0, y: -20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, ease: "easeOut" }}
+                    className="font-industrial-gothic title-page text-white mb-2"
+                >
                     my courses
-                </h1>
-                <p className="text-white/70 text-lg font-['Luxora_Grotesk',_sans-serif]">
+                </motion.h1>
+                <motion.p
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" }}
+                    className="text-white/70 text-lg font-['Luxora_Grotesk',_sans-serif]"
+                >
                     Your personalized learning dashboard
-                </p>
+                </motion.p>
             </div>
 
             {/* Content Sections */}

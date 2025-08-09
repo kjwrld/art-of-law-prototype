@@ -259,13 +259,23 @@ export function CLETracker() {
                 >
                     <div className="flex items-center justify-between mb-4">
                         <div>
-                            <h1 className="font-industrial-gothic title-page text-white mb-2">
+                            <motion.h1
+                                initial={{ opacity: 0, y: -20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.5, ease: "easeOut" }}
+                                className="font-industrial-gothic title-page text-white mb-2"
+                            >
                                 cle tracker
-                            </h1>
-                            <p className="text-white/70 text-lg font-['Luxora_Grotesk',_sans-serif]">
+                            </motion.h1>
+                            <motion.p
+                                initial={{ opacity: 0, y: -10 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" }}
+                                className="text-white/70 text-lg font-['Luxora_Grotesk',_sans-serif]"
+                            >
                                 Eric Jarrett • California • Intellectual
                                 Property Law
-                            </p>
+                            </motion.p>
                         </div>
                         <div className="flex items-center space-x-4">
                             <Badge
