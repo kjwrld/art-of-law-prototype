@@ -2,7 +2,8 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
-        <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+        <link rel="icon" type="image/png" href="/art-of-law-prototype/favicon.png" />
+        <link rel="apple-touch-icon" href="/art-of-law-prototype/favicon.png" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>The Art of Law: Your Gateway to Legal Mastery</title>
 
@@ -25,13 +26,21 @@
             property="og:description"
             content="Transform your legal career with expertly curated courses, practice tools, and learning tracks. Master the courtroom, build your practice, and become a legal thought leader."
         />
-        <meta property="og:image" content="/src/assets/meta.png" />
+        <meta property="og:image" content="/meta.png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:type" content="image/png" />
         <meta
             property="og:url"
             content="https://yourusername.github.io/art-of-war-prototype/"
         />
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content="The Art of Law" />
+        
+        <!-- Apple-specific Meta Tags for better iMessage/Safari previews -->
+        <meta name="apple-mobile-web-app-title" content="The Art of Law" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
         <!-- Twitter Card Meta Tags -->
         <meta name="twitter:card" content="summary_large_image" />
@@ -43,7 +52,7 @@
             name="twitter:description"
             content="Transform your legal career with expertly curated courses, practice tools, and learning tracks. Master the courtroom, build your practice, and become a legal thought leader."
         />
-        <meta name="twitter:image" content="/src/assets/meta.png" />
+        <meta name="twitter:image" content="/meta.png" />
 
         <!-- Additional Meta Tags -->
         <meta name="author" content="The Art of Law" />
@@ -52,8 +61,20 @@
             rel="canonical"
             href="https://yourusername.github.io/art-of-war-prototype/"
         />
-      <script type="module" crossorigin src="/art-of-law-prototype/assets/index-BwOWT6bZ.js"></script>
-      <link rel="stylesheet" crossorigin href="/art-of-law-prototype/assets/index-CEdYaxOh.css">
+
+        <!-- Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'GA_MEASUREMENT_ID');
+        </script>
+      <script type="module" crossorigin src="/art-of-law-prototype/assets/index-DQ3v6xi7.js"></script>
+      <link rel="modulepreload" crossorigin href="/art-of-law-prototype/assets/vendor-CYabRHnS.js">
+      <link rel="modulepreload" crossorigin href="/art-of-law-prototype/assets/motion-D1w3nSQK.js">
+      <link rel="modulepreload" crossorigin href="/art-of-law-prototype/assets/icons-DssUL8tJ.js">
+      <link rel="stylesheet" crossorigin href="/art-of-law-prototype/assets/index-xpmAQTqW.css">
     </head>
     <body>
         <div id="root"></div>
