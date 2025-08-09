@@ -29,9 +29,10 @@ interface HeroSlide {
 
 interface HeroSectionProps {
     onCourseClick: (courseId: string) => void;
+    isAppLoading?: boolean;
 }
 
-export function HeroSection({ onCourseClick }: HeroSectionProps) {
+export function HeroSection({ onCourseClick, isAppLoading = false }: HeroSectionProps) {
     const heroRef = useRef<HTMLElement>(null);
     const [currentSlide, setCurrentSlide] = useState(0);
     const [slides, setSlides] = useState<HeroSlide[]>([]);
@@ -94,7 +95,7 @@ export function HeroSection({ onCourseClick }: HeroSectionProps) {
 
     // Auto-advance slideshow with variable timing and progress indicator
     useEffect(() => {
-        if (slides.length <= 1 || isPaused) return;
+        if (slides.length <= 1 || isPaused || isAppLoading) return;
 
         const getSlideTimeout = () => {
             // First slide stays longer (10 seconds), others are 6 seconds
@@ -121,7 +122,7 @@ export function HeroSection({ onCourseClick }: HeroSectionProps) {
             clearTimeout(timeout);
             clearInterval(progressInterval);
         };
-    }, [slides.length, currentSlide, isPaused]);
+    }, [slides.length, currentSlide, isPaused, isAppLoading]);
 
     // Handle play button click
     const handlePlayClick = () => {

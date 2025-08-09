@@ -98,7 +98,7 @@ export function CourseCard({ course, size = 'medium', showProgress = false, useW
           {course.image_link || course.imageUrl ? (
             <ImageWithFallback
               src={course.image_link || course.imageUrl}
-              alt={`${course.instructor || course.subtitle || 'Instructor'} - ${course.title}`}
+              alt={`${course.instructor || course.subheading || 'Instructor'} - ${course.title}`}
               className="w-full h-full object-cover"
             />
           ) : (

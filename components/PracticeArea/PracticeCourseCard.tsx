@@ -24,7 +24,7 @@ export const PracticeCourseCard = ({ course }: PracticeCourseCardProps) => {
           {course.image_link || course.thumbnail ? (
             <ImageWithFallback
               src={course.image_link || course.thumbnail}
-              alt={`${course.instructor || course.subtitle || 'Instructor'} - ${course.title}`}
+              alt={`${course.instructor || course.subheading || 'Instructor'} - ${course.title}`}
               className="w-full h-full object-cover"
             />
           ) : (

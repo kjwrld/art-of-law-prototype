@@ -14,6 +14,17 @@ export default defineConfig({
   build: {
     outDir: 'dist',
     sourcemap: true,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: ['react', 'react-dom'],
+          ui: [],
+          motion: ['framer-motion'],
+          icons: ['lucide-react'],
+        },
+      },
+    },
+    chunkSizeWarningLimit: 1000,
   },
   server: {
     port: 3000,

@@ -42,22 +42,29 @@ export const useAppLoading = () => {
     const totalQueries = queries.length;
     const loadedQueries = queries.filter(query => !query.isLoading && (query.data || query.error)).length;
     const failedQueries = queries.filter(query => query.error).length;
-    const progress = (loadedQueries / totalQueries) * 100;
+    
+    // More sophisticated progress calculation
+    const baseProgress = (loadedQueries / totalQueries) * 85; // Data loading gets us to 85%
+    const finalProgress = Math.min(baseProgress + 15, 100); // Reserve 15% for final setup
     
     const isLoading = queries.some(query => query.isLoading);
     const hasErrors = failedQueries > 0;
     
-    // Consider app "ready" when at least 80% of queries are done (some might fail)
-    const isReady = progress >= 80 && !isLoading;
+    // App is ready when ALL critical queries are done (not just 80%)
+    const criticalQueries = [heroCourses, recommendedCourses]; // Most important for initial load
+    const criticalLoaded = criticalQueries.every(query => !query.isLoading && (query.data || query.error));
+    const allQueriesSettled = !isLoading; // All queries finished (success or error)
+    
+    const isReady = criticalLoaded && allQueriesSettled;
 
     return {
       isLoading,
       isReady,
-      progress,
+      progress: isReady ? 100 : finalProgress,
       hasErrors,
       failedQueries,
       loadedQueries,
       totalQueries,
     };
-  }, [queries]);
+  }, [queries, heroCourses, recommendedCourses]);
 };
