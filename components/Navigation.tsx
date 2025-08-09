@@ -56,7 +56,7 @@ export function Navigation({
                             variant="ghost"
                             size="sm"
                             onClick={onMenuToggle}
-                            className="h-10 w-10 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/10 md:hidden"
+                            className="h-10 w-10 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/10 md:hidden mr-4"
                         >
                             <Menu className="h-5 w-5 text-white" />
                         </Button>

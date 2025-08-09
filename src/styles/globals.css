@@ -45,7 +45,7 @@
     --aow-gold-medium: #b59b72;
     --aow-gold-dark: #9a7d50;
     --aow-black: #0b0b0b;
-
+    /* from-[#722F37] via-[#8B0000] to-[#722F37] */
     --background: var(--aow-black);
     --foreground: #ffffff;
     --card: var(--aow-black);
@@ -336,7 +336,7 @@
     .folder-tab:before {
         height: 40px;
         width: 30px;
-        border-radius: 8px 8px 0px 0px;
+        border-radius: 8px 0px 0px 0px;
         background: inherit;
         content: "";
         position: absolute;
@@ -352,7 +352,7 @@
     .folder-tab:after {
         height: 40px;
         width: 30px;
-        border-radius: 8px 8px 0px 0px;
+        border-radius: 0px 8px 0px 0px;
         background: inherit;
         content: "";
         position: absolute;
