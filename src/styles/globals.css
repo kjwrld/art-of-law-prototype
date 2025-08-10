@@ -212,7 +212,7 @@
             --mobile-hero-title-size
         ); /* Controlled by CSS variable */
         line-height: 1.1;
-        text-shadow: 0 4px 2px rgb(11, 11, 11, 0.8);
+        text-shadow: 0 3px 12px rgb(11, 11, 11, 0.8);
     }
 
     @media (min-width: 640px) {

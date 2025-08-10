@@ -6,17 +6,13 @@ import {
 } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import heroImage from "/src/assets/hero_img.png";
 import metaImage from "/src/assets/meta.png";
-import FarLeftFadeBottom from "../imports/FarLeftFadeBottom";
-import BottomFade from "../imports/BottomFade";
-import FarRightFade from "../imports/FarRightFade";
 import GoldenWreath from "../imports/GoldenWreath-81-486";
 import svgPaths from "../imports/svg-cpvysnooko";
 import { Course } from "../data/courses";
 import { useHeroCourses } from "../src/hooks/useCourses";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
-import { CourseOverlay } from "./CourseOverlay";
+// import { CourseOverlay } from "./CourseOverlay";
 
 interface HeroSlide {
     id: string;
@@ -66,7 +62,7 @@ export function HeroSection({
                 id: "default",
                 title: "welcome to\nthe art of law",
                 subtitle: "Prepare to step into the arena",
-                image: heroImage,
+                image: "https://assets.bwbx.io/images/users/iqjWHBFdfxIU/iCU.P6GthFdg/v0/-1x-1.webp",
                 showBadge: true,
             };
 
@@ -115,7 +111,7 @@ export function HeroSection({
                     id: "default",
                     title: "welcome to\nthe art of law",
                     subtitle: "Prepare to step into the arena",
-                    image: heroImage,
+                    image: "https://assets.bwbx.io/images/users/iqjWHBFdfxIU/iCU.P6GthFdg/v0/-1x-1.webp",
                     showBadge: true,
                 },
             ]);
@@ -188,7 +184,7 @@ export function HeroSection({
             <section className="relative h-[67vh] md:h-[67vh] w-full overflow-hidden">
                 <div className="absolute inset-0 z-0">
                     <img
-                        src={heroImage}
+                        src="/src/assets/meta.png"
                         alt="Ernest Jarrett - Civil Rights Lawyer"
                         className="w-full h-full object-cover object-center"
                     />
@@ -366,13 +362,7 @@ export function HeroSection({
                             {/* Main Heading */}
                             {currentSlide === 0 ? (
                                 <div className="mb-4 md:mb-6">
-                                    <h1
-                                        className="text-white mb-4 font-industrial-gothic leading-[122.8%]"
-                                        style={{
-                                            textShadow:
-                                                "0 2px 8px rgba(0, 0, 0, 1), 0 8px 8px rgba(0, 0, 0, 0.4)",
-                                        }}
-                                    >
+                                    <h1 className="text-white mb-4 font-industrial-gothic leading-[122.8%]">
                                         {currentSlideData.title
                                             .split("\n")
                                             .map((line, index) => (
