@@ -63,7 +63,7 @@ export function HeroSection({
             const defaultSlide: HeroSlide = {
                 id: "default",
                 title: "welcome to\nthe art of law",
-                subtitle: "Prepare to step into the arena",
+                subtitle: "Your gateway to legal mastery",
                 image: heroImageUrl,
                 showBadge: true,
             };
@@ -112,7 +112,7 @@ export function HeroSection({
                 {
                     id: "default",
                     title: "welcome to\nthe art of law",
-                    subtitle: "Prepare to step into the arena",
+                    subtitle: "Your gateway to legal mastery",
                     image: heroImageUrl,
                     showBadge: true,
                 },
