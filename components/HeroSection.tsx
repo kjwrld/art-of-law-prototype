@@ -37,6 +37,8 @@ export function HeroSection({
     const [slides, setSlides] = useState<HeroSlide[]>([]);
     const [slideProgress, setSlideProgress] = useState(0);
     const [isPaused, setIsPaused] = useState(false);
+    const heroImageUrl =
+        "https://media.cnn.com/api/v1/images/stellar/prod/200629115837-01-scotus-justices-file.jpg?q=w_3000,h_2000,x_0,y_0,c_fill";
 
     // Use cached celebrity courses
     const { data: celebrityCourses, isLoading } = useHeroCourses();
@@ -62,7 +64,7 @@ export function HeroSection({
                 id: "default",
                 title: "welcome to\nthe art of law",
                 subtitle: "Prepare to step into the arena",
-                image: "https://assets.bwbx.io/images/users/iqjWHBFdfxIU/iCU.P6GthFdg/v0/-1x-1.webp",
+                image: heroImageUrl,
                 showBadge: true,
             };
 
@@ -111,7 +113,7 @@ export function HeroSection({
                     id: "default",
                     title: "welcome to\nthe art of law",
                     subtitle: "Prepare to step into the arena",
-                    image: "https://assets.bwbx.io/images/users/iqjWHBFdfxIU/iCU.P6GthFdg/v0/-1x-1.webp",
+                    image: heroImageUrl,
                     showBadge: true,
                 },
             ]);
